@@ -1,0 +1,51 @@
+Outline:
+
+Acks
+Intro
+Aeolus Intro
+ - DIFC overview
+ - Mint Example
+   - AS model (Figure)
+   - Persistence model (Figure)
+   - Shared Memory objects
+   - uses (what we allow to be done without info leakage)
+Motivation for Summarization
+ - General argument
+ - Mint Example
+   - auditing uses (Accesses bar graph figure)
+   - auditing using summaries (Timeline Figure)
+The Model
+ - Base log
+ - Requirements of Summarization
+ - Summarization Model
+   - Summarizing the events table
+     - Storage
+        - Storing Queries
+     - Querying summaries
+   - Summarizing summaries
+   - Deleting summaries
+     - Logging deletes
+       - Placeholders
+       - argument for overall reduction of space usage
+Implementation
+ - Functional SQL vs JDBC
+   - Choice of JDBC, why?
+ - Interface
+   - SummarySystem
+   - SymmaryObject
+   - Discussion of how the interface satisfies the model
+   - Uses/Examples (Figure, same as bar graph above, but missing some details).
+ - DIFC in summarizaiton (summaries inherit lables of caller).
+ - Running in a distributed system (right now the implementation is saving the summaries locally).
+Performance
+ - time taken for queries over events and summaries tables (producing the same information)
+ - Storage reduction (when we consider truncation)
+Related work
+ - Streaming databases paper
+ - Watcher model used by Aaron
+ * Need to do more research here
+Future work
+ - 
+ - 
+Appendix A - Summarization Interface
+

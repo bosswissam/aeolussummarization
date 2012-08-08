@@ -1,0 +1,45 @@
+\chapter{Aeolus System Overview}
+
+This chapter presents an overview of the Aeolus security platform, on which my summarization system is based, and highlights relevant details such as log collection. More complete descriptions of the Aeolus security platform and it's log collection and analysis can be found in Cheng \cite{cheng}, Popic \cite{popic} and Blankstein \cite{blanks}.
+
+%\section{System Architecture}
+\section{Security Model}
+
+Aeolus employs an intuitive security model to implement information flow control. The model revolves around three key concepts: \emph{principals}, \emph{tags} and \emph{labels} \cite{aeolus}. Principals represent authorities in the system that create, modify and share information. Tags represent security categories of information. A principal authoritative for a certain tag can modify or share information categorized by that tag. Labels are sets of tags and help in the control of information flow.
+
+\subsection{Authority State}
+
+Aeolus allows developers to modify the \emph{authority state} using operations such as \emph{delegate} and \emph{actfor}. This allows one principal to delegate authority for a tag it is authoritative for to another principal, or allow another principal to run on it's behalf.
+
+\subsection{Information Flow Rules}\label{difc:rules}
+
+As information flows through the system, it must obey two rules:
+
+\begin{eqnarray*}
+  SECRECY_{source} &\subseteq& SECRECY_{receiver} \\
+  INTEGRITY_{source} &\supseteq& INTEGRITY_{receiver}
+\end{eqnarray*}
+
+Aeolus enforces these rules at all times.
+
+\subsection{Processes}
+
+Processes in the system run on behalf of principals, and have security and integrity labels associated with them. In Aeolus, a process cannot modify labels of files or shared memory objects, and hence it would have to modify it's own labels in order to read or write data.
+
+\subsection{Priviledged Operations}
+
+Certain label modifications are \emph{priviledged operations}: removing a tag from the secrecy label and adding a tag to the integrity label. If a process is running on behalf of a principal authoritative for a certain tag, then that process can carry priviledged operations on that tag.
+
+\subsection{Information Flow in and out of the System}
+
+Aeolus process can only write to output outside the system boundaries if it has empty labels. This restriction combined with the information flow rules mentioned above ensures that process can only share or modify information if they are running on behalf of a principal authoritative for tags categorizing that information.
+
+Aeolus virtual nodes can use RPC to communicate with one another, and Aeolus threads can communicate using shared state mechanisms. Aeolus enforces that both of these communication routes abide by the rules in \ref{difc:rules}
+
+\section{Log Collection}
+
+Aeolus nodes are responsible for logging any events that occur locally, and sending them to the \emph{authority server} for analysis and storage.
+
+All calls to Aeolus runtime generate events. For example, calls that modify the authority state, or write to disk, will cause events to be logged to the system. The \emph{audit trails} system descripbed in \cite{popic} and \cite{blanks} gurantees causal relationships between events.
+
+The format of the event log will be described in Chapter 4.

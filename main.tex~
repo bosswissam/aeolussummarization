@@ -1,0 +1,143 @@
+% -*- Mode:TeX -*-
+
+%% The documentclass options along with the pagestyle can be used to generate
+%% a technical report, a draft copy, or a regular thesis.  You may need to
+%% re-specify the pagestyle after you \include  cover.tex.  For more
+%% information, see the first few lines of mitthesis.cls. 
+
+%\documentclass[12pt,vi,twoside]{mitthesis}
+%%
+%%  If you want your thesis copyright to you instead of MIT, use the
+%%  ``vi'' option, as above.
+%%
+%\documentclass[12pt,twoside,leftblank]{mitthesis}
+%%
+%% If you want blank pages before new chapters to be labelled ``This
+%% Page Intentionally Left Blank'', use the ``leftblank'' option, as
+%% above. 
+
+%\documentclass[12pt,twoside]{mitthesis}
+\documentclass[12pt]{mitthesis}
+%\documentclass[12pt,twoside,leftblank]{mitthesis}
+% NOTE! For printing two-sided, include twoside in document class!
+\usepackage{lgrind}
+%\usepackage{mathpazo}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[sc]{mathpazo}
+%\linespread{1.05} 
+% Euler for math | Palatino for rm | Helvetica for ss | Courier for tt
+\renewcommand{\rmdefault}{ppl} % rm
+%\linespread{1.05}        % Palatino needs more leading
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+\usepackage{euler} % math
+%\usepackage{eulervm} % a better implementation of the euler package (not in gwTeX)
+\normalfont
+\usepackage[T1]{fontenc}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{longtable}
+\usepackage{hyphenat}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{multirow}
+%\setcounter{topnumber}{2}
+%\setcounter{bottomnumber}{2}
+%\setcounter{totalnumber}{4}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.85}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\floatpagefraction}{0.7}
+
+\newcommand{\opref}[1]{\nohyphens{#1}}
+\newcommand{\fieldref}[1]{\nohyphens{\tt #1}}
+\newcommand{\opfield}[2]{\fieldref{#1} & \opref{#2} \\ \hline}
+
+\newcommand{\inst}[1]{{\em #1}}
+\newcommand{\bnfmeta}[1]{{\Large #1}}
+\newcommand{\bnfterm}[1]{{\sf\bfseries #1}}
+
+\newcommand{\tablehead}[1]{{\bf #1}}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+\sloppy
+
+\lstset{language=Python}
+\DeclareGraphicsExtensions{.pdf}
+\graphicspath{{./performance/pdf/}{./figures/pdf-perm/}{./figures/dot/}}
+\pagestyle{plain}
+
+\newenvironment{pseudo}
+               {\begin{figure}[ht]
+                   \rule{\textwidth}{1pt}
+                   }               
+               {\rule{\textwidth}{1pt} 
+               \end{figure}}
+\newenvironment{wspec}[0]
+               {\begin{center}\begin{minipage}{.9\textwidth}
+               }{\end{minipage}
+                 \end{center}
+               }
+
+\def\sectionautorefname{Section}
+\def\chapterautorefname{Chapter}
+\def\subsectionautorefname{Section}
+\def\subsubsectionautorefname{Section}
+
+\lstset{
+  basicstyle=\ttfamily \small,
+  showstringspaces=false,
+  linewidth=0.9\textwidth,
+  breaklines=true,
+  breakatwhitespace=true,
+}
+
+\lstdefinelanguage{ANTLR}{
+  basicstyle=\ttfamily \footnotesize,
+  keywordstyle=\bf,
+  morekeywords={},
+  stringstyle=\bf,
+  morestring=[b]",
+  morestring=
+}
+
+\lstdefinelanguage{WSL}{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bf\rmfamily,
+  keywordstyle=[2]\bf\rmfamily,
+  morekeywords={[2]ON, ADD, REMOVE},
+  morekeywords={OR, AND, IN, CONTAINS},
+%  frameround=tttt,
+%  frame=tlrb,
+%  linewidth=0.9\textwidth,
+%  xleftmargin=.5em,
+%  breaklines=true,
+%  breakatwhitespace=true
+}
+
+\begin{document}
+
+\include{cover}
+% Some departments (e.g. 5) require an additional signature page.  See
+% signature.tex for more information and uncomment the following line if
+% applicable.
+% \include{signature}
+\pagestyle{plain}
+\include{contents}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\appendix
+\include{appa}
+\include{appb}
+\include{biblio}
+\end{document}
+

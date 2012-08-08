@@ -1,0 +1,34 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{1}
+
+\bibitem{blanks}
+Aaron Blankstein.
+\newblock Analyzing audit trails in the {Aeolus} security platform.
+\newblock Master's thesis, MIT, Cambridge, MA, USA, June 2011.
+
+\bibitem{aeolus}
+Winnie Cheng, Dan R.~K. Ports, David Schultz, Victoria Popic, Aaron Blankstein,
+  James Cowling, Dorothy Curtis, Liuba Shrira, and Barbara Liskov.
+\newblock Abstractions for usable information flow control in {Aeolus}.
+\newblock In {\em Proceedings of the 2012 USENIX Annual Technical Conference},
+  Boston, MA, USA, June 2012.
+
+\bibitem{cheng}
+Winnie Wing-Yee Cheng.
+\newblock {\em Information Flow for Secure Ditributed Applications}.
+\newblock {{Ph.D.}}, MIT, Cambridge, MA, USA, August 2009.
+\newblock Also as Technical Report {MIT-CSAIL-TR-2009-040}.
+
+\bibitem{mckee}
+F.~Peter McKee.
+\newblock A file system design for the aeolus security platform.
+\newblock Master's thesis, MIT, Cambridge, MA, USA, September 2011.
+
+\bibitem{popic}
+Victoria Popic.
+\newblock Audit trails in the {Aeolus} distributed security platform.
+\newblock Master's thesis, MIT, Cambridge, MA, USA, September 2010.
+\newblock Also as Technical Report {MIT-CSAIL-TR-2010-048}.
+
+\end{thebibliography}

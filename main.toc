@@ -1,0 +1,22 @@
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation for summarization and archival}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}Scope}{7}{section.1.2}
+\contentsline {chapter}{\numberline {2}Aeolus System Overview}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Security Model}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Authority State}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Information Flow Rules}{10}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Processes}{10}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Priviledged Operations}{10}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Information Flow in and out of the System}{10}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}Log Collection}{11}{section.2.2}
+\contentsline {chapter}{\numberline {3}Mint}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Mint Model}{12}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{13}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Files and Shared Memory Objects}{14}{subsection.3.1.2}
+\contentsline {subsubsection}{Files}{14}{section*.4}
+\contentsline {subsubsection}{Shared Memory}{14}{section*.5}
+\contentsline {section}{\numberline {3.2}Implementation}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Authentication and User Actions}{16}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Auditing and Summarization}{18}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Logging}{18}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Summarization}{20}{subsection.3.3.2}
