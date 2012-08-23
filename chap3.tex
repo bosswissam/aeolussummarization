@@ -147,7 +147,7 @@ If authentication is successful, the thread carries on and executes the user's r
 Figures: closure code sample, authority state structure, file system tree + labels, auditing + summarization
 
 \section{Auditing and Summarization}
-
+\label{mint:auditing}
 The application makes use of the Aeolus audit trails system described in \cite{popic} and \cite{blanks} to monitor system behavior. In particular, we monitor label modification involving a particular user's data tag. Figure x shows a table of which principals declassified Bob's tag, in other words, it shows which user's accessed Bob's information. Figure \ref{figure:activity} shows a graph of how many user requests caused a label modifications involving a user data tag for every 5-second period since the application launched, in other words, it shows the activity trend of the user, any spikes in the graph mean that the user was abnormaly active in certain periods of time, which could raise suspicion to their account being compromised.
 
 
@@ -220,24 +220,13 @@ Table \ref{table:users-info} shows what such a view would look like, with some e
 
 For example, we can obtain the information necessary to create the graph in figure y using this query:
 
-\begin{lstlisting}[language=SQL, deletendkeywords={TIMESTAMP}]
+\begin{lstlisting}[language=SQL, deletendkeywords={TIMESTAMP}, label=query:accesses]
 create view accesses as select e.count, users.username, e.to_timestamp as timestamp from (select count(*), tags_modified, (to_timestamp(((extract (epoch from events.timestamp)/5)::int)*5)) from events tags_modified in (select tag from users) group by (to_timestamp(((extract (epoch from events.timestamp)/5)::int)*5)), tags_modified) as e inner join users on e.tags_modified=users.tag
 \end{lstlisting}
 
 Table \ref{table:activity} shows a sample result of this query. This query provides us with a count of how many user requests requests caused a label modification that involved a user data tag for every 5-second period of time since the application launch, the information necessary to construct the graph in figure y.
 
-\begin{table}[ht]
-%\begin{tabular}[t]{c*{2}{c}}
-%  \tablehead{count} & \tablehead{username} & \tablehead{timestamp} \\
-%  $22$ & $Jack$ & $2012-06-13 21:56:40-04$ \\
-%  $22$ & $Jack$ & $2012-06-13 21:56:40-04$ \\
-%  $4$  & $Jack$ & $2012-06-13 21:56:35-04$ \\
-%  $42$ & $Jack$ & $2012-06-13 21:56:50-04$ \\
-%  $72$ & $Jack$ & $2012-06-13 21:57:00-04$ \\
-%  $90$ & $Jack$ & $2012-06-13 21:56:45-04$ \\
-%  $12$ & $Jack$ & $2012-06-13 21:56:55-04$ \\
-%  $22$ & $Jack$ & $2012-06-13 21:57:05-04$ \\
-%\end{tabular}
+\begin{table}
 \begin{quote}
 \begin{verbatim}
  count | username |       timestamp        
@@ -256,5 +245,6 @@ Table \ref{table:activity} shows a sample result of this query. This query provi
 \label{table:activity}
 \end{table}
 
-\subsection{Summarization}
-Auditing is a great example for the use of summarization. For example, an auditor can easily reproduce the data in Figure x by simply summarizing a user's actions during any one particular session. In this case summarization adds a layer of abstraction that the auditor can use to reason freely about the actions of a particular user.
+\subsection{Study Case for Summarization}
+
+One of the main purposes of building this application was to evaluate how developers would go about auditing the events in the system, and what can be done to make that task easier. In the next chapter we describe the issues we identified and how our summarization system resolves them.

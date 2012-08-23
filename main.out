@@ -9,6 +9,7 @@
 \BOOKMARK [2][-]{subsection.2.1.4}{Priviledged Operations}{section.2.1}
 \BOOKMARK [2][-]{subsection.2.1.5}{Information Flow in and out of the System}{section.2.1}
 \BOOKMARK [1][-]{section.2.2}{Log Collection}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{A Semantic Event Log}{section.2.2}
 \BOOKMARK [0][-]{chapter.3}{Mint}{}
 \BOOKMARK [1][-]{section.3.1}{Mint Model}{chapter.3}
 \BOOKMARK [2][-]{subsection.3.1.1}{Authority State Model}{section.3.1}
@@ -17,4 +18,15 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Authentication and User Actions}{section.3.2}
 \BOOKMARK [1][-]{section.3.3}{Auditing and Summarization}{chapter.3}
 \BOOKMARK [2][-]{subsection.3.3.1}{Logging}{section.3.3}
-\BOOKMARK [2][-]{subsection.3.3.2}{Summarization}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Study Case for Summarization}{section.3.3}
+\BOOKMARK [0][-]{chapter.4}{Summarization Model}{}
+\BOOKMARK [1][-]{section.4.1}{Querying the Event Log}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{Compliance with DIFC}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{Usage Simplicity}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.3}{Versioning}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.4}{Extensibility - Querying Summaries}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{Summaries and Summary Objects}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Summarizing Summaries}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{Deleting Records}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Archivers}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Undeletable Records}{section.4.3}
