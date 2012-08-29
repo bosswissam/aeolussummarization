@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="mint-filesystem.svg">
+   sodipodi:docname="mint-filesystem.pdf">
   <defs
      id="defs4">
     <clipPath
@@ -36,11 +36,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="100.09659"
+     inkscape:zoom="1"
+     inkscape:cx="374.11773"
      inkscape:cy="193.5118"
      inkscape:document-units="px"
-     inkscape:current-layer="g4700"
+     inkscape:current-layer="g5143"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -107,14 +107,18 @@
            id="tspan3779"
            y="137.47946"
            x="62.857143"
-           sodipodi:role="line">      Bank of America-info                                        {}                                       {t<tspan
+           sodipodi:role="line">      Bank of America-info                              {t<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3075">BANK-OF-AMERICA</tspan>}                             {t<tspan
    id="tspan4646"
    style="font-size:65.00091553%;baseline-shift:sub">BANK-OF-AMERICA</tspan>}</tspan><tspan
            style="line-height:160.00000238%"
            id="tspan3781"
            y="158.80873"
            x="62.857143"
-           sodipodi:role="line">      US Bank-info                                                     {}                                            {t<tspan
+           sodipodi:role="line">      US Bank-info                                                {t<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3077">US-BANK</tspan>}                                       {t<tspan
    id="tspan4648"
    style="font-size:65.00091553%;baseline-shift:sub">US-BANK</tspan>}</tspan><tspan
            style="line-height:160.00000238%"

@@ -1,38 +1,38 @@
 \contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivation for Summarization and Archival}{7}{section.1.1}
-\contentsline {section}{\numberline {1.2}Scope}{8}{section.1.2}
-\contentsline {chapter}{\numberline {2}Aeolus System Overview}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}System Architecture}{10}{section.2.1}
-\contentsline {section}{\numberline {2.2}Information Flow Model}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Prinicpals, Tags and Labels}{11}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Information Flow Rules}{11}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Authority}{12}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Compound Tags}{13}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Programming Model}{13}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Threads and Vitual Nodes}{13}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Shared State Objects and Boxes}{14}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Authority Closures and Reduced Authority Calls}{14}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Files}{14}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Log Collection}{15}{subsection.2.3.5}
-\contentsline {subsubsection}{Aeolus Event Attributes}{15}{section*.7}
-\contentsline {chapter}{\numberline {3}Mint}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}Mint Model}{17}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{18}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Files}{20}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{21}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Implementation}{23}{section.3.2}
-\contentsline {section}{\numberline {3.3}System Security}{25}{section.3.3}
-\contentsline {chapter}{\numberline {4}Auditing and Summarization}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Logging}{29}{section.4.1}
-\contentsline {section}{\numberline {4.2}Summarization}{31}{section.4.2}
-\contentsline {chapter}{\numberline {5}Summarization Model}{32}{chapter.5}
-\contentsline {section}{\numberline {5.1}Querying the Event Log}{32}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Compliance with DIFC}{33}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Usage Simplicity}{33}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Versioning}{33}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Extensibility - Querying Summaries}{34}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Summaries and Summary Objects}{34}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Summarizing Summaries}{35}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Deleting Records}{35}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Archivers}{36}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Undeletable Records}{36}{subsection.5.3.2}
+\contentsline {section}{\numberline {1.1}Motivation for Summarization and Archiving}{7}{section.1.1}
+\contentsline {section}{\numberline {1.2}Thesis Outline}{8}{section.1.2}
+\contentsline {chapter}{\numberline {2}Aeolus System Overview}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}System Architecture}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Information Flow Model}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Prinicpals, Tags and Labels}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Information Flow Rules}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Authority}{11}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Compound Tags}{12}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Programming Model}{12}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Threads and Vitual Nodes}{12}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Shared State Objects and Boxes}{13}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Authority Closures and Reduced Authority Calls}{13}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Files}{13}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Log Collection}{14}{subsection.2.3.5}
+\contentsline {subsubsection}{Aeolus Event Attributes}{14}{section*.6}
+\contentsline {chapter}{\numberline {3}Mint}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Mint Model}{16}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Files}{19}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{20}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Implementation}{22}{section.3.2}
+\contentsline {section}{\numberline {3.3}System Security}{24}{section.3.3}
+\contentsline {chapter}{\numberline {4}Auditing and Summarization}{26}{chapter.4}
+\contentsline {section}{\numberline {4.1}Logging}{28}{section.4.1}
+\contentsline {section}{\numberline {4.2}Summarization}{30}{section.4.2}
+\contentsline {chapter}{\numberline {5}Summarization Model}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Querying the Event Log}{31}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Compliance with DIFC}{32}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Usage Simplicity}{32}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Versioning}{32}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Extensibility - Querying Summaries}{33}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Summaries and Summary Objects}{33}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Summarizing Summaries}{34}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Deleting Records}{34}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Archivers}{35}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Undeletable Records}{35}{subsection.5.3.2}

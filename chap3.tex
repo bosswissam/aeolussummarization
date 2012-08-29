@@ -8,9 +8,9 @@ In this chapter I present the Mint application model as well as some examples to
 
 Mint.com is an financial management service that provides its users with the ability to monitor their bank accounts across different banks from one place. It also allows users to run transaction analysis tools that will access the information of certain transactions for each bank for the user, and generate a result. In addition, Mint runs aggregate analysis for all user accounts.
 
-For example, Bob could sign up on www.mint.com and add his Bank of America account and his US Bank account for monitoring. This will cause our application to store credentials for both of these banks for Bob. Bob can then request a graph that presents his expenditures on food in the last week. Bob's actions would also affect the general aggregate behavior of the Mint users.
+For example, Bob could sign up on www.mint.com and add his Bank of America account and his US Bank account for monitoring. This will cause our application to store credentials for both of these banks for Bob. Bob can then request a graph that presents his expenditures on food in the last week. Bob's actions would also affect the general aggregate analysis done over all Mint users.
 
-This example gives us a starting idea of how should we build our authority structure. For instance, there should be a \emph{BOB-DATA} tag associated with Bob's information (e.g. expenditure statistics, transactions, etc.) that only a principal running on Bob's behalf can declassify. Note that Bob's password would never be revealed to Bob himself. Similarly, there's a natural grouping of user data tags, and hence a super tag, \emph{ALL-USER-DATA}, could be useful to run the aggregate analysis tools for Mint.
+This example gives us a starting idea of how should we build our authority structure. For instance, there should be a \emph{BOB-DATA} tag associated with Bob's information (e.g. expenditure statistics, transactions, etc.) that only a principal running on Bob's behalf can declassify. Note that Bob's password should never be revealed to Bob himself, neither should any of Bob's bank credential be revealed as well. Furthermore, there's a natural grouping of user data tags, and hence a super tag, \emph{ALL-USER-DATA}, could be useful to run the aggregate analysis tools for Mint.
 
 In this section we examine the security model of the application more closely.
 
@@ -37,12 +37,12 @@ An intuitive way to list all necessary\footnote{Neccessary by good design. The a
   \item[User principals] \ \\
     Each of these principals is authoritative for a particular user's tag.
   \item[Public principal] \ \\
-    Described in ref \ref{aeolus:auth-calls}, this
+    Described in section \ref{aeolus:auth-calls}, this
     principal is used when no privileged operations are 
-    necessary to ensure that no information leaks.
+    necessary to ensure no information leaks.
 \end{description}
 
-Similarly, to separate data in the system according to it's purpose, (e.g. user password, credentials to download bank transactions, etc..), the application employs the following tags:
+Similarly, to separate data in the system according to its purpose, (e.g. user password, credentials to download bank transactions, etc..), the application employs the following tags:
 \begin{description}
   \item[User data tags] \ \\
     Each of these tags is associated with data 
@@ -128,11 +128,11 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
           This file contains the \emph{AUTH} tag in 
           its secrecy label, and the \emph{USER-DATA} 
           tag in its integrity label.
-        \item[\emph{user-bank-info}] \ \\
+        \item[\emph{user-bank-creds}] \ \\
           Contains user credentials for a particular 
           bank.
           The \emph{users-dir} directory contains 
-          one \emph{user-bank-info} file per bank 
+          one \emph{user-bank-creds} file per bank 
           the user added to their account.
           This file has the \emph{BANK-DATA} and 
           \emph{USER-DATA} tags in its secrecy label, 
@@ -148,7 +148,7 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-shared-state}
-\caption{Mint shared state objects. This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's sessoin had timed out, and no session object or last activity time is stored for his username.}
+\caption{Mint shared state objects. This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username.}
 \label{fig:mint-ss}
 \end{figure}
 
@@ -165,16 +165,17 @@ A \emph{Mint Server State} object that has null labels is stored as the Aeolus \
     is authoritative for the tag of the bank
     it is working for. A bank closure has null
     labels.
-    This object maps that maps each bank name 
+    This object maps each bank name 
     to a bank closure, and has null labels.
   \item[Session Objects Map] \ \\
     This object maps a username to a session 
     object.
     A \emph{session object} contains session 
-    information about a user. It also
-    the list of \emph{bank credential} objects,
-    one for each bank a user registered on their
-    account, as well as the user's PID. 
+    information about a user. It also contains
+    a list of \emph{bank credential} objects,
+    one for each bank a user has registered 
+    for, as well as the user's Principal ID
+    (PID). 
     A \emph{session object} has the 
     \emph{USER-DATA} tag in both its labels.
     A \emph{bank credential} object contains 
@@ -206,27 +207,30 @@ A \emph{Mint Server State} object that has null labels is stored as the Aeolus \
 
 \section{Implementation}
 
-The application server runs on a virtual node, and receives user requests via RPC. Users can sign up, login, logout, register a bank and retrieve statistics. A typical flow of RPC calls is shown in figure d. 
+The application server runs on a VN, and receives user requests via RPC. Users can sign up, login, logout, register a bank and retrieve statistics. A typical flow of RPC calls is shown in figure d. 
 
-At startup, the system registers a number of banks. These are the banks which the users can later add accounts for on their Mint account. The system is now ready to accpet users. Users can register to the Mint service througha \emph{signUp} RPC call:
+At startup, the system registers a number of banks. These are the banks which the users can later add accounts for on their Mint account. The system is now ready to accept users.
+
+Users can register to the Mint service through a \emph{signUp} RPC call:
 
 \begin{description}
   \item[\emph{signUp(username, password)}] \ \\
     Signs up a new user with the username as 
-    \emph{username} and password as \emph{password} 
-    if \emph{username} is available, associates 
+    \emph{username} and password as \emph{password}. 
+    If \emph{username} is available, associates 
     those credentials with a newly-created user data 
     tag and a newly-created principal ID,
     then stores all this information on disk under
-    a new user directory, as per the hierarchy
-    described in \ref{sec:mint-fs}. The system
+    a new user directory, as per the file system
+    hierarchy described in section 
+    \ref{sec:mint-fs}. The system
     also stores the newly created tag in the 
     \emph{User Tags Map}.
     Throws an exception if this \emph{username}
     is already used.
 \end{description}
 
-Users can then log in to be able to modify their account and retreieve their information using the following RPC calls:
+Users can then log in to modify their account and retrieve their information using the following RPC call:
 
 \begin{description}
   \item[\emph{login(username, password)}] \ \\
@@ -234,7 +238,7 @@ Users can then log in to be able to modify their account and retreieve their inf
     stores their information in a session 
     object, and updates their last activity
     time using the shared memory objects
-    described in \ref{sec:mint-smo}.
+    described in section \ref{sec:mint-smo}.
     The system authenticates the 
     credentials by calling an 
     \emph{authentication closure}, which 
@@ -245,18 +249,18 @@ Users can then log in to be able to modify their account and retreieve their inf
     an exception otherwise.
 \end{description}
 
-Once a user logs in, they only have to include their \emph{username} in persuing requests to carry out different actions. In each of the following RPC calls, authentication is carried out by checking if the provided \emph{username} has a session that has not timed out yet (there is a last activity time associated with it, and is not older than a certain amount of time, e.g. 15 minutes):
+Once a user logs in, they only have to include their \emph{username} in persuing requests to carry out different actions. In each of the following RPC calls, authentication is carried out by checking if the provided \emph{username} has a session that has not timed out yet (there is a last activity time associated with a session, and thus must not be older than a certain amount of time, e.g. 15 minutes).
 
 \begin{description}
   \item[\emph{addBank(username, bankName, bankUsername, bankPassword)}] \ \\
     Registers the specified bank 
     for the specified username with the given 
     credentials.
-    This request writes a \emph{user-bank-info} 
+    This request writes a \emph{user-bank-creds} 
     file to disk, with the tag of
-    fthe user in it's integrity label, and the 
+    the user in its integrity label, and the 
     tag of the user and that of the bank
-    in it's secrecy label.
+    in its secrecy label.
   \item[\emph{downloadTransactions(username)}] \ \\
     This action connects to each bank the 
     user has registered for their account, 
@@ -267,7 +271,7 @@ Once a user logs in, they only have to include their \emph{username} in persuing
     information returned. The thread then
     adds a user tag to it's secrecy label, 
     and uses a reduced authority call to 
-    the public principal to process the information, 
+    the public principal to process the information; 
     this ensures that information
     cannot be leaked while it is being
     processed
@@ -297,12 +301,14 @@ Once a user logs in, they only have to include their \emph{username} in persuing
 
 \end{description}
 
+\noindent
+For each RPC call, the thread handling the call starts running on behalf of \emph{P$_{MINT}$}, and then reduces its authority as soon as possible to avoid errors leading to information leakage. For example, in \emph{downloadTracations}, after authenticating the user, the thread reduces its authority to run on behalf of the users principal, then processes the downloaded information on behalf of \emph{P$_{PUBLIC}$} and then returns.
+
+
 \section{System Security}
 
-In the design of the Mint application, we make an assumption that the user is connecting from another Aeolus node. If this was not the case, i.e. the RPC calls are incoming from outside the Aeolus system, sensitive information would be exposed over the network (e.g. the user's Mint credentials), which wouldn't happen for RPCs within the Aeolus system because those are encrypted.
+The use of a \emph{username} in the implementation of the RPC calls defined above to identify which user invoked those calls creates a vulnerability in our system. Alice could send a \emph{downloadTransactions(``Bob'')} request, and because the information is being sent outside the Aeolus system, the information in the reply would have null labels, and hence Alice could access Bob's information.
 
-Another problem that comes up due to that assumption is due to the use of a \emph{username} in the implementation of the RPC calls defined above to identify which user invoked those calls. Alice could send a \emph{downloadTransactions(``Bob'')} request, and because the information is being sent outside the Aeolus system, the information in the reply would have null labels.
+Another problem that comes up is related due to the assumption that the user is connecting from another Aeolus node. If this was not the case, i.e. the requests are coming from outside the Aeolus system, sensitive information would be exposed over the network (e.g. the user's Mint credentials), which wouldn't happen for RPCs within the Aeolus system because those are encrypted\footnote{Requests coming from outside the system could be RPC or HTTP requests.}.
 
-Both issues can be resolved by using standard cryptography mechanisms to encrypt and authenticate external communication. For example, encrypting all requests and replies coming in and out of the system and assigning temporary session-ids when users start a session, those session-ids would be used to authenticate future requests in that session.
-
-[cite authentication schemes here?]
+Both issues can be resolved by using standard cryptography mechanisms to encrypt and authenticate external communication. For example, encrypting all requests and replies coming in and out of the system and, in addition, sessions can be identified by unguessable temporary session-ids, and, those session-ids would be used to authenticate future requests in that session.

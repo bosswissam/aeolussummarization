@@ -1,6 +1,6 @@
 \chapter{Aeolus System Overview}
 
-This chapter presents an overview of the Aeolus security platform, on which our summarization system is based, and highlights relevant details such as log collection. More complete descriptions of the Aeolus security platform and it's log collection and analysis can be found in Cheng \cite{cheng}, Popic \cite{popic} and Blankstein \cite{blanks}.
+This chapter presents an overview of the Aeolus security platform, on which our summarization system is based, and highlights relevant details such as log collection. More complete descriptions of the Aeolus security platform and its log collection and analysis can be found in Cheng \cite{cheng}, Popic \cite{popic} and Blankstein \cite{blanks}.
 
 \section{System Architecture}
 
@@ -11,20 +11,18 @@ This chapter presents an overview of the Aeolus security platform, on which our 
 \label{fig:aeolus-sysarch}
 \end{figure}
 
-The Aeolus architecture is shown in figure \ref{fig:aeolus-sysarch}. The system consists of many nodes, each of which is trusted to enfoce Aeolus's information flow rules.
+The Aeolus architecture is shown in figure \ref{fig:aeolus-sysarch}. The system consists of many nodes, each of which is trusted to enforce Aeolus's information flow rules.
 
-Aeolus tracks information flow within each system node and between system nodes. Nodes in the system communicate via RPC messages, those messages are encrypted to protect their secrecy and integrity. Nodes outside the system are considered to be untrusted: information can flow outside of the system if it is uncontaminated, and information arriving from the outside is marked as having no integrity.
+Aeolus tracks information flow within each system node and between system nodes. Nodes in the system communicate via RPC messages, those messages are encrypted to protect their secrecy and integrity. Nodes outside the system are considered to be untrusted: information can flow outside of the system only if it is uncontaminated, and information arriving from the outside is marked as having no integrity.
 
 
-Threads in Aeolus run on behalf of \emph{principals}. The ability of a thread to carry out \emph{privileged operations} is determined by the \emph{authority} of the principal it runs on behalf of. Aeolus tracks the authority of principals in the \emph{authority state} stored at the authority server (AS). Principals, privileged operations and authority are described in sections \ref{principals}, \ref{difc:rules} and \ref{auth} respectively.
+Threads in Aeolus run on behalf of \emph{principals}. The ability of a thread to carry out \emph{privileged operations} is determined by the \emph{authority} of the principal it runs on behalf of. Aeolus tracks the authority of principals in the \emph{authority state} stored at the authority server (AS). Principals, privileged operations and authority are described in sections \ref{principals}, \ref{difc:rules} and \ref{auth}, respectively.
 
 \section{Information Flow Model}
 
 This section describes the basic concepts and rules of the Aeolus security model.
 
 \subsection{Prinicpals, Tags and Labels}\label{principals}
-
-This section describes the basic concepts and rules of the Aeolus security model.
 
 Aeolus employs an intuitive security model to implement information flow control. The model revolves around three key concepts: \emph{principals}, \emph{tags} and \emph{labels} \cite{aeolus}. Principals represent entities in the system that create, modify and share information. Tags represent security categories of information. A principal authoritative for a certain tag can modify or share information categorized by that tag. Labels are sets of tags and are used to determine whether information can flow from a source to a receiver based on the information flow rules described in the following section.
 
@@ -37,28 +35,32 @@ Aeolus allows information to flow from a source \emph{S} to a destination \emph{
   INTEGRITY_{S} &\supseteq& INTEGRITY_{D}
 \end{eqnarray*}
 
-Threads in an Aeolus node run with security and integrity labels associated with them. In Aeolus, a thread cannot modify labels of files or shared memory objects, and hence it would have to modify it's own labels in order to read or write data. Certain label manipulations, called \emph{privileged manipulations} are unsafe because they remove constraints on information flow:
+Threads in an Aeolus node run with security and integrity labels associated with them; objects such as files also have such labels. In Aeolus, a thread cannot modify labels of files or shared memory objects; however, the labels of threads can change, and hence a thread would have to modify it's own labels in order to read or write data. 
+
+Certain label manipulations, called \emph{privileged manipulations} are unsafe because they remove constraints on information flow:
 
 \begin{enumerate}
   \item \emph{Declassfication} Remove a tag from a secrecy label.
   \item \emph{Endorsement} Add a tag to an integrity label.
 \end{enumerate}
 
-A thread is allowed to carry out privileged label manipulatinos if it is running on behalf of a principal that has authority for the tags affected by these manipulations.
+\noindent
+A thread is allowed to carry out privileged label manipulations if it is running on behalf of a principal that has authority for the tags affected by these manipulations.
 
 \subsection{Authority}\label{auth}
 
-Authority determines whether a thread can perform privileged label manipulations. Authority starts with tag creation: when a thraed creates a tag, its principal has authority for that tag.
+Authority determines whether a thread can perform privileged label manipulations. Authority starts with tag creation: when a thread creates a tag, its principal has authority for that tag.
 
-Subsequently, the Aeolus authority state can be modified through \emph{grant}, \emph{act for} or \emph{revoke} operations. Grant operations allow a principal to delegate authority for a particular tag to another principal. Act for operations allow a principal to delegate all of its authority to another principal. Revoke operations remove \emph{act for} and \emph{grant} links between principals. To avoid covert channels, Aeolus only permits threads running with null secrecy labels to modify the authority state.
+Subsequently, the Aeolus authority state can be modified through \emph{grant}, \emph{act-for} or \emph{revoke} operations. Grant operations allow a principal to delegate authority for a particular tag to another principal. \emph{Act-for} operations allow a principal to delegate all of its authority to another principal. Revoke operations remove \emph{act-for} and \emph{grant} links between principals. To avoid covert channels, Aeolus only permits threads running with null secrecy labels to modify the authority state.
 
 \subsection{Compound Tags}
 
-Applications frequently have sets of tags that are closely related. In order to simplify the authority structure of the application, Aeolus allows for tags to be grouped upon creation using \emph{compound tags}. For example, in a medical clinic, patient data tags are \emph{subtags} of an \emph{ALL-PATIENT-DATA} tag, a \emph{super tag}.
+Applications frequently have sets of tags that are closely related. In order to simplify the authority structure of the application, Aeolus allows for tags to be grouped upon creation using \emph{compound tags}. For example, in a medical clinic, patient data tags are \emph{subtags} of an \emph{ALL-PATIENT-DATA} tag, a \emph{supertag}.
 
-A principal authoritative for a super tag is also authoritative for all of its subtags. Similarly, a having super tag in a thread's secrecy label is equivalent to having all subtags in its secrecy label. This reduces label size substantially, and makes label manipulations involving paricular groups of tags less expensive.
+A principal authoritative for a supertag is also authoritative for all of its subtags. Similarly, having a supertag in a thread's secrecy label is equivalent to having all subtags in its secrecy label. This reduces label size substantially, and makes label manipulations involving paricular groups of tags less expensive.
 
-Figure x shows a sample authority state graph, detailing \emph{act for}, \emph{grant} and \emph{subtag} relationships in the financial services application is described in chapter \ref{mint}. [describe the graph]
+
+See figure \ref{fig:mint-auth-state-model} on page \pageref{fig:mint-auth-state-model} for an example of an authority state model, detailing \emph{act-for}, \emph{grant} and \emph{subtag} relationships in the financial services application described in chapter \ref{mint}.
 
 \section{Programming Model}
 
@@ -66,22 +68,20 @@ This section explains the programming abstraction Aeolus provides, and how they 
 
 \subsection{Threads and Vitual Nodes}
 
-Virtual nodes, shown as applications in figure y, communicate via RPC and have many threads inside. A Virtual node is given a principal when it is created and all threads run with this principal or some prinicipal it acts for. An RPC is run in its own threads with the vn prinicipal but the labels of the claler; on the return the labels are sent back to the caller where they are merged with those of the caler: a union of the secrecy labels and an intersection of the integrity labels. Then the caller continues with its own principal.
+Virtual nodes (VNs), shown as applications in figure \ref{fig:aeolus-sysarch}, communicate via RPC and have many threads inside them. A VN is given a principal when it is created and all threads run with this principal or some prinicipal it acts for. An RPC is run in its own threads with the VN prinicipal but the labels of the caller; on the return the labels are sent back to the caller where they are merged with those of the caller: a merge is a union of the secrecy labels and an intersection of the integrity labels. Then the caller continues with its own principal.
 
 \subsection{Shared State Objects and Boxes}\label{aeolus:shared-mem}
 
-Within a virtual node, threads can share state via special Aeolus shared objects. Aeolus gives threads access to a \emph{root} shared memory object, which has null labels, which threads can modify to point to other Aeolus shared objects and share them.
+Within a virtual node, threads can share state via special Aeolus shared objects. Aeolus gives threads access to a \emph{root} shared memory object, with null labels.
 
-Aeolus shared obects have immutable label associated with them, and Aeolus ensures that the rules in \ref{difc:rules} are respected. User's can create their own shared objects, however, Aeolus ensures that label manipulations do not take place inside the object's methods.
+Aeolus shared obects have immutable labels, and Aeolus ensures that the rules in \ref{difc:rules} are respected. User's can create their own shared objects; Aeolus ensures that label manipulations do not take place inside the object's methods.
 
 \subsection{Authority Closures and Reduced Authority Calls}
 \label{aeolus:auth-calls}
 
-Aeolus provides developers with \emph{authority closures}. An authority closure is an object bound to a principal at the moment of creation. Threads can later run the closure's methods with the closure's principal. Authority closures allow threads to allow threads to process confidential information without being exposed to the information itself.
+Aeolus provides developers with \emph{authority closures}. An authority closure is an object bound to a principal at the moment of creation. Threads can later call the closure's methods, which run with the closure's principal. Authority closures allow threads to process confidential information without being exposed to the information itself.
 
 Aeolus also provides a mechanism for threads to reduce their authority, called \emph{reduced authority calls}. To make a reduced authority call, a thread specifies a function and a principal to run it with. The calling thread's principal must act for the principal of the reduced authority call.
-
-[labels merging?]
 
 With those two mechanisms in place, Aeolus makes it possible to ensure that each part of the application runs with only the authority it needs. Aeolus also provides a principal that is not authoritative for any tags, \emph{P$_{PUBLIC}$}, for developers to use when they need to ensure that a part of a program cannot leak any information.
 
@@ -102,17 +102,20 @@ Files are yet another way (RPCs, shared memoery objects) through which Aeolus al
 
 Aeolus provides automatic auditing of every security related event that occurs while an application runs; also it provides a way for applications to log additional events that are meaningful at the application level.
 
-Aeolus distributes log collection across all virtual nodes in the system. Aeolus virtual nodes send events that occur locally to the log collector as shown in figure \ref{fig:log-flow}. The log collector stores the events for later processing and analysis, as explained in \cite{blanks}. Figure y This happens automatically for all calls to the Aeolus runtime, however, Aeolus also provides application-level logging to allow developers to log their own events using the following interface:
+Aeolus distributes log collection across all nodes in the system. Aeolus sends events that occur locally to the log collector as shown in figure \ref{fig:log-flow}. The log collector stores the events for later processing and analysis, as explained in \cite{blanks}.
+
+Aeolus provides application-level logging to allow developers to log their own events using the following interface:
 
 \begin{lstlisting}[language=Java, label=app-logging]
-AeolusLib.createEvent(String desc, List<String> args)
+AeolusLib.createEvent(String app_op, List<String> args)
 \end{lstlisting}
 
-This creates a new record in the Aeolus event log. The \emph{desc} and \emph{args} argument are stored as attributes for that record, allowing the developer to query the event log based on the arguments they provided.
+\noindent
+This creates a new record in the Aeolus event log. The \emph{app\_op} and \emph{args} argument are stored as attributes for that record, allowing the developer to query the event log based on the arguments they provided. The \emph{app\_op} parameter is used to to identify the application operation name, and the \emph{args} paramter allows the developer to specify any additional information to store for the event.
 
 \subsubsection{Aeolus Event Attributes}
 
-Aeolus stores different attributes for different events that take place in the system. Blankstein \cite{blanks} provides a complete description of those attributes, but here we will highlight the ones more relevant to the useof summarization:
+Aeolus stores different attributes for different events that take place in the system. Blankstein \cite{blanks} provides a complete description of those attributes; here we will highlight the ones more relevant to the use of summarization:
 
 \begin{description}
   \item[\emph{event\_counter}] \ \\
@@ -120,8 +123,7 @@ Aeolus stores different attributes for different events that take place in the s
     ordering for the occurence of the event, i.e. events with a higher 
     eventcounter took place after events with a lower eventcounter.
   \item[\emph{timestamp}] \ \\
-    This is the time at which the event was registered 
-    by the client virtual node.
+    This is the real time at which the event happened.
   \item[\emph{secrecy}] \ \\
     This is the secrecy label of the thread which caused the event, 
     just before the event took place.
@@ -129,10 +131,16 @@ Aeolus stores different attributes for different events that take place in the s
     This is the integrity label of the thread which caused the event, 
     just before the event took place.
   \item[\emph{opname}] \ \\
-    This field specifies the type of the event, e.g. a DECLASSIFY event, 
-    or a SENDRPC event. Those types are detailed in \cite{blanks}.
+    This field specifies the type of the event, 
+    e.g. a \emph{DECLASSIFY} event, 
+    or a \emph{SENDRPC} event. Those types are 
+    detailed in \cite{blanks}.
     Application-level events created with the above events
-    all have one opname.
+    all have the \emph{APPLICATION\_LVL} opname.
+  \item[\emph{app\_op}] \ \\
+    This field holds the name of the 
+    application-specific operation and is 
+    provided by the developer as described above.
   \item[\emph{app\_args}] \ \\
     This field holds the arguments specified for an application-level 
     event (the second argument in the interface shown above).
@@ -142,7 +150,7 @@ Aeolus stores different attributes for different events that take place in the s
 
 It is important to note that the \emph{secrecy} and \emph{integrity} attributes are particularly import to prevent information leakage in the system: a thread can only read those event records if the DIFC rules in \ref{difc:rules} are satisfied.
 
-[mention this ideally runs on david's db?]
+[mention this ideally runs on david's db]
 
 % The audit trail is an important component of security to allow discovery of errors that cause security policies to be subverted; the audit trail can also be used to discover attacks.
 

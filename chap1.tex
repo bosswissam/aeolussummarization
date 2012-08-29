@@ -18,7 +18,7 @@ A final point is that the production of the summary events is itself controlled 
 
 The next two sections describe the motivation and scope of this system with the help of some real-life examples.
 
-\section{Motivation for Summarization and Arching}
+\section{Motivation for Summarization and Archiving}
 
 Summarization allows developers to group information that is spread out over the Aeolus audit trails into smaller space. This allows for future archiving or truncation of the Aeolus log, as well as seting the stage for writing more faster queries.
 %While the the Aeolus audit trail details all events that took place since an application started, analyzing the audit trail can be a costly task , . Allowing application developers to define a semantic meaning for events, or groups of events, helps in analyzing the history of the system.
@@ -27,8 +27,8 @@ Take for example a bank's web administrator who is interested in detecting suspi
 
 Producing such information is possible through the current auditing mechanisms available in Aeolus. However, in order to accomplish such a task, the adminsitrator's audit will have to scan all events in the system in the past year, which could span millions of events, once a week, and this would be costly.
 
-Summarization solves this problem by allowing the web administrator to store weekly computations as summaries themselves, and simply reusing these summaries in future weekly audits. For example, the web administrator could store the average number of outboud transfers a user has made per week in the last year and use that as a benchmark for future user activity
-\footnote{These summaries could be considered \emph{summaries of summaries} as they further summarize previously-summarized information}.
+Summarization solves this problem by allowing the web administrator to store weekly computations as summaries themselves, and simply reusing these summaries in future weekly audits. For example, the web administrator could store the average number of outbound transfers a user has made per week in the last year and use that as a benchmark for future user activity
+\footnote{These summaries could be considered \emph{summaries of summaries} as they further summarize previously-summarized information.}.
 
 %\section{Scope}
 
@@ -38,6 +38,6 @@ Summarization solves this problem by allowing the web administrator to store wee
 
 %Those are the basic assumptions we made while building the system, and most design decisions stem from them. While reading the following chapters, the reader should expect to gain a better understanding of the definitions of the questions posed above, the design problems they pose, and how we answer them.
 
-\section*{Thesis Outline}
+\section{Thesis Outline}
 
 The remainder of this thesis is organized as follows: Chapter 2 presents an overview of the Aeolus security system. Chapter 3 presents a sample Aeolus application based on the financial management service Mint.com. Chapter 4 describes the summarization models and interfaces. Chapter 5 describes the implementation details of the system. Chapter 6 evaluates the ease of use of the system as well as overall system performance. Chapter 7 discusses related work in streaming databases. Chapter 8 presents some topics for future work and reviews the contributions of this thesis. Appendix A details the summarization and archiving interface and presents some examples.
