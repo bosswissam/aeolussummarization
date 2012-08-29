@@ -1,34 +1,38 @@
 \contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivation for summarization and archival}{7}{section.1.1}
+\contentsline {section}{\numberline {1.1}Motivation for Summarization and Archival}{7}{section.1.1}
 \contentsline {section}{\numberline {1.2}Scope}{8}{section.1.2}
 \contentsline {chapter}{\numberline {2}Aeolus System Overview}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}Security Model}{10}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Authority State}{10}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Information Flow Rules}{11}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Processes}{11}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Priviledged Operations}{11}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Information Flow in and out of the System}{11}{subsection.2.1.5}
-\contentsline {section}{\numberline {2.2}Log Collection}{12}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}A Semantic Event Log}{12}{subsection.2.2.1}
-\contentsline {chapter}{\numberline {3}Mint}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Mint Model}{13}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{14}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Files and Shared Memory Objects}{15}{subsection.3.1.2}
-\contentsline {subsubsection}{Files}{15}{section*.4}
-\contentsline {subsubsection}{Shared Memory}{15}{section*.5}
-\contentsline {section}{\numberline {3.2}Implementation}{16}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Authentication and User Actions}{17}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Auditing and Summarization}{19}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Logging}{19}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Study Case for Summarization}{21}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}Summarization Model}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}Querying the Event Log}{24}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Compliance with DIFC}{25}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Usage Simplicity}{25}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Versioning}{25}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Extensibility - Querying Summaries}{26}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}Summaries and Summary Objects}{26}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Summarizing Summaries}{27}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Deleting Records}{27}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Archivers}{28}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Undeletable Records}{28}{subsection.4.3.2}
+\contentsline {section}{\numberline {2.1}System Architecture}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Information Flow Model}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Prinicpals, Tags and Labels}{11}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Information Flow Rules}{11}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Authority}{12}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Compound Tags}{13}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Programming Model}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Threads and Vitual Nodes}{13}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Shared State Objects and Boxes}{14}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Authority Closures and Reduced Authority Calls}{14}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Files}{14}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Log Collection}{15}{subsection.2.3.5}
+\contentsline {subsubsection}{Aeolus Event Attributes}{15}{section*.7}
+\contentsline {chapter}{\numberline {3}Mint}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Mint Model}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{18}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Files}{20}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{21}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Implementation}{23}{section.3.2}
+\contentsline {section}{\numberline {3.3}System Security}{25}{section.3.3}
+\contentsline {chapter}{\numberline {4}Auditing and Summarization}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Logging}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}Summarization}{31}{section.4.2}
+\contentsline {chapter}{\numberline {5}Summarization Model}{32}{chapter.5}
+\contentsline {section}{\numberline {5.1}Querying the Event Log}{32}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Compliance with DIFC}{33}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Usage Simplicity}{33}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Versioning}{33}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Extensibility - Querying Summaries}{34}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Summaries and Summary Objects}{34}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Summarizing Summaries}{35}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Deleting Records}{35}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Archivers}{36}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Undeletable Records}{36}{subsection.5.3.2}

@@ -1,0 +1,86 @@
+\chapter{Summarization Model}
+
+The Mint study case highlighted the inherent need for a form of summarization. For example, the query in \ref{query:accesses} depends on the \emph{users} table, which details the system information related to each user. The \emph{users} table in itself can be thought of as a summary, and queries such as the one in \ref{query:accesses} depend on that summary for analysis.
+
+In the example mentioned in the previous chapter, we also notice that analyzing the event log can become complicated quickly. For example, query in \ref{query:accesses}, whereas it is fairly readable, it shows that the developer would have to write long SQL queries for different forms of analysis, and that there is no intermediate level of abstraction between what the queries read and what they produce.
+
+The following sections describe how our summarization system allows developers to accomplish three things: use a clear interface to query the event log, reason more easily about events in the past, and improve the performance of their system in terms of runtime and storage costs.
+
+\section{Querying the Event Log}
+
+We provide a query management system that allows developers to name queries and store them. Queries are defined with a placeholder replacing the query arguments, and with a version number. Developers are able to redefine queries, increasing their version number. Developers are later able to run a query by specifying it's name and the query arguments - the system will run the query with that name that has the highest version number. Furthermore, developers can define queries that run over both the event log and the \emph{summaries table}.
+
+\subsection{Compliance with DIFC}
+
+The thread running the query can only retrieve the subset of event records that satisfy the query and that have secrecy and integrity labels that satisfy the DIFC rules defined in section \ref{difc:rules}
+\footnote{All event records in the event log have a secrecy and an integrity label, as described in \cite{blanks}}. 
+
+We further require that a thread has null secrecy and integrity labels when defining a query. This is important to avoid conflict when the query is run by another thread. 
+
+This is a simple but powerful model, which leads to the three main features in our query management system, described in the coming sections.
+
+\subsection{Usage Simplicity}
+
+While auditing the events of an application developers will often have to write similar queries for different purposes. For example, in the Mint application, we might want to identify all writes to disk for each user separately during a particular week. Rather than rewriting many similar queries to obtain these results, we could use one stored query and run it with different arguments.
+
+\subsection{Versioning}
+
+Another important feature that our system provides is the ability to define different versions of queries. This allows for applications that use our system to evolve over time and for developers to change how they audit their applications.
+
+Developers can still use older versions of a particular query to query the event log, this is possible through the use of \emph{Summary Objects} described in section \ref{summary_objects}.
+
+\subsection{Extensibility - Querying Summaries}
+
+Developers are able to query the \emph{summaries table}, described in , in the same way they query the event log. This allows developers to reason about summaries as base events and adds an abstraction layer that gives semantic meaning to the different activities taking place in the system.
+
+\section{Summaries and Summary Objects}\label{summary_objects}
+
+We introduce \emph{Summary Objects} in our system to allow developers to summarize the event log. A Summary Object represents a summary over different event records in the event log.
+
+The notion of a Summary Object relies on the developers ability to define queries through our query management system as described above. To relate Summary Objects to the events they summarize, developers must specify two things when constructing a Summary Object: a query name, and query arguments.
+
+After creating a Summary Object, the developer can store the underlying summary in the \emph{Summaries Table}. The Summaries Table contains the following information for each summary record in it:
+
+\begin{description}
+  \item{Query Version, name and arguments} \ \\
+    The version, name and arguments of the query underlying the Summary Object 
+    are used to identify the events summaries by a particular summary record.
+%  \item{Start and end event counters} \ \\
+%    Those two event counters are the minimum and maximum event counters of all
+%    the events summarized by a particular summary record.
+  \item{Operation name} \ \\
+    This field is specified by the developer, and is used to attach semantic meaning
+    to the summary record.
+  \item{Secrecy and Integrity Labels} \ \\
+    The secrecy and integrity labels are the same as that of the thread that stores
+    the summary record. This field is necessary to determin who can read this 
+    summary record in the future.
+  \item{Summary info} \ \\
+    This field is specified by the developer. It stores the summarized information,
+    for example, the count of how many of the event records represented by this 
+    summary record are declassifies of a particular tag.
+\end{description}
+
+\subsection{Summarizing Summaries}
+
+It is also possible that a developer might like to summarize summaries they already defined. For example, in the Mint application, after summarizing declassify events for user data tags per user session, we could use those summaries to summarize declassifiy events for user data tags per month.
+
+Our system does not make any strong assumption about the base events while creating a summary, and hence those base events could either be in the event log, or in the Summaries Table itself.
+
+With the use of Summary Objects and our query management system, developers are able to (a) easily query the event log and the summaries table, (b) to use summaries to reason more easily about events in the system, and (c) write more performant code.
+
+\section{Deleting Records}
+
+One of the main purposes of our summarization system is to allow developers to reduce the storage cost that comes with logging all events taking place in an application running on Aeolus.
+
+Given that deleting event records could mean permanent loss of critical information, our system \emph{hides} event records, and summary records, from the developer's access rather than deleting them. This is done by marking the deleted records with a flag, and ensuring that records with that flag set are never returned as a result of running a query.
+
+\subsection{Archivers}
+
+Our system does not fully address the problem of truncating the event log, however it does pave the way for a role of an \emph{archiver}, a program that archives or deletes records marked for deleting based on a certain protocol, for example, if they have been marked for deletion for more than a year.
+
+\subsection{Undeletable Records}
+
+There are some records that are never meant to be deleted. For example, event records in the event log detailing information about the startup of the virtual node, or even sensitive application-specific events.
+
+To address this issue, important Aeolus system events are never marked for deletion, and our system provides an interface for developers to specify a set of events that should never be marked for deletion.

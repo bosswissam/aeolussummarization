@@ -1,86 +1,104 @@
-\chapter{Summarization Model}
+\chapter{Auditing and Summarization}
+\label{mint:auditing}
+The application makes use of the Aeolus audit trails system described in \cite{popic} and \cite{blanks} to monitor system behavior. In particular, we monitor label modification involving a particular user's data tag. Figure x shows a table of which principals declassified Bob's tag, in other words, it shows which user's accessed Bob's information. Figure \ref{figure:activity} shows a graph of how many user requests caused a label modifications involving a user data tag for every 5-second period since the application launched, in other words, it shows the activity trend of the user, any spikes in the graph mean that the user was abnormaly active in certain periods of time, which could raise suspicion to their account being compromised.
 
-The Mint study case highlighted the inherent need for a form of summarization. For example, the query in \ref{query:accesses} depends on the \emph{users} table, which details the system information related to each user. The \emph{users} table in itself can be thought of as a summary, and queries such as the one in \ref{query:accesses} depend on that summary for analysis.
 
-In the example mentioned in the previous chapter, we also notice that analyzing the event log can become complicated quickly. For example, query in \ref{query:accesses}, whereas it is fairly readable, it shows that the developer would have to write long SQL queries for different forms of analysis, and that there is no intermediate level of abstraction between what the queries read and what they produce.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/activity}
+\caption{This graph shows the activity trend of each user. Notice that the activity for user Jack spikes in the graph at multiple places, this could be the result of an attacker accessing his account and issuing many requests to retreieve all of Jack's financial information in a short amount of time.}
+\label{figure:activity}
+\end{figure}
+In this section we described how the data for Figure x can be extracted from the event log, as well as the possible uses of summarization for this scenario.
 
-The following sections describe how our summarization system allows developers to accomplish three things: use a clear interface to query the event log, reason more easily about events in the past, and improve the performance of their system in terms of runtime and storage costs.
+\section{Logging}
 
-\section{Querying the Event Log}
+Aeolus provides a library that allows application developers to add their own application-specific events to the event log. These events are meant to help the developer attach semantic meaning to the event records in the log.
 
-We provide a query management system that allows developers to name queries and store them. Queries are defined with a placeholder replacing the query arguments, and with a version number. Developers are able to redefine queries, increasing their version number. Developers are later able to run a query by specifying it's name and the query arguments - the system will run the query with that name that has the highest version number. Furthermore, developers can define queries that run over both the event log and the \emph{summaries table}.
+In order to gather the information necessary to produce the graph in figure x, we add application-specific event records to the event log for each different action the user takes.
 
-\subsection{Compliance with DIFC}
+For example, when a user signs up successfully with our application, we record their username, as well as the tag and principal associated with this user. This done using the following procedure:
 
-The thread running the query can only retrieve the subset of event records that satisfy the query and that have secrecy and integrity labels that satisfy the DIFC rules defined in section \ref{difc:rules}
-\footnote{All event records in the event log have a secrecy and an integrity label, as described in \cite{blanks}}. 
+\begin{lstlisting}[language=Java]
+  AeolusLib.createEvent(``mint-signup'', username, principal, tag);
+\end{lstlisting}
 
-We further require that a thread has null secrecy and integrity labels when defining a query. This is important to avoid conflict when the query is run by another thread. 
+To obtain a table detailing the username, prinicpal, data tag and other sign-up information of all users, we use the following SQL query based on our application-specific events:\footnote{\emph{to\_array} is a procedure that turns a comma-delimited string into a PSQL array.}:
 
-This is a simple but powerful model, which leads to the three main features in our query management system, described in the coming sections.
+\begin{lstlisting}[language=SQL, deletendkeywords={TIMESTAMP}]
+select to_array(app_arg)[0] as pid, to_array(app_arg)[1] as username, to_array(app_arg)[2] as tag, timestamp as signed_up, event_counter from events where op_name='mint-signup'
+\end{lstlisting}
 
-\subsection{Usage Simplicity}
+Table \ref{table:users-info} shows what such a view would look like, with some extra information about time swhen each user signed up. We can now use this table to extract more semantic information about the event log.
 
-While auditing the events of an application developers will often have to write similar queries for different purposes. For example, in the Mint application, we might want to identify all writes to disk for each user separately during a particular week. Rather than rewriting many similar queries to obtain these results, we could use one stored query and run it with different arguments.
+\begin{table}
+\begin{verbatim}
 
-\subsection{Versioning}
+ pid | username | tag  |        signed_up        | event_counter 
+-----+----------+------+-------------------------+---------------
+   6 | wissam   | [4]  | 2012-06-13 21:56:36.207 |           131
+   9 | david    | [7]  | 2012-06-13 21:56:36.207 |           445
+  12 | dan      | [10] | 2012-06-13 21:56:37.338 |           793
+  13 | Bob      | [11] | 2012-06-13 21:56:37.338 |          1148
+  14 | Charlie  | [12] | 2012-06-13 21:56:37.338 |          1211
+  15 | Eve      | [13] | 2012-06-13 21:56:37.338 |          1274
+  16 | Ted      | [14] | 2012-06-13 21:56:37.338 |          1337
+  17 | Jon      | [15] | 2012-06-13 21:56:37.338 |          1400
+  18 | Jack     | [16] | 2012-06-13 21:56:37.338 |          1463
+  19 | James    | [17] | 2012-06-13 21:56:37.338 |          1526
+  20 | Mike     | [18] | 2012-06-13 21:56:37.338 |          1589
+  21 | Mark     | [19] | 2012-06-13 21:56:37.338 |          1652
+  22 | Jamie    | [20] | 2012-06-13 21:56:38.578 |          1715
+  23 | Dave     | [21] | 2012-06-13 21:56:38.578 |          1778
+  24 | Tod      | [22] | 2012-06-13 21:56:38.578 |          1841
+  25 | Chris    | [23] | 2012-06-13 21:56:38.578 |          1904
+  26 | Ron      | [24] | 2012-06-13 21:56:38.578 |          1967
+  27 | Phil     | [25] | 2012-06-13 21:56:38.578 |          2030
+  28 | Tracy    | [26] | 2012-06-13 21:56:38.578 |          2093
+  29 | Leah     | [27] | 2012-06-13 21:56:38.578 |          2156
+  30 | Kevin    | [28] | 2012-06-13 21:56:38.578 |          2219
+  31 | Rose     | [29] | 2012-06-13 21:56:38.578 |          2282
+  32 | Dina     | [30] | 2012-06-13 21:56:38.578 |          2345
+  33 | Abby     | [31] | 2012-06-13 21:56:38.578 |          2408
+  34 | Helen    | [32] | 2012-06-13 21:56:38.578 |          2471
+  35 | Alex     | [33] | 2012-06-13 21:56:38.578 |          2534
+  36 | Aline    | [34] | 2012-06-13 21:56:38.578 |          2597
 
-Another important feature that our system provides is the ability to define different versions of queries. This allows for applications that use our system to evolve over time and for developers to change how they audit their applications.
+\end{verbatim}
+\caption*{Users Table}
+\caption{This is a table detailing the information of users signing up during a simulated run of the Mint application. The \emph{pid} column denotes the user's principal, the \emph{username} column denotes the user's username, the \emph{tag} column denotes the user's data tag, the \emph{signed\_up} column denotes the time at which the sign up event was logged to the system, and the \emph{event\_counter} column denotes the unique event\_counter number of the sign up event. }
+\label{table:users-info}
+\end{table}
 
-Developers can still use older versions of a particular query to query the event log, this is possible through the use of \emph{Summary Objects} described in section \ref{summary_objects}.
+For example, we can obtain the information necessary to create the graph in figure y using this query:
 
-\subsection{Extensibility - Querying Summaries}
+\begin{lstlisting}[language=SQL, deletendkeywords={TIMESTAMP}, label=query:accesses]
+select e.count, users.username, e.to_timestamp as timestamp from (select count(*), tags_modified, (to_timestamp(((extract (epoch from events.timestamp)/5)::int)*5)) from events tags_modified in (select tag from users) group by (to_timestamp(((extract (epoch from events.timestamp)/5)::int)*5)), tags_modified) as e inner join users on e.tags_modified=users.tag
+\end{lstlisting}
 
-Developers are able to query the \emph{summaries table}, described in , in the same way they query the event log. This allows developers to reason about summaries as base events and adds an abstraction layer that gives semantic meaning to the different activities taking place in the system.
+Table \ref{table:activity} shows a sample result of this query. This query provides us with a count of how many user requests caused a label modification that involved a user data tag for every 5-second period of time since the application launch, the information necessary to construct the graph in figure y.
 
-\section{Summaries and Summary Objects}\label{summary_objects}
+\begin{table}
+\begin{quote}
+\begin{verbatim}
+ count | username |       timestamp        
+-------+----------+------------------------
+    22 | Jack     | 2012-06-13 21:56:40-04
+     4 | Jack     | 2012-06-13 21:56:35-04
+    42 | Jack     | 2012-06-13 21:56:50-04
+    72 | Jack     | 2012-06-13 21:57:00-04
+    90 | Jack     | 2012-06-13 21:56:45-04
+    12 | Jack     | 2012-06-13 21:56:55-04
+    22 | Jack     | 2012-06-13 21:57:05-04
+\end{verbatim}
+\end{quote}
+\caption*{Account activity for user \emph{Jack}}
+\caption{This table shows a sample result of the \emph{accesses} view (for simplicity we only show the result for the user Jack). It details the number of user RPC requests causing a label manipulation involving a user data tag for every 5-second period since the application launched. The \emph{count} denotes such number. The \emph{username} column denotes the user who's data tag is in question. The \emph{timestamp} column denotes the start of the 5-second period.}
+\label{table:activity}
+\end{table}
 
-We introduce \emph{Summary Objects} in our system to allow developers to summarize the event log. A Summary Object represents a summary over different event records in the event log.
+\section{Summarization}
 
-The notion of a Summary Object relies on the developers ability to define queries through our query management system as described above. To relate Summary Objects to the events they summarize, developers must specify two things when constructing a Summary Object: a query name, and query arguments.
+Creating summaries could prove to be very useful in auditing the Mint application. For example, if we store the \emph{count} in Figure \ref{table:activity} per user session.
 
-After creating a Summary Object, the developer can store the underlying summary in the \emph{Summaries Table}. The Summaries Table contains the following information for each summary record in it:
-
-\begin{description}
-  \item{Query Version, name and arguments} \ \\
-    The version, name and arguments of the query underlying the Summary Object 
-    are used to identify the events summaries by a particular summary record.
-%  \item{Start and end event counters} \ \\
-%    Those two event counters are the minimum and maximum event counters of all
-%    the events summarized by a particular summary record.
-  \item{Operation name} \ \\
-    This field is specified by the developer, and is used to attach semantic meaning
-    to the summary record.
-  \item{Secrecy and Integrity Labels} \ \\
-    The secrecy and integrity labels are the same as that of the thread that stores
-    the summary record. This field is necessary to determin who can read this 
-    summary record in the future.
-  \item{Summary info} \ \\
-    This field is specified by the developer. It stores the summarized information,
-    for example, the count of how many of the event records represented by this 
-    summary record are declassifies of a particular tag.
-\end{description}
-
-\subsection{Summarizing Summaries}
-
-It is also possible that a developer might like to summarize summaries they already defined. For example, in the Mint application, after summarizing declassify events for user data tags per user session, we could use those summaries to summarize declassifiy events for user data tags per month.
-
-Our system does not make any strong assumption about the base events while creating a summary, and hence those base events could either be in the event log, or in the Summaries Table itself.
-
-With the use of Summary Objects and our query management system, developers are able to (a) easily query the event log and the summaries table, (b) to use summaries to reason more easily about events in the system, and (c) write more performant code.
-
-\section{Deleting Records}
-
-One of the main purposes of our summarization system is to allow developers to reduce the storage cost that comes with logging all events taking place in an application running on Aeolus.
-
-Given that deleting event records could mean permanent loss of critical information, our system \emph{hides} event records, and summary records, from the developer's access rather than deleting them. This is done by marking the deleted records with a flag, and ensuring that records with that flag set are never returned as a result of running a query.
-
-\subsection{Archivers}
-
-Our system does not fully address the problem of truncating the event log, however it does pave the way for a role of an \emph{archiver}, a program that archives or deletes records marked for deleting based on a certain protocol, for example, if they have been marked for deletion for more than a year.
-
-\subsection{Undeletable Records}
-
-There are some records that are never meant to be deleted. For example, event records in the event log detailing information about the startup of the virtual node, or even sensitive application-specific events.
-
-To address this issue, important Aeolus system events are never marked for deletion, and our system provides an interface for developers to specify a set of events that should never be marked for deletion.
+In the next chapter, we present a system that allows us to summarize our log and extract the same information from the summary events, and we explain how to reach the same auditing information relying mostly on summary events.

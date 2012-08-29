@@ -1,32 +1,37 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}
-\BOOKMARK [1][-]{section.1.1}{Motivation for summarization and archival}{chapter.1}
+\BOOKMARK [1][-]{section.1.1}{Motivation for Summarization and Archival}{chapter.1}
 \BOOKMARK [1][-]{section.1.2}{Scope}{chapter.1}
 \BOOKMARK [0][-]{chapter.2}{Aeolus System Overview}{}
-\BOOKMARK [1][-]{section.2.1}{Security Model}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.1.1}{Authority State}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.2}{Information Flow Rules}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.3}{Processes}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.4}{Priviledged Operations}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.5}{Information Flow in and out of the System}{section.2.1}
-\BOOKMARK [1][-]{section.2.2}{Log Collection}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.2.1}{A Semantic Event Log}{section.2.2}
+\BOOKMARK [1][-]{section.2.1}{System Architecture}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Information Flow Model}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Prinicpals, Tags and Labels}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Information Flow Rules}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{Authority}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.4}{Compound Tags}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Programming Model}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{Threads and Vitual Nodes}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{Shared State Objects and Boxes}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.3}{Authority Closures and Reduced Authority Calls}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.4}{Files}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.5}{Log Collection}{section.2.3}
 \BOOKMARK [0][-]{chapter.3}{Mint}{}
 \BOOKMARK [1][-]{section.3.1}{Mint Model}{chapter.3}
 \BOOKMARK [2][-]{subsection.3.1.1}{Authority State Model}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.2}{Files and Shared Memory Objects}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.2}{Files}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.3}{Shared Memory Objects}{section.3.1}
 \BOOKMARK [1][-]{section.3.2}{Implementation}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.2.1}{Authentication and User Actions}{section.3.2}
-\BOOKMARK [1][-]{section.3.3}{Auditing and Summarization}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.3.1}{Logging}{section.3.3}
-\BOOKMARK [2][-]{subsection.3.3.2}{Study Case for Summarization}{section.3.3}
-\BOOKMARK [0][-]{chapter.4}{Summarization Model}{}
-\BOOKMARK [1][-]{section.4.1}{Querying the Event Log}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.1.1}{Compliance with DIFC}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.2}{Usage Simplicity}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.3}{Versioning}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.4}{Extensibility - Querying Summaries}{section.4.1}
-\BOOKMARK [1][-]{section.4.2}{Summaries and Summary Objects}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.2.1}{Summarizing Summaries}{section.4.2}
-\BOOKMARK [1][-]{section.4.3}{Deleting Records}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.3.1}{Archivers}{section.4.3}
-\BOOKMARK [2][-]{subsection.4.3.2}{Undeletable Records}{section.4.3}
+\BOOKMARK [1][-]{section.3.3}{System Security}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Auditing and Summarization}{}
+\BOOKMARK [1][-]{section.4.1}{Logging}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Summarization}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Summarization Model}{}
+\BOOKMARK [1][-]{section.5.1}{Querying the Event Log}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.1.1}{Compliance with DIFC}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.2}{Usage Simplicity}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.3}{Versioning}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.4}{Extensibility - Querying Summaries}{section.5.1}
+\BOOKMARK [1][-]{section.5.2}{Summaries and Summary Objects}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{Summarizing Summaries}{section.5.2}
+\BOOKMARK [1][-]{section.5.3}{Deleting Records}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{Archivers}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Undeletable Records}{section.5.3}

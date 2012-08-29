@@ -1,27 +1,42 @@
-LATEX=latex
-BIBTEX=bibtex
-DVIPS=dvips
-PS2PDF=ps2pdf
-INPUT=main
-OUTPUT=main
+# set latexfile to the name of the main file without the .tex
+latexfile = main
+# put the names of figure files here.  include the .eps
+figures = $(wildcard figures/*.pdf)
 
-all: dviclean $(OUTPUT).ps $(BIBTEX).bib $(OUTPUT).pdf
-pdf: dviclean $(OUTPUT).pdf $(BIBTEX).bib $(OUTPUT).pdf
+TEX = pdflatex
 
-$(OUTPUT).pdf: $(OUTPUT).ps
-	$(PS2PDF) $(OUTPUT).ps > $(OUTPUT).pdf
+# support subdirectories
+#VPATH = Figs
+# keep .eps files in the same directory as the .fig files
+#%.eps : %.fig
+#	fig2dev -L eps $< > $(dir $< )$@
 
-$(OUTPUT).ps: $(INPUT).dvi
-	$(DVIPS) -t letter -f $(INPUT).dvi > $(OUTPUT).ps
+all : pdf
 
-$(INPUT).dvi: $(INPUT).tex
-	$(LATEX) $(INPUT).tex
+$(gnu-out-dirs) :
+	mkdir $@
 
-$(BIBTEX).bib: $(INPUT).bib
-	$(BIBTEX) $(INPUT)
+figures : $(figures)
 
-clean:
-	/bin/rm -f *.dvi *.aux *~ *.log *.lot *.lof *.toc *.blg *.bbl 
-dviclean:
-	/bin/rm -f *.dvi 
+$(latexfile).bbl : figures main.bib *.tex
+	pdflatex $(latexfile).tex
+	bibtex $(latexfile)
 
+$(latexfile).pdf : figures *.tex $(latexfile).bbl
+	while (pdflatex $(latexfile) ; \
+	grep -q "Rerun to get cross" $(latexfile).log ) do true ; \
+	done
+
+pdf : $(latexfile).pdf
+
+# make can't know all the sourcefiles.  some file may not have
+# sourcefiles, e.g. eps's taken from other documents. 
+$(latexfile).tar.gz : $(figures) $(latexfile).tex $(referencefile).bib
+	tar -czvf $(latexfile).tar.gz $^
+
+tarball: $(latexfile).tar.gz
+
+
+clean : 
+	rm -f ${latexfile}.log ${latexfile}.aux ${latexfile}.pdf ${latexfile}.bbl ${latexfile}.toc ${latexfile}.lof ${latexfile}.out ${latexfile}.blg
+	rm -f *.aux # safe ? maybe.

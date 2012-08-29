@@ -6,47 +6,38 @@
 %% prompt when you run the file main.tex through LaTeX.
 \chapter{Introduction}
 
-Security of confidential online information, such as medical records and financial data, is a very important problem. Recent research has focused on Cecentralized Information Flow Control (DIFC) as the most promising approach to enable application developers to secure information. DIFC is based on the principle that the system tracks information as it flows through the system, and only allows release if the releaser has sufficient authority. Additionally DIFC provides this ability in a fine-grained way, so that security policies can be tailored to the needs of individual users and organizations.
+Security of confidential online information, such as medical records and financial data, is a very important problem. Recent research has focused on Decentralized Information Flow Control (DIFC) as the most promising approach to enable application developers to secure information. DIFC is based on the principle that the system tracks information as it flows through the system, and only allows release if the releaser has sufficient authority. Additionally DIFC provides this ability in a fine-grained way, so that security policies can be tailored to the needs of individual users and organizations.
 
-This thesis extends the security support provided by the Aeolus platform. Aeolus is a platform that combines DIFC and an intuitive security model framework to make it more convenient for developers to build secure applications on a distributed system. Additionally Aeolus provides automatic auditing of every security related event that occurs while an application runs; also it provides a way for applications to log additional events that are meaningful at the application level. The audit trail is an important component of security to allow discovery of errors that cause security policies to be subverted; the audit trail can also be used to discover attacks.
+This thesis extends the security support provided by the Aeolus platform. Aeolus is a platform that combines DIFC and an intuitive security model framework to make it more convenient for developers to build secure applications on a distributed system. Additionally, Aeolus provides automatic auditing of every security related event that occurs while an application runs; furthermore, it provides a way for applications to log additional events that are meaningful at the application level. The audit trail is an important component of security to allow discovery of errors that cause security policies to be subverted; the audit trail can also be used to discover attacks.
 
-Aeolus allows application developers to track information flow by logging information about the processes running in the application, as well as the operations they carry out. This provides developers with a complete history of the application's activity and information flow through the system since startup. This log is called the \emph{event log}.
+An issue in any auditing system, including the Aeolus system, is that the audit trails can become extremely large. This is especially true if the system being audited is large, e.g., has millions of users, and long-lived. Therefore a way of reducing the stored information and making the important information more easily accessible is needed.
 
-The event log is a causal graph: each ``event'' that took place in the system has predecessors, and hence developers can construct an event graph and analyze it to identify causes of information leakage. However, logging all process operations for a distributed system can produce a very large event log very quickly. Analyzing and storing such an event log can prove to be both daunting and costly for an application developer, and calls for providing an Aeolus application developer with easier access to information about events of interest.
+This thesis addresses this problem. It provides a framework that allows groups of audit events to be summarized: the important content of the group of events is captured in a \emph{summary event}, which is much smaller than the group. Once information has been summarized, the base events that underlie the summary can be moved to archival storage, or even deleted.  An additional benefit is that summary events are more accessible than the base events they summarize because they can be defined to explain the information in application-specific terms.
 
-In this thesis I present a system built on top of the Aeolus security platform that allows users to create \emph{summaries} of the event log. These summaries are application-specific, and left up to the developer to define. What our system provides is a simple framework for the developer to reason about creation, storage and modification of these summaries, as well as archiving of the original event log.
+A final point is that the production of the summary events is itself controlled by information flow.  This is important because, everything a system does is detailed in the audit log, and therefore, there is a potential for information leaks if the log could be accessed by an unauthorized party.
 
 The next two sections describe the motivation and scope of this system with the help of some real-life examples.
 
-Chapter 2 presents an overview of the Aeolsu security system. Chapter 3 presents a sample Aeolus application based on Mint.com.
+\section{Motivation for Summarization and Arching}
 
-Chapter 4 describes the summarization and archiving models and interfaces.
+Summarization allows developers to group information that is spread out over the Aeolus audit trails into smaller space. This allows for future archiving or truncation of the Aeolus log, as well as seting the stage for writing more faster queries.
+%While the the Aeolus audit trail details all events that took place since an application started, analyzing the audit trail can be a costly task , . Allowing application developers to define a semantic meaning for events, or groups of events, helps in analyzing the history of the system.
 
-Chapter 5 describes the implementation details of the system.
+Take for example a bank's web administrator who is interested in detecting suspicious activity on customers' bank accounts. One way to do this is to produce a plot of the number of outbound transfers carried through a user's account for each week in the last year. Any spikes in the rate of outbound transactions per week could mean that a user's account has been compromised by an attacker. Finally, the administrator might also wish to produce such a plot at the end of each week.
 
-Chapter 6 evaluates the ease of use of the system as well as overall system performance.
+Producing such information is possible through the current auditing mechanisms available in Aeolus. However, in order to accomplish such a task, the adminsitrator's audit will have to scan all events in the system in the past year, which could span millions of events, once a week, and this would be costly.
 
-Chapter 7 discusses related work in streaming databases.
+Summarization solves this problem by allowing the web administrator to store weekly computations as summaries themselves, and simply reusing these summaries in future weekly audits. For example, the web administrator could store the average number of outboud transfers a user has made per week in the last year and use that as a benchmark for future user activity
+\footnote{These summaries could be considered \emph{summaries of summaries} as they further summarize previously-summarized information}.
 
-Chapter 8 presents some topics for future work and reviews the contributions of this thesis.
+%\section{Scope}
 
-Appendix A details the summarization and archiving interface and presents some examples.
+%As security platform developers, tackling the problem of summarization and archival raises a number of questions: what usage scenarios are we trying to satisfy? How do we generalize our model to satisfy those scenarios? What guarantees do we provide to our developers? And how do we maintain those guarantees?
 
+%Our system, in similar fashion to Aeolus, assumes an application developer to be active and aware of the workings of Aeolus as a whole. We do not intend for our system to impose any restrictions on the developer, and hence the developer would have to be careful with the summarization power granted to them through the our system. For example, summaries could be an added source of information leakage if not used correctly.
 
-\section{Motivation for summarization and archival}
+%Those are the basic assumptions we made while building the system, and most design decisions stem from them. While reading the following chapters, the reader should expect to gain a better understanding of the definitions of the questions posed above, the design problems they pose, and how we answer them.
 
-The Aeolus platform logs all events that take place in the system. Despite the fact that these events can tell you everything that happened in the system, they do not carry any semantic meaning. Allowing application developers to define a semantic meaning for events, or groups of events, helps in analyzing the history of the system.
+\section*{Thesis Outline}
 
-Take for example a bank's web administrator who is interested in auditing outbound transfers from customers' web accounts. A straighfoward way to do this is to plot the number of outbound transfers carried through a user's account for each week in the last year. Any spikes in the rate outboud transactions per week could mean that a user's account has been compromised by an attacker. A sample graph is presented in figure x.x.
-
-Producing such information is absolutely possible through the current auditing mechanisms available in Aeolus. However, in order to accomplish such a task, the adminsitrator will not only have to scan all events in the system, but will also, most likely, have to do this frequently to keep his audit records up to date.
-
-Summarization solves these problems by allowing developers to focus on scanning and analyzing only events of interest. Creating and storing \emph{event summaries} also paves the way for archival: now the web administrator in the example above can choose to archive events that more than a year old - if they are \emph{sufficiently summarized} (perhaps footnote a definition of event summaries + sufficiently summarized here).
-
-\section{Scope}
-
-As security platform developers, tackling the problem of summarization and archival raises a number of questions: what usage scenarios are we trying to satisfy? How do we generalize our model to satisfy those scenarios? What guarantees do we provide to our developers? And how do we maintain those guarantees?
-
-I will start by stating that our system, similar to the Aeolus security platform itself, assumes an application developer to be active and aware of the workings of Aeolus as a whole. We do not intend for our system to impose any restrictions on the developer, and hence the developer would have to be careful with the power granted to them through the our system.
-
-Those are the basic assumptions we made while building the system, and most design decisions stem from them. While reading the following chapters, the reader should expect to gain a better understanding of the definitions of the questions posed above, the design problems they pose, and how we answer them.
+The remainder of this thesis is organized as follows: Chapter 2 presents an overview of the Aeolus security system. Chapter 3 presents a sample Aeolus application based on the financial management service Mint.com. Chapter 4 describes the summarization models and interfaces. Chapter 5 describes the implementation details of the system. Chapter 6 evaluates the ease of use of the system as well as overall system performance. Chapter 7 discusses related work in streaming databases. Chapter 8 presents some topics for future work and reviews the contributions of this thesis. Appendix A details the summarization and archiving interface and presents some examples.
