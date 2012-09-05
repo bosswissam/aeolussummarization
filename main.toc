@@ -19,20 +19,25 @@
 \contentsline {section}{\numberline {3.1}Mint Model}{16}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Authority State Model}{17}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Files}{19}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{20}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{21}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Implementation}{22}{section.3.2}
 \contentsline {section}{\numberline {3.3}System Security}{24}{section.3.3}
-\contentsline {chapter}{\numberline {4}Auditing and Summarization}{26}{chapter.4}
-\contentsline {section}{\numberline {4.1}Logging}{28}{section.4.1}
-\contentsline {section}{\numberline {4.2}Summarization}{30}{section.4.2}
-\contentsline {chapter}{\numberline {5}Summarization Model}{31}{chapter.5}
-\contentsline {section}{\numberline {5.1}Querying the Event Log}{31}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Compliance with DIFC}{32}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Usage Simplicity}{32}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Versioning}{32}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Extensibility - Querying Summaries}{33}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Summaries and Summary Objects}{33}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Summarizing Summaries}{34}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Deleting Records}{34}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Archivers}{35}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Undeletable Records}{35}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {4}Auditing the Mint Application}{26}{chapter.4}
+\contentsline {section}{\numberline {4.1}Detecting Suspicious User Activity}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}Summarization}{31}{section.4.2}
+\contentsline {chapter}{\numberline {5}The Summary System}{32}{chapter.5}
+\contentsline {section}{\numberline {5.1}Summarization Model}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Summarization Workflow}{34}{section.5.2}
+\contentsline {section}{\numberline {5.3}The QUERY Table}{34}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}The Query Management Interface}{35}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Query Attributes}{36}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Producing Summaries and Marking Events}{36}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}SummaryObjects}{37}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Summary Attributes}{38}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Marking Events}{39}{section.5.5}
+\contentsline {section}{\numberline {5.6}Discussion}{39}{section.5.6}
+\contentsline {chapter}{\numberline {6}Auditing Using Summarization}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Summarizing User Sessions}{41}{section.6.1}
+\contentsline {section}{\numberline {6.2}Summarizing File System Events}{45}{section.6.2}
+\contentsline {section}{\numberline {6.3}Summarizing User Trends}{46}{section.6.3}
+\contentsline {section}{\numberline {6.4}Sufficiently Summarized Information}{48}{section.6.4}

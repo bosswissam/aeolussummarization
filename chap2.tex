@@ -1,4 +1,5 @@
 \chapter{Aeolus System Overview}
+\label{aeolus}
 
 This chapter presents an overview of the Aeolus security platform, on which our summarization system is based, and highlights relevant details such as log collection. More complete descriptions of the Aeolus security platform and its log collection and analysis can be found in Cheng \cite{cheng}, Popic \cite{popic} and Blankstein \cite{blanks}.
 
@@ -7,6 +8,7 @@ This chapter presents an overview of the Aeolus security platform, on which our 
 \begin{figure}[ht]
 \centering
 \includegraphics[bb= 0 0 292 204, width=.5\textwidth]{figures/sysarch}
+\caption*{Aeolus System Architecture}
 \caption{High level overview of Aeolus system architecture.}
 \label{fig:aeolus-sysarch}
 \end{figure}
@@ -96,6 +98,7 @@ Files are yet another way (RPCs, shared memoery objects) through which Aeolus al
 \begin{figure}[h]
 \centering
 \includegraphics[height=7em]{figures/event-logging-overview}
+\caption*{Log Collection}
 \caption{Flow of logs to the log collection system.}
 \label{fig:log-flow}
 \end{figure}
@@ -114,7 +117,7 @@ AeolusLib.createEvent(String app_op, List<String> args)
 This creates a new record in the Aeolus event log. The \emph{app\_op} and \emph{args} argument are stored as attributes for that record, allowing the developer to query the event log based on the arguments they provided. The \emph{app\_op} parameter is used to to identify the application operation name, and the \emph{args} paramter allows the developer to specify any additional information to store for the event.
 
 \subsubsection{Aeolus Event Attributes}
-
+\label{sec:aeolus-event-attributes}
 Aeolus stores different attributes for different events that take place in the system. Blankstein \cite{blanks} provides a complete description of those attributes; here we will highlight the ones more relevant to the use of summarization:
 
 \begin{description}
@@ -130,13 +133,13 @@ Aeolus stores different attributes for different events that take place in the s
   \item[\emph{integrity}] \ \\
     This is the integrity label of the thread which caused the event, 
     just before the event took place.
-  \item[\emph{opname}] \ \\
+  \item[\emph{op\_name}] \ \\
     This field specifies the type of the event, 
     e.g. a \emph{DECLASSIFY} event, 
     or a \emph{SENDRPC} event. Those types are 
     detailed in \cite{blanks}.
     Application-level events created with the above events
-    all have the \emph{APPLICATION\_LVL} opname.
+    all have the \emph{APPLICATION\_LVL} operation name.
   \item[\emph{app\_op}] \ \\
     This field holds the name of the 
     application-specific operation and is 

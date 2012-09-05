@@ -1,0 +1,4 @@
+fix mint
+change autoincrement version# for queries, figure out use of id using name + version
+SUMMARIES->SUMMARY_EVENTS
+require all queries used to produce summaries to include event_counters so we can delete.

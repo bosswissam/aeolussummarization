@@ -1,0 +1,189 @@
+\chapter{Auditing Using Summarization}
+
+In this chapter we visit examples of how our system can be used to summarize and access information for the Mint application, as well as mark certain events.
+
+\section{Summarizing User Sessions}
+\label{sum:sessions}
+In this example we will show how to summarize user actions per session. For example, for a particular session for Bob, we will record which of the user actions presented in section \ref{mint:impl} did he call.
+
+This should not be a hard task since we use application-level logging to track all of users' actions. However, we will need to create some context before producing the summaries to identify one of Bob's sessions.
+
+First, we initialize the summarization system, which we will use to add and run queries:
+
+\begin{lstlisting}[language=Java]
+//SummarySystem uses the singleton paradigm
+SummarySystem system = SummarySystem.getInstance();
+\end{lstlisting}
+
+We then set up a query that retrieves Bob's princpal ID and data tag for a particular user:
+
+\begin{lstlisting}[language=Java]
+String users_query = ``select app_arg[1] as pid, app_arg[2] as tag, timestamp as signed_up, event_counter from events where app_op='mint-user-signup' and app_arg[0] = ?'';
+
+system.addQuery(``user-info'', users_query);
+\end{lstlisting}
+
+\noindent
+We now add some queries that will help identify the logins and logouts for a particular user:
+
+\begin{lstlisting}[language=Java]
+
+/**
+ * When a user, say Bob,  logs in, we execute the following code:
+ * AeolusLib.createEvent(``mint-user-login'', Arrays.asList(new String[]{``Bob''}));
+*/ and similarly for logouts.
+
+String user_logins = ``select app_arg[0] as username, timestamp as start, event_counter from events where app_op='mint-user-login and app_arg[0]=?''';
+
+String user_logouts = ``select app_arg[0] as username, timestamp as start, event_counter from events where app_op='mint-user-login and app_arg[0]=?''';
+
+
+//add the queries
+system.addQuery(``logins'', user_logins);
+system.addQuery(``logouts'', user_logouts);
+\end{lstlisting}
+
+\noindent
+Now we can use this information to identify Bob's sessions:
+
+\begin{lstlisting}[language=Java]
+ResultSet bob_logins = system.runQuery(``logins'', new Object[]{``Bob''});
+ResultSet bob_logouts = system.runQuery(``logouts'', new Object[]{``Bob''});
+
+// The first login and logout for Bob will define the endpoints of the
+// first session.
+
+if((!bob_logins.next()) || (!bob_logouts.next())){
+  return;
+}
+
+// Information for the first session
+String username = ``Bob'';
+long start_counter = bob_logins.getLong(3);
+long end_counter = bob_logouts.getLong(3);
+Timestamp start_time = bob_logins.getTimestamp(2);
+Timestamp end_time = bob_logouts.getTimestamp(2);
+\end{lstlisting}
+
+Table \ref{table:user-sessions} shows a possible table that contains a list of all user sessions. We are now left with the problem of identifying the different actions that took place within any sessoin (identifiable by a start and end counters).
+
+\begin{table}
+\begin{verbatim}
+ username | start_counter | end_counter 
+----------+---------------+-------------
+ wissam   |           168 |         373
+ david    |           482 |        1075
+ dan      |           830 |        1086
+ Ted      |          2644 |       22675
+ Leah     |          2690 |       19437
+ Alex     |          2736 |        7786
+ Jamie    |          2782 |        5991
+ Dina     |          2828 |        7336
+ Mark     |          2874 |       18576
+ Helen    |          2920 |        6312
+ Jon      |          2966 |       18370
+ Mike     |          3072 |       18321
+ Jack     |          3118 |       15342
+ Eve      |          3164 |        7735
+ Charlie  |          3210 |        7434
+ Phil     |          3450 |       19535
+ Tod      |          3684 |        5895
+ Chris    |          3924 |       18075
+ James    |          3970 |        7635
+ Dave     |          4110 |       18223
+ Aline    |          4253 |       18773
+ Rose     |          4580 |       17816
+ Ron      |          4626 |       19699
+ Kevin    |          4891 |       17865
+ Tod      |          5931 |       17714
+\end{verbatim}
+\caption*{User Sessions Table}
+\caption{This table shows start and end event counters for different user sessions. Start and end times are ommitted for simplicity.}
+\label{table:user-sessions}
+\end{table}
+
+\begin{lstlisting}[language=Java]
+String user_session_actions_query = ``select app_op from events where app_op like 'mint-user-\%' and app_arg[0] = ? and event_counter > ? and event_counter < ?'';
+
+system.addQuery(``user-sessions-actions'', user_sessions_actions_query);
+\end{lstlisting}
+
+\noindent
+Now that we've identified one of Bob's sessoins, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session:
+%system.runQuery(``user-sessions-actions'', null);
+Now we would like to add a summary for each session that contains the username as well as the actions carried out:
+
+\begin{lstlisting}[language=Java]
+
+Object[] vals = new Object[] {username, start_counter, end_counter, start_time, end_time};
+SummaryObject so = new SummaryObject(``user-session-actions'', vals);
+  
+//process is a function that computes a summary
+//for the events identified by a query. For now, we can assume
+//it aggregates as a string all the user actions identified.
+String summary = process(so.getEvents());
+so.addSummary(``user-session-summary'', String.format(``\%s, \%d, \%d, \%s, \%s'', username, start_counter, end_counter, summary, start_time, end_time));
+
+\end{lstlisting}
+
+\noindent
+Finally, we summarized user actions per session by adding records to the SUMMARY table which contain information about the user, start and end counters of the session, as well as all the user actions that took place in that session.
+
+\section{Summarizing File System Events}
+\label{sum:fs}
+In this example we explore how to summarize information about file system events; we we show how to store a list of added/removed and modified files in a week leading up to a certain time.
+
+\begin{lstlisting}[language=Java]
+SummarySystem system = SummarySystem.getInstance();
+
+String fs_access = ``select * from events where filename<>'' and DATE_SUB(?, INTERVAL 7 DAY)'';
+
+system.addQuery(``fs_week_access'', fs_access);
+
+long now = System.currentTimeMillis();
+SummaryObject so = new SummaryObject(``fs_week_access'', Object[]{new java.sql.Timestamp(now)});
+
+String summary = process(so.getEvents());
+so.addSummary(``File accesses'', String.format(``\%d, \%s'', now, summary));
+\end{lstlisting}
+
+\noindent
+This will store a summary of the file system events in the last week. Only file system events use the \emph{filename} attribute in the LOG, hence we use that to retrieve all file system events.
+
+We might wish to mark most file system events, except for the ones that change the file system hierarch (adding or removing directories). We could do this as follows:
+
+\begin{lstlisting}[language=Java]
+String fs_protect = ``select * from events where op_name = ? or op_name = ?''
+
+system.addQuery(``protect-fs-events'', fs_protect);
+
+so.mark(``protect-fs-events'', new Object[]{``CREATE_DIRECTORY'', ``REMOVE_DIRECTORY''});
+\end{lstlisting}
+
+\section{Summarizing User Trends}
+
+As a final example, we will show how records in the SUMMARY table itself could be summarized. In this section we will further summarize session summaries. To build on what we encountered in section \ref{sum:sessions}, let's imagine that more of Bob's sessions have been summarized. We can now coalesce them to detail Bob's activity per week, rather than per session.
+
+\begin{lstlisting}[language=Java]
+
+
+String session_summary_query = ``select * from SUMMARY where name=user-session-summary and args[0]=? args[3] < ?';
+
+
+// Now we can run our summary of summaries for every week since application
+// launch until the last event.
+
+String.format(``select e.count, users.username, e.to_timestamp as timestamp from (select count(*), tags_modified, (to_timestamp(((extract (epoch from events.timestamp)/\%d)::int)*\%d)) from events where running_principal<>4 and tags_modified in (select tag from users) group by (to_timestamp(((extract (epoch from events.timestamp)/\%d)::int)*\%d)), tags_modified) as e inner join users on e.tags_modified=users.tag'', bucket_size, bucket_size, bucket_size, bucket_size)
+
+
+system.addQuery(``protect-fs-events'', fs_protect);
+
+so.mark(``protect-fs-events'', new Object[]{'CREATE_DIRECTORY', 'REMOVE_DIRECTORY'});
+\end{lstlisting}
+
+
+\section{Sufficiently Summarized Information}
+
+The summaries produced in sections \ref{sum:sessions} and \ref{sum:fs} overlap in what they summarize. For example, adding a \emph{user-bank-creds} file to the file system happens only when a user adds a bank to their account, i.e. call the \emph{addBank(...)} request. Hence this particular piece of information could be derived from two summaries: one that summarizes the user's actions, the other summarizing the file system operations.
+
+There are many other examples in which summaries could overlap in what they summarize, and it is one of the reasons why our system chooses to leave it up to the application to decide when certain events are ``sufficiently summarized'' and can hence be marked, rather than trying to determine which events have already been summarized and will not be needed anymore.
