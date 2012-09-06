@@ -9,7 +9,7 @@ This chapter presents an overview of the Aeolus security platform, on which our 
 \centering
 \includegraphics[bb= 0 0 292 204, width=.5\textwidth]{figures/sysarch}
 \caption*{Aeolus System Architecture}
-\caption{High level overview of Aeolus system architecture.}
+\caption[Aeolus System Architecture]{High level overview of Aeolus system architecture.}
 \label{fig:aeolus-sysarch}
 \end{figure}
 
@@ -99,7 +99,7 @@ Files are yet another way (RPCs, shared memoery objects) through which Aeolus al
 \centering
 \includegraphics[height=7em]{figures/event-logging-overview}
 \caption*{Log Collection}
-\caption{Flow of logs to the log collection system.}
+\caption[Aeolus Log Collection]{Flow of logs to the log collection system.}
 \label{fig:log-flow}
 \end{figure}
 
@@ -152,8 +152,6 @@ Aeolus stores different attributes for different events that take place in the s
 \end{description}
 
 It is important to note that the \emph{secrecy} and \emph{integrity} attributes are particularly import to prevent information leakage in the system: a thread can only read those event records if the DIFC rules in \ref{difc:rules} are satisfied.
-
-[mention this ideally runs on david's db]
 
 % The audit trail is an important component of security to allow discovery of errors that cause security policies to be subverted; the audit trail can also be used to discover attacks.
 

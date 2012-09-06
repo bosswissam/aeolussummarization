@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  4 SEP 2012 13:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  6 SEP 2012 09:39
 entering extended mode
  %&-line parsing enabled.
 **main
@@ -512,59 +512,81 @@ Package hyperref Info: Option `colorlinks' set `false' on input line 71.
 
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) (./main.aux
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/bookmark.sty
+Package: bookmark 2009/08/13 v1.5 PDF bookmarks (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdfescape.sty
+Package: pdfescape 2007/11/11 v1.8 Provides hex, PDF name and string conversion
+s (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2007/04/06 v1.1 Hooks for auxiliary files (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/bkm-pdftex.def
+File: bkm-pdftex.def 2009/08/13 v1.5 bookmark driver for pdfTeX (HO)
+\BKM@id=\count134
+))
+(/usr/share/texmf-texlive/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2009/08/06 v1.8 e-TeX tools for LaTeX
+
+(/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count135
+)) (./main.aux
 (./cover.aux) (./contents.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
-(./chap4.aux) (./chap5.aux) (./chap6.aux) (./biblio.aux))
+(./chap4.aux) (./chap5.aux) (./chap6.aux) (./chap7.aux) (./chap8.aux)
+(./chap9.aux) (./biblio.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 128.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/ppl/m/n on input line 128.
+(Font)                  OT1/cmr/m/n --> OT1/ppl/m/n on input line 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/m/n on input line 128.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/m/n on input line 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ppl/m/n --> OT1/ppl/bx/n on input line 128.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 128.
+(Font)                  OT1/ppl/m/n --> OT1/ppl/bx/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 128.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 128.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 128.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 128.
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 128.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 128.
+(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/ppl/m/it on input line 128.
+(Font)                  OT1/cmr/m/it --> OT1/ppl/m/it on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/ppl/m/it on input line 128.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 128.
+(Font)                  OT1/cmr/bx/it --> OT1/ppl/m/it on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 128.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 128.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 128.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ppl/m/it --> OT1/ppl/bx/it on input line 128.
+(Font)                  OT1/ppl/m/it --> OT1/ppl/bx/it on input line 156.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 128.
+LaTeX Info: Redefining \subref on input line 156.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
@@ -576,36 +598,32 @@ Package caption Info: End \AtBeginDocument code.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count136
 \scratchdimen=\dimen133
 \scratchbox=\box65
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count137
+\nofMParguments=\count138
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count137
+\MPscratchCnt=\count139
 \MPscratchDim=\dimen134
-\MPnumerator=\count138
+\MPnumerator=\count140
 \everyMPtoPDFconversion=\toks22
 )
-\c@lstlisting=\count139
-Package hyperref Info: Link coloring OFF on input line 128.
+\c@lstlisting=\count141
+Package hyperref Info: Link coloring OFF on input line 156.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count140
+\c@section@level=\count142
 )
-LaTeX Info: Redefining \ref on input line 128.
-LaTeX Info: Redefining \pageref on input line 128.
- (./main.out)
-(./main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
-
+LaTeX Info: Redefining \ref on input line 156.
+LaTeX Info: Redefining \pageref on input line 156.
 \AtBeginShipoutBox=\box66
- ABD: EveryShipout initializing macros
+
+ABD: EveryShipout initializing macros
 \openout2 = `cover.aux'.
 
  (./cover.tex
@@ -624,7 +642,7 @@ LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <14.4> not available
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 112.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 113.
  (./abstract.tex) [2
 
 
@@ -635,7 +653,7 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 
  (./contents.tex
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 6.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
 
 (./main.toc
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
@@ -668,25 +686,39 @@ File: ueuex.fd 2009/06/22 v3.00 Euler extra symbols
 
 
 
-])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+] [5])
+\tf@toc=\write3
+\openout3 = `main.toc'.
 
-) [5]
+ [6] (./main.lof)
+\tf@lof=\write4
+\openout4 = `main.lof'.
+
+ [7
+
+
+] (./main.lot)
+\tf@lot=\write5
+\openout5 = `main.lot'.
+
+) [8
+
+
+]
 \openout2 = `chap1.aux'.
 
  (./chap1.tex
 Chapter 1.
-[6
+[9
 
 
 
-] [7]
+] [10]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 31.
-) [8]
+) [11]
 \openout2 = `chap2.aux'.
 
  (./chap2.tex
@@ -695,18 +727,18 @@ Chapter 2.
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 10.
 
-<figures/sysarch.pdf, id=259, 293.095pt x 204.765pt>
+<figures/sysarch.pdf, id=190, 293.095pt x 204.765pt>
 File: figures/sysarch.pdf Graphic file (type pdf)
  <use figures/sysarch.pdf>
-[9
+[12
 
 
 
- <./figures/sysarch.pdf>] [10] [11] [12]
-<figures/event-logging-overview.pdf, id=324, 574.145pt x 188.705pt>
+ <./figures/sysarch.pdf>] [13] [14] [15]
+<figures/event-logging-overview.pdf, id=254, 574.145pt x 188.705pt>
 File: figures/event-logging-overview.pdf Graphic file (type pdf)
 
-<use figures/event-logging-overview.pdf> [13]
+<use figures/event-logging-overview.pdf> [16]
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
@@ -717,12 +749,12 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 124.
- [14 <./figures/event-logging-overview.pdf>]) [15]
+ [17 <./figures/event-logging-overview.pdf>]) [18]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
 Chapter 3.
-[16
+[19
 
 
 
@@ -730,31 +762,35 @@ Chapter 3.
 
 pdfTeX warning: pdflatex (file ./figures/mint-auth-state-model.pdf): PDF inclus
 ion: found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-auth-state-model.pdf, id=363, 827.09pt x 382.22804pt>
+<figures/mint-auth-state-model.pdf, id=296, 827.09pt x 382.22804pt>
 File: figures/mint-auth-state-model.pdf Graphic file (type pdf)
 
-<use figures/mint-auth-state-model.pdf> [17 <./figures/mint-auth-state-model.pd
-f>] [18]
+<use figures/mint-auth-state-model.pdf> [20 <./figures/mint-auth-state-model.pd
+f>] [21]
 
 pdfTeX warning: pdflatex (file ./figures/mint-filesystem.pdf): PDF inclusion: f
 ound PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-filesystem.pdf, id=385, 554.07pt x 273.02pt>
+<figures/mint-filesystem.pdf, id=318, 554.07pt x 273.02pt>
 File: figures/mint-filesystem.pdf Graphic file (type pdf)
 
-<use figures/mint-filesystem.pdf> [19 <./figures/mint-filesystem.pdf>]
+<use figures/mint-filesystem.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[22] [23 <./figures/mint-filesystem.pdf>]
 
 pdfTeX warning: pdflatex (file ./figures/mint-shared-state.pdf): PDF inclusion:
  found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-shared-state.pdf, id=414, 1031.855pt x 493.042pt>
+<figures/mint-shared-state.pdf, id=349, 1031.855pt x 493.042pt>
 File: figures/mint-shared-state.pdf Graphic file (type pdf)
 
-<use figures/mint-shared-state.pdf> [20] [21 <./figures/mint-shared-state.pdf>]
-[22] [23] [24]) [25]
+<use figures/mint-shared-state.pdf> [24 <./figures/mint-shared-state.pdf>]
+[25] [26] [27]) [28]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Chapter 4.
-[26
+[29
 
 
 
@@ -800,14 +836,14 @@ Overfull \hbox (48.7798pt too wide) in paragraph at lines 23--23
 9.624[] 
  []
 
-<figures/activity.pdf, id=473, 467.24562pt x 644.4075pt>
+<figures/activity.pdf, id=401, 467.24562pt x 644.4075pt>
 File: figures/activity.pdf Graphic file (type pdf)
 
 <use figures/activity.pdf>
 
 LaTeX Warning: Float too large for page by 15.63367pt on input line 36.
 
-[27] [28 <./figures/activity.pdf>]
+[30] [31 <./figures/activity.pdf>]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 46.
 
@@ -987,30 +1023,78 @@ Overfull \hbox (63.1798pt too wide) in paragraph at lines 88--88
    2597[] 
  []
 
-[29] [30]) [31]
+[32] [33]) [34]
 \openout2 = `chap5.aux'.
 
  (./chap5.tex
 Chapter 5.
-[32
+[35
 
 
 
 ]
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
- [33] [34] [35] [36] [37] [38] [39]) [40]
+ [36] [37] [38] [39] [40] [41] [42]) [43]
 \openout2 = `chap6.aux'.
 
  (./chap6.tex
 Chapter 6.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 14.
-[41
+[44
 
 
 
-] [42] [43] [44] [45] [46] [47]) [48]
+] [45] [46] [47] [48] [49] [50]) [51]
+\openout2 = `chap7.aux'.
+
+ (./chap7.tex
+Chapter 7.
+
+
+pdfTeX warning: pdflatex (file ./figures/impl-sysarch.pdf): PDF inclusion: foun
+d PDF version <1.5>, but at most version <1.4> allowed
+<figures/impl-sysarch.pdf, id=628, 504.57983pt x 442.83426pt>
+File: figures/impl-sysarch.pdf Graphic file (type pdf)
+
+<use figures/impl-sysarch.pdf> [52
+
+
+
+ <./figures/impl-sysarch.pdf>]
+Underfull \hbox (badness 7722) in paragraph at lines 28--34
+\T1/ppl/m/n/12 This method cre-ates the QUERY, SUM-MARY, LOG-MARKED and
+ []
+
+[53] [54]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 88.
+
+Underfull \hbox (badness 1881) in paragraph at lines 90--91
+\T1/ppl/m/n/12 This is im-ple-mented by in-tro-duc-ing a two views, LOG-UNMARKE
+D and
+ []
+
+) [55]
+\openout2 = `chap8.aux'.
+
+ (./chap8.tex
+Chapter 8.
+) [56
+
+
+
+]
+\openout2 = `chap9.aux'.
+
+ (./chap9.tex
+Chapter 9.
+[57
+
+
+
+]) [58]
 \openout2 = `biblio.aux'.
 
  (./biblio.tex (./main.bbl
@@ -1019,32 +1103,34 @@ Underfull \hbox (badness 1546) in paragraph at lines 11--16
 , Aaron
  []
 
-)) [49
+)) [59
 
 
 
 ] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux) (./chap2.aux)
-(./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./biblio.aux)) ) 
+(./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./chap7.aux)
+(./chap8.aux) (./chap9.aux) (./biblio.aux)) ) 
 Here is how much of TeX's memory you used:
- 9006 strings out of 493848
- 132447 string characters out of 1152823
- 295988 words of memory out of 3000000
- 11773 multiletter control sequences out of 15000+50000
- 36711 words of font info for 86 fonts, out of 3000000 for 9000
+ 9617 strings out of 493848
+ 140037 string characters out of 1152823
+ 281988 words of memory out of 3000000
+ 12314 multiletter control sequences out of 15000+50000
+ 38928 words of font info for 90 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,7n,44p,797b,1704s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/
-share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/euler/eurm10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/
-ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
-hare/texmf-texlive/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-texliv
-e/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
-/palatino/uplbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a
-.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (49 pages, 934758 bytes).
+ 44i,7n,44p,890b,1725s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/en
+c/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eufm10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive
+/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/c
+ourier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pf
+b></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/te
+xmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts
+/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (59 pages, 980337 bytes).
 PDF statistics:
- 796 PDF objects out of 1000 (max. 8388607)
- 229 named destinations out of 1000 (max. 500000)
- 367 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 942 PDF objects out of 1000 (max. 8388607)
+ 254 named destinations out of 1000 (max. 500000)
+ 476 words of extra memory for PDF output out of 10000 (max. 10000000)
 

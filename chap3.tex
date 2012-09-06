@@ -1,6 +1,6 @@
 \chapter{Mint}\label{mint}
 
-Prior to the development of the summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these quesitons, I developed an Aeolus application based on the financial management service \emph{mint.com}. The \emph{Mint} application served as a case study and guided the development of the summarization system.
+Prior to the development of the summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these quesitons, I developed an Aeolus application based on the financial management service \emph{mint.com}\footnote{Available from \url{``http://www.mint.com''}.}; from here on we will refer to this application as the ``Mint application''. The \emph{Mint} application served as a case study and guided the development of the summarization system.
 
 In this chapter I present the Mint application model as well as some examples to how a summarization system could be used for this application.
 
@@ -20,7 +20,7 @@ In this section we examine the security model of the application more closely.
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-auth-state-model}
 \caption*{Mint Authority State Model}
-\caption{This diagram illustrates the authority state model of the Mint application in an example where two banks are registered at the application, Bank of America and US Bank. Users Bob and Dan have both signed up. Principals are denoted \emph{P$_{<name>}$} and tags are denoted \emph{t$_{<name>}$}.}
+\caption[Mint Authority State Model]{This diagram illustrates the authority state model of the Mint application in an example where two banks are registered at the application, Bank of America and US Bank. Users Bob and Dan have both signed up. Principals are denoted \emph{P$_{<name>}$} and tags are denoted \emph{t$_{<name>}$}.}
 \label{fig:mint-auth-state-model}
 \end{figure}
 
@@ -84,7 +84,7 @@ The following two sections explain how data is stored in the system and which ta
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-filesystem}
 \caption*{Mint File System Hierarchy}
-\caption{In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added accounts in both banks to his Mint account, and Dan added a US BANK account to his Mint account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both \emph{USER-DATA} tags.}
+\caption[Mint File System Hierarchy]{In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added accounts in both banks to his Mint account, and Dan added a US BANK account to his Mint account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both \emph{USER-DATA} tags.}
 \label{fig:mint-fs}
 \end{figure}
 
@@ -151,7 +151,7 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-shared-state}
 \caption*{Mint Shared State Objects}
-\caption{This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username.}
+\caption[Mint Shared State Objects]{This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username.}
 \label{fig:mint-ss}
 \end{figure}
 

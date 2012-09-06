@@ -8,47 +8,50 @@ A level-1 auxiliary file: chap3.aux
 A level-1 auxiliary file: chap4.aux
 A level-1 auxiliary file: chap5.aux
 A level-1 auxiliary file: chap6.aux
+A level-1 auxiliary file: chap7.aux
+A level-1 auxiliary file: chap8.aux
+A level-1 auxiliary file: chap9.aux
 A level-1 auxiliary file: biblio.aux
 The style file: plain.bst
 Database file #1: main.bib
-You've used 5 entries,
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            538 strings with 5059 characters,
-and the built_in function-call counts, 1340 in all, are:
-= -- 132
-> -- 76
+            552 strings with 5313 characters,
+and the built_in function-call counts, 1887 in all, are:
+= -- 189
+> -- 91
 < -- 0
-+ -- 32
-- -- 26
-* -- 89
-:= -- 266
-add.period$ -- 17
-call.type$ -- 5
-change.case$ -- 28
++ -- 39
+- -- 30
+* -- 115
+:= -- 363
+add.period$ -- 25
+call.type$ -- 8
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 47
-empty$ -- 83
-format.name$ -- 26
-if$ -- 256
+cite$ -- 8
+duplicate$ -- 73
+empty$ -- 132
+format.name$ -- 30
+if$ -- 369
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 8
 missing$ -- 1
-newline$ -- 31
-num.names$ -- 10
-pop$ -- 23
+newline$ -- 45
+num.names$ -- 14
+pop$ -- 35
 preamble$ -- 2
-purify$ -- 23
+purify$ -- 32
 quote$ -- 0
-skip$ -- 27
+skip$ -- 42
 stack$ -- 0
-substring$ -- 26
-swap$ -- 2
+substring$ -- 42
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 32
 warning$ -- 0
-while$ -- 10
-width$ -- 6
-write$ -- 66
+while$ -- 14
+width$ -- 9
+write$ -- 95

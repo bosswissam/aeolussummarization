@@ -94,6 +94,32 @@
 \def\subsectionautorefname{Section}
 \def\subsubsectionautorefname{Section}
 
+\usepackage[numbered]{bookmark}
+%\makeatletter
+%\usepackage{etoolbox}
+%\pretocmd{\abstract}{%
+%  \if@openright\cleardoublepage\else\clearpage\fi
+%  \pdfbookmark[0]{\abstractname}{abs}%
+%}{}{}%
+%\makeatother
+
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\listoffigures}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[0]{\listfigurename}{lof}%
+}{}{}%
+\makeatother
+
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\listoftables}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[0]{\listtablename}{lot}%
+}{}{}%
+\makeatother
+
+
 \lstset{
   basicstyle=\ttfamily \small,
   showstringspaces=false,
@@ -125,6 +151,8 @@
 %  breakatwhitespace=true
 }
 
+\renewcommand{\bibname}{References}
+
 \begin{document}
 
 \include{cover}
@@ -140,9 +168,14 @@
 \include{chap4}
 \include{chap5}
 \include{chap6}
+\include{chap7}
+\include{chap8}
+\include{chap9}
 \appendix
 %\include{appa}
 %\include{appb}
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
 \include{biblio}
 \end{document}
 

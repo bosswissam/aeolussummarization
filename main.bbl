@@ -25,10 +25,24 @@ F.~Peter McKee.
 \newblock A file system design for the aeolus security platform.
 \newblock Master's thesis, MIT, Cambridge, MA, USA, September 2011.
 
+\bibitem{jdoc}
+{Oracle}.
+\newblock {\em Java Platform, Standard Edition 7 API Specification}, 2012.
+
 \bibitem{popic}
 Victoria Popic.
 \newblock Audit trails in the {Aeolus} distributed security platform.
 \newblock Master's thesis, MIT, Cambridge, MA, USA, September 2010.
 \newblock Also as Technical Report {MIT-CSAIL-TR-2010-048}.
+
+\bibitem{pgsql-gen}
+{PostgreSQL Development Team}.
+\newblock {\em PostgreSQL 9.0.4}.
+\newblock PostgreSQL Global Development Group, 2010.
+
+\bibitem{das}
+David Schultz.
+\newblock {\em Decentralized Information Flow Control for Databases}.
+\newblock {Ph.D.}, MIT, July 2012.
 
 \end{thebibliography}
