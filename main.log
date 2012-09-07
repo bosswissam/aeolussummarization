@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  6 SEP 2012 09:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  7 SEP 2012 13:37
 entering extended mode
  %&-line parsing enabled.
 **main
@@ -508,7 +508,7 @@ G,.JBIG2,.JB2,.eps]
 (/usr/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2009/10/26 v1.1 Configuration of epstopdf for TeX Live
 )))
-Package hyperref Info: Option `colorlinks' set `false' on input line 71.
+Package hyperref Info: Option `colorlinks' set `false' on input line 72.
 
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
@@ -539,54 +539,54 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 (./chap9.aux) (./biblio.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 156.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 157.
+LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 157.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/ppl/m/n on input line 156.
+(Font)                  OT1/cmr/m/n --> OT1/ppl/m/n on input line 157.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/m/n on input line 156.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/m/n on input line 157.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ppl/m/n --> OT1/ppl/bx/n on input line 156.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 156.
+(Font)                  OT1/ppl/m/n --> OT1/ppl/bx/n on input line 157.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 156.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 156.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 156.
+(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 157.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 156.
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 156.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 156.
+(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 157.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/ppl/m/it on input line 156.
+(Font)                  OT1/cmr/m/it --> OT1/ppl/m/it on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/ppl/m/it on input line 156.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 156.
+(Font)                  OT1/cmr/bx/it --> OT1/ppl/m/it on input line 157.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 156.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 156.
+(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 156.
+(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 157.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ppl/m/it --> OT1/ppl/bx/it on input line 156.
+(Font)                  OT1/ppl/m/it --> OT1/ppl/bx/it on input line 157.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 156.
+LaTeX Info: Redefining \subref on input line 157.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
@@ -610,7 +610,7 @@ Package caption Info: End \AtBeginDocument code.
 \everyMPtoPDFconversion=\toks22
 )
 \c@lstlisting=\count141
-Package hyperref Info: Link coloring OFF on input line 156.
+Package hyperref Info: Link coloring OFF on input line 157.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -619,8 +619,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count142
 )
-LaTeX Info: Redefining \ref on input line 156.
-LaTeX Info: Redefining \pageref on input line 156.
+LaTeX Info: Redefining \ref on input line 157.
+LaTeX Info: Redefining \pageref on input line 157.
 \AtBeginShipoutBox=\box66
 
 ABD: EveryShipout initializing macros
@@ -1062,16 +1062,52 @@ File: figures/impl-sysarch.pdf Graphic file (type pdf)
 
 
 
- <./figures/impl-sysarch.pdf>]
-Underfull \hbox (badness 7722) in paragraph at lines 28--34
-\T1/ppl/m/n/12 This method cre-ates the QUERY, SUM-MARY, LOG-MARKED and
+ <./figures/impl-sysarch.pdf>] [53]
+Underfull \hbox (badness 2261) in paragraph at lines 54--62
+[]\T1/ppl/m/n/12 Modifies the query to ex-clude any marked events. For ex-am-
  []
 
-[53] [54]
-LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 88.
 
-Underfull \hbox (badness 1881) in paragraph at lines 90--91
+Underfull \hbox (badness 4144) in paragraph at lines 54--62
+\T1/ppl/m/n/12 ple, if the com-bined query text was ``[][][][][][][][][][][]
+ []
+
+
+Underfull \hbox (badness 7888) in paragraph at lines 54--62
+[][][][][][][][][][][][][][][]\T1/ppl/m/n/12 '' the DBM mod-i-fies it to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--62
+\T1/ppl/m/n/12 the fol-low-ing ``[][][][][][][][][][][][][][][][][][][][][][][]
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--62
+[][][][][][][][][][][][][][][][][][][][][][][][][][][]
+ []
+
+
+Underfull \hbox (badness 6625) in paragraph at lines 54--62
+[][][][][][][][][][][][][][][][][][][]\T1/ppl/m/n/12 ''. We use a
+ []
+
+
+Overfull \hbox (21.74667pt too wide) in paragraph at lines 72--76
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
+
+ []
+
+[54]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 94.
+
+Underfull \hbox (badness 1881) in paragraph at lines 96--97
 \T1/ppl/m/n/12 This is im-ple-mented by in-tro-duc-ing a two views, LOG-UNMARKE
 D and
  []
@@ -1085,52 +1121,52 @@ Chapter 8.
 
 
 
-]
+] [57]
 \openout2 = `chap9.aux'.
 
  (./chap9.tex
 Chapter 9.
-[57
+[58
 
 
 
-]) [58]
+]) [59]
 \openout2 = `biblio.aux'.
 
  (./biblio.tex (./main.bbl
-Underfull \hbox (badness 1546) in paragraph at lines 11--16
+Underfull \hbox (badness 1048) in paragraph at lines 24--29
 []\T1/ppl/m/n/12 Winnie Cheng, Dan R. K. Ports, David Schultz, Vic-to-ria Popic
 , Aaron
  []
 
-)) [59
+[60
 
 
 
-] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux) (./chap2.aux)
-(./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./chap7.aux)
-(./chap8.aux) (./chap9.aux) (./biblio.aux)) ) 
+])) [61] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux)
+(./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux)
+(./chap7.aux) (./chap8.aux) (./chap9.aux) (./biblio.aux)) ) 
 Here is how much of TeX's memory you used:
- 9617 strings out of 493848
- 140037 string characters out of 1152823
- 281988 words of memory out of 3000000
- 12314 multiletter control sequences out of 15000+50000
+ 9636 strings out of 493848
+ 140234 string characters out of 1152823
+ 283988 words of memory out of 3000000
+ 12324 multiletter control sequences out of 15000+50000
  38928 words of font info for 90 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,7n,44p,890b,1725s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/en
-c/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eufm10.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive
-/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/c
-ourier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pf
-b></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/te
-xmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts
-/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (59 pages, 980337 bytes).
+ 44i,7n,44p,1153b,1733s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-te
+xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/eu
+ler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurm
+10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share
+/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fon
+ts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/pala
+tino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb>
+</usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf
+-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (61 pages, 989023 bytes).
 PDF statistics:
- 942 PDF objects out of 1000 (max. 8388607)
- 254 named destinations out of 1000 (max. 500000)
+ 971 PDF objects out of 1000 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
  476 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,7 +10,7 @@
 
 The codebase for this thesis is implemented in approximately 4000 lines of Java code, of which 3000 implement the Mint application and 1000 implement the summarization system. The focus of this chapter is the implementation of the summarization system.
 
-Figure \ref{fig:impl-sysarch} presents a high-level overview of the summarization system components. The applicaiton uses the Query System (QS) and Summary Objects (SOs) to produce summaries and mark events. The Database Manager (DBM) stores queries and summaries in a PostgreSQL relational database \cite{pgsql-gen}, as well as retrieves results of queries.
+Figure \ref{fig:impl-sysarch} presents a high-level overview of the summarization system components. The application uses the Query System (QS) and Summary Objects (SOs) to produce summaries and mark events. The Database Manager (DBM) stores queries and summaries in a PostgreSQL relational database \cite{pgsql-gen}, as well as retrieves results of queries. On VN startup, we create the QUERY, SUMMARY, LOG-MARKED and SUMMARY-MARKED tables necessary for the running of the summarization system\footnote{The LOG table is already available.}.
 
 The rest of this chapter describes the implementation of those components.
 
@@ -20,17 +20,15 @@ The QS provides the interface described in section \ref{model:query-system}. It 
 
 A Summary Object provides the interface described in section \ref{model:summary-objects}. Summary Objects store the name and parameters of the underlying query locally.
 
+Both the QS and the SOs are responsible for logging calls to their methods as described in sections \ref{model:query-system} and \ref{model:summary-objects}.
+
 \section{The Database Manager}
 
 All communications to the relational database go through the DBM. The DBM provides an internal interface for the QS and SOs to carry out the various operations necessary.
 
 \begin{description}
   \item[setUpSummarizationSystem()] \ \\
-    This method creates the QUERY, SUMMARY,
-    LOG-MARKED and SUMMARY-MARKED tables necessary
-    for the running of the summarization system
-    \footnote{The LOG table is already available 
-      when the VN starts up.}.
+    This method creates the 
 
     This method is called by the QS.
   \item[\emph{addQuery(name, query\_text)}] \ \\
@@ -53,17 +51,25 @@ All communications to the relational database go through the DBM. The DBM provid
         and throws an exception if the expected
         number or type of parameters do not match
         the ones provided.
+      \item Modifies the query to exclude any marked events.
+        For example, if the combined query text was 
+        ``\lstinline[language=SQL]$select * from events where app_opp='mint-user-signup'$'' 
+        the DBM modifies it to the following
+        ``\lstinline[language=SQL]$select * from (select * from events where app_op='mint-user-signup') as e where e.event_counter not in (select event_counter from events-marked$''.
+        We use a subquery to carry out the task to avoid
+        having to parse the query for a an already-existing
+        \lstinline$where$ clause in the query.
       \item Executes the combined query text and
         retrieves the set of records covered by that query.
       \item Removes from the retrieved set of records
-        any subset of records that have been marked or that
+        any records that
         the calling thread is not allowed
         to view per the DIFC rules described in section
         \ref{difc:rules}, then returns the resulting
         set of records.
     \end{enumerate}
-    This method is called by the QS.
-  \item[\emph{addSummary(summary\_name, summary\_args, timestamp)}] \ \\
+    This method is called by the QS and the SO constructor.
+  \item[\emph{addSummary(summary\_name, summary\_args, query\_name, query\_ args, timestamp)}] \ \\
     Executes a SQL INSERT statement to add a record to
     the SUMMARY table, using the arguments and labels
     of the calling thread as as values for the record.

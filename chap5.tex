@@ -56,7 +56,7 @@ The following two sections describe the interface we provide to support these us
 \subsection{The Interface}
 \label{model:query-system}
 
-An application can use our system by calling \lstinline$QuerySystem.getInstance()$. This will provide the application with an instance of our system, which can then be used to call the following methods for managing and running queries in the QUERY table:
+An application can use our system by calling \lstinline[language=Java]$QuerySystem.getInstance()$. This will provide the application with an instance of our system, which can then be used to call the following methods for managing and running queries in the QUERY table:
 \begin{description}
   \item[\emph{addQuery(name, query\_text)}] \ \\
     Adds a query with a NAME as \emph{name}
@@ -131,6 +131,11 @@ The inteface we expose is as follows:
     as \emph{summary\_args}.
     Stores the calling threads' secrecy and integrity
     labels of the summary object.
+  \item[\emph{getEvents()}] \ \\
+    Returns a set of records that this summary object
+    covers.
+    This set of records is determined when the summary
+    object is created.
   \item[\emph{mark(query\_name, query\_params)}] \ \\
     Marks the group of events underlying this
     \emph{SummaryObject}. The \emph{query\_name}

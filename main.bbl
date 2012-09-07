@@ -1,6 +1,19 @@
 \newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{ids}
+Julia Allen, Alan Christie, William Fithen, John McHugh, Jed Pickel, and
+  Ed~Stoner.
+\newblock State of the practice of intrusion detection technologies.
+\newblock Networked Systems Survivability Program CMU/SEI-99-TR-028, Carnegie
+  Mellon University, CMU Pittsburgh, PA 15213-3890, January 2000.
+
+\bibitem{intro-nist}
+Edward~Roback Barbara~Gutman.
+\newblock {\em An Introduction to Computer Security: The NIST Handbook}.
+\newblock National Institute of Standards and Technology, Gaithersburg, MD
+  20899-0001, oct 1995.
 
 \bibitem{blanks}
 Aaron Blankstein.
@@ -19,6 +32,22 @@ Winnie Wing-Yee Cheng.
 \newblock {\em Information Flow for Secure Ditributed Applications}.
 \newblock {{Ph.D.}}, MIT, Cambridge, MA, USA, August 2009.
 \newblock Also as Technical Report {MIT-CSAIL-TR-2009-040}.
+
+\bibitem{ai}
+Jeremy Frank.
+\newblock Artificial intelligence and intrusion detection: Current and future
+  directions.
+\newblock June 1994.
+
+\bibitem{backtracker}
+Samuel~T. King and Peter~M. Chen.
+\newblock Backtracking intrusions.
+\newblock {\em ACM Trans. Comput. Syst.}, 23:51--76, February 2005.
+
+\bibitem{Lunt1993405}
+Teresa~F. Lunt.
+\newblock A survey of intrusion detection techniques.
+\newblock {\em Computers and Security}, 12(4):405 -- 418, 1993.
 
 \bibitem{mckee}
 F.~Peter McKee.
@@ -44,5 +73,11 @@ Victoria Popic.
 David Schultz.
 \newblock {\em Decentralized Information Flow Control for Databases}.
 \newblock {Ph.D.}, MIT, July 2012.
+
+\bibitem{at-red}
+Spafford and Gene et~al.
+\newblock Audit trail reduction.
+\newblock Online,
+  \url{http://www.cs.purdue.edu/coast/projects/audit-trails-reduce.html}, 1999.
 
 \end{thebibliography}

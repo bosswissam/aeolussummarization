@@ -4,7 +4,7 @@ In this chapter give examples of how our system can be used to summarize and acc
 
 \section{Summarizing User Sessions}
 \label{sum:sessions}
-In this example we will show how to summarize a user's actions per session. In particular, for a particular session for the user Bob, we will record which of the user actions presented in section \ref{mint:impl} did he request.
+In this example we show how to summarize a user's actions per session. In particular, for a session for the user Bob, we will record which of the user actions presented in section \ref{mint:impl} (e.g. addBank, downloadTransactions) he requested.
 
 This should not be a hard task since we use application-level logging to track all of Bob's actions. However, we will need to create some context before producing the summaries to identify any one of Bob's sessions.
 
@@ -15,7 +15,7 @@ First, we initialize the query system, which we will use to add and run queries:
 QuerySystem system = QuerySystem.getInstance();
 \end{lstlisting}
 
-We then set up a query that retrieves the princpal ID and data tag for a particular user:
+We then set up a query that retrieves the princpal ID and data tag for a particular user. Note that in our implementation, the name of the LOG table in the database is \emph{events}.
 
 \begin{lstlisting}[language=Java]
 String users_query = ``select to_array(app_args)[1] as pid, to_array(app_args)[2] as tag, event_counter from events where app_op='mint-user-signup' and to_array(app_args)[0] = ?'';
@@ -24,9 +24,9 @@ system.addQuery(``user-info'', users_query);
 \end{lstlisting}
 
 \noindent
-This query is based on logging events when users sign up as described In section \ref{audit:mint-example}. The \emph{app\_args} attribute contains three pieces of information: the username, principal ID and the data tag as a comma-delimited string.
+This query is based on logging events when users sign up as described in section \ref{audit:mint-example}. The \emph{app\_args} attribute contains three pieces of information; the username, principal ID, and data tag, as a comma-delimited string.
 
-This query selects produces a tuple with the principal ID in the first column, data tag in the second column and event\_counter of the signup event in the third column for a particular user. It does so by looking for signup events, which have the attribute \emph{app\_op} as ``mint-user-signup'', for a particular username, stored in the first index of the \emph{app\_args} attribute. 
+This query produces a tuple with the principal ID in the first column, data tag in the second column and event\_counter of the signup event in the third column for a particular user. It does so by looking for signup events, which have the attribute \emph{app\_op} as ``mint-user-signup'', for a particular username, stored in the first index of the \emph{app\_args} attribute. 
 
 We now add some queries that will help identify the logins and logouts for a particular user:
 
@@ -44,7 +44,7 @@ String user_logins = ``select timestamp as start, event_counter from events wher
 
 // The following query produces a tuple that contains the logout
 // times and event_counters for a particular user.
-String user_logouts = ``select timestamp as start, event_counter from events where app_op='mint-user-login' and to_array(app_args)[0]=?'';
+String user_logouts = ``select timestamp as start, event_counter from events where app_op='mint-user-logout' and to_array(app_args)[0]=?'';
 
 // add the queries to the QUERY table
 system.addQuery(``logins'', user_logins);
@@ -62,7 +62,7 @@ ResultSet bob_logouts = system.runQuery(``logouts'', new Object[]{``Bob''});
 // The first login and logout for Bob will define the endpoints of the
 // first session.
 
-if(!bob_logins.next()){
+if((!bob_logins.next()) || (!bob_logouts.next())){
   return;
 }
 
@@ -75,7 +75,7 @@ Timestamp end_time = bob_logouts.getTimestamp(2);
 \end{lstlisting}
 
 \noindent
-A ResultSet is a set of records. We first make sure that Bob logged in to our system once in the past (and by the assumption made above that he also logged out). We then retrieve information from the ResultSet using the \lstinline$getLong()$ and \lstinline$getTimestamp()$. These methods retrieve a value at the given column number from the ResultSet and cast those values to their relevant types. Details of the ResultSet class and how its methods work can be found in \cite{jdoc}.
+A ResultSet is a set of records. Calling the \emph{next()} method on the ResultSet objects move their cursor to the first record. We first make sure that Bob logged in to our system once in the past and then logged out. We then retrieve information from the ResultSet using the \lstinline$getLong()$ and \lstinline$getTimestamp()$. These methods retrieve a value at the given column number from the ResultSet and cast those values to their relevant types. Details of the ResultSet class and how its methods work can be found in \cite{jdoc}.
 
 Table \ref{table:user-sessions} shows a possible table that contains a list of user sessions. We are now left with the problem of identifying the different actions that took place within any sessoin (identifiable by a start and end counters).
 
@@ -120,19 +120,16 @@ String user_session_actions_query = ``select app_op from events where app_op lik
 system.addQuery(``user-sessions-actions'', user_sessions_actions_query);
 \end{lstlisting}
 
-Now that we've identified one of Bob's sessions, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session.
-%system.runQuery(``user-sessions-actions'', null);
+Now that we've identified one of Bob's sessions, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session. For each session we produce a summary that contains the username as well as the actions carried out, and the event counters and timestamps that identify the start and end of that session.
 
-We would like to add a summary for each session that contains the username as well as the actions carried out, and the event counters and timestamps that identify the start and end of that session.
-
-In this example, and the ones that follow, we assume that the method \emph{process(events)} is a user-defined method that  processes a set of events and produces a string summary of those events. We assume that for this example, such a summary string would be the comma-delimited names of all the actions the user requested. For example, if a user registers Bank of America to their account and downloads all of their transactions in one session, the \emph{process()} method will produce the following summary for that session ``addBank-bankofamerica,downloadTransactions''.
+In this example, and the ones that follow, we assume that the method \emph{process(events)} is a user-defined method that  processes a set of events and produces a string summary of those events. In this example, such a summary string would be the comma-delimited list of activites requested by the user in this session. For example, if a user registers Bank of America to their account and downloads all of their transactions in one session, the \emph{process()} method will produce the following summary for that session ``addBank-bankofamerica,downloadTransactions''.
 
 \begin{lstlisting}[language=Java]
 
 Object[] vals = new Object[] {username, start_counter, end_counter, start_time, end_time};
 SummaryObject so = new SummaryObject(``user-session-actions'', vals);
 
-String summary = process(system.runQuery(``user-session-actions'', vals));
+String summary = process(so.getEvents());
 so.addSummary(``user-session-summary'', String.format(``\%s, \%d, \%d, \%s, \%s'', username, start_counter, end_counter, start_time, end_time, summary));
 
 \end{lstlisting}
@@ -153,7 +150,7 @@ long now = System.currentTimeMillis();
 Object[] vals = Object[]{new java.sql.Timestamp(now)};
 SummaryObject so = new SummaryObject(``fs_week_access'', vals);
 
-String summary = process(system.runQuery(``fs_week_access'', vals));
+String summary = process(so.getEvents());
 so.addSummary(``File accesses'', String.format(``\%d, \%s'', now, summary));
 \end{lstlisting}
 
@@ -182,7 +179,7 @@ Object[] vals = new Object[]{``Bob'', now};
 SummaryObject so = new SummaryObject(``session-summary'', vals);
 
 // Create a summary based on the sessions in the last week
-String summary = process(system.runQuery(``session-summary'', vals));
+String summary = process(so.getEvents());
 so.addSummary(``weekly-user-activity'', summary);
 \end{lstlisting}
 

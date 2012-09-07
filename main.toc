@@ -45,7 +45,7 @@
 \contentsline {section}{\numberline {7.2}The Database Manager}{53}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Running in \emph {Hide} Mode}{55}{subsection.7.2.1}
 \contentsline {chapter}{\numberline {8}Related Work}{56}{chapter.8}
-\contentsline {chapter}{\numberline {9}Summary of Contributions and Future Work}{57}{chapter.9}
-\contentsline {section}{\numberline {9.1}Contributions}{57}{section.9.1}
-\contentsline {section}{\numberline {9.2}Future Work}{57}{section.9.2}
-\contentsline {chapter}{References}{59}{section*.18}
+\contentsline {chapter}{\numberline {9}Summary of Contributions and Future Work}{58}{chapter.9}
+\contentsline {section}{\numberline {9.1}Contributions}{58}{section.9.1}
+\contentsline {section}{\numberline {9.2}Future Work}{58}{section.9.2}
+\contentsline {chapter}{References}{60}{section*.18}

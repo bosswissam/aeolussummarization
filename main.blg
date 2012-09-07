@@ -14,44 +14,46 @@ A level-1 auxiliary file: chap9.aux
 A level-1 auxiliary file: biblio.aux
 The style file: plain.bst
 Database file #1: main.bib
-You've used 8 entries,
+Warning--empty journal in ai
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            552 strings with 5313 characters,
-and the built_in function-call counts, 1887 in all, are:
-= -- 189
-> -- 91
-< -- 0
-+ -- 39
-- -- 30
-* -- 115
-:= -- 363
-add.period$ -- 25
-call.type$ -- 8
-change.case$ -- 38
+            596 strings with 6386 characters,
+and the built_in function-call counts, 3548 in all, are:
+= -- 348
+> -- 171
+< -- 1
++ -- 73
+- -- 56
+* -- 225
+:= -- 657
+add.period$ -- 43
+call.type$ -- 14
+change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 73
-empty$ -- 132
-format.name$ -- 30
-if$ -- 369
+cite$ -- 15
+duplicate$ -- 133
+empty$ -- 261
+format.name$ -- 56
+if$ -- 705
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 1
-newline$ -- 45
-num.names$ -- 14
-pop$ -- 35
+int.to.str$ -- 14
+missing$ -- 6
+newline$ -- 75
+num.names$ -- 26
+pop$ -- 69
 preamble$ -- 2
-purify$ -- 32
+purify$ -- 57
 quote$ -- 0
-skip$ -- 42
+skip$ -- 82
 stack$ -- 0
-substring$ -- 42
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 120
+swap$ -- 11
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
-warning$ -- 0
-while$ -- 14
-width$ -- 9
-write$ -- 95
+type$ -- 54
+warning$ -- 1
+while$ -- 29
+width$ -- 16
+write$ -- 159
+(There was 1 warning)
