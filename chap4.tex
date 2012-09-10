@@ -3,13 +3,9 @@
 
 In this chapter we discuss auditing and how the audit trail can be used for discovery.
 
-As described in section \ref{aeolus}, every security-related event is logged automatically by Aeolus. In addition, applications can log events of their own. We take advantage of this in the Mint system by logging application-specific events; an example is given in section \ref{audit:mint-example}.
+As described in section \ref{aeolus:logging}, every security-related event is logged automatically by Aeolus. In addition, applications can log events of their own. We take advantage of this in the Mint system by logging application-specific events; an example is given in section \ref{audit:mint-example}.
 
 Events are stored in a table that we will refer to as the \emph{LOG}. The LOG is useful for discovery, which can be done by means of a query over the table. Table \ref{table:bob-declass} and figure \ref{fig:user-activity} show two examples.
-
-Table \ref{table:bob-declass} shows which principals declassified Bob's tag; thus, it shows which users accessed Bob's information. In a secure implementation of the Mint application, no user principal other than Bob's principal should be able to declassify Bob's tag. However we introduced a bug in our implementation of the Mint application to demonstrate how the LOG can be used for discovery, and hence we can see that many principals, running on behalf of other users, were able to declassify Bob's tag - something that should never happen. In this example, the LOG helps us discover the leakage of Bob's information due to an application error.
-
-Figure \ref{fig:user-activity} shows a graph of how many user requests caused a declassification of a user data tag for every 5-second period since the application launched; in other words, it shows the activity trend of the user. Any spike in the graph means that the user was abnormaly active in certain periods of time. In this example, the LOG helps us discover if any user accountrs were compromised.
 
 \begin{table}[h]
 \begin{verbatim}
@@ -27,6 +23,7 @@ Figure \ref{fig:user-activity} shows a graph of how many user requests caused a 
 \label{table:bob-declass}
 \end{table}
 
+Table \ref{table:bob-declass} shows principals that declassified Bob's tag; thus, it shows which users accessed Bob's information. In a secure implementation of the Mint application, no user principal other than Bob's principal should be able to declassify Bob's tag. However we introduced a bug in our implementation of the Mint application to demonstrate how the LOG can be used for discovery, and hence we can see that many user principals were able to declassify Bob's tag - something that should never happen. In this example, the LOG helps us discover the leakage of Bob's information due to an application error.
 
 \begin{figure}
 \centering
@@ -34,7 +31,10 @@ Figure \ref{fig:user-activity} shows a graph of how many user requests caused a 
 \caption[Mint User Activity Trend]{This graph shows the activity trend of each user. Notice that the activity for Jack spikes in the graph at multiple places. This could be the result of an attacker accessing his account and issuing requests to quickly retrieve all of Jack's financial information.}
 \label{fig:user-activity}
 \end{figure}
-In the following section we describe how the data for Figure \ref{fig:user-activity} can be extracted from the LOG, as well as the possible uses of summarization for this scenario.
+
+Figure \ref{fig:user-activity} shows a graph of how many user requests, for each user, caused a declassification of a user data tag for every 5-second period since the application launched; in other words, it shows the activity trend of each user. Any spike in the graph for a particular user means that that user was abnormaly active in certain periods of time. In this example, the LOG helps us discover if any user accounts have been compromised.
+
+In the following section we describe how the data for Figure \ref{fig:user-activity} can be extracted from the LOG.
 
 \section{Detecting Suspicious User Activity}
 \label{audit:mint-example}
@@ -46,7 +46,8 @@ For example, when Bob signs up successfully with our application, we record his 
   AeolusLib.createEvent(``mint-user-signup'', Arrays.asList(new String[] {``Bob'', ``5'', ``10''}));
 \end{lstlisting}
 
-To obtain a table detailing the username, principal, data tag and other sign-up information of all users, we use the following SQL query based on our application-specific events\footnote{\emph{to\_array} is a procedure that turns a comma-delimited string into a PSQL array.}:
+\noindent
+This call causes a \emph{sign up} event to be added to the LOG. To obtain a table detailing the username, principal, data tag and other sign-up information of all users, we use the following SQL query based on our application-specific events\footnote{\emph{to\_array} is a procedure that turns a comma-delimited string into a PSQL array.}:
 
 \begin{lstlisting}[language=SQL, deletendkeywords={TIMESTAMP}, label=code:mint-signup]
 select to_array(app_arg)[0] as pid, to_array(app_arg)[1] as username, to_array(app_arg)[2] as tag, timestamp as signed_up, event_counter from events where op_name='mint-user-signup'
@@ -115,6 +116,6 @@ Table \ref{table:jack-activity} shows a the result of a modified version of this
 \end{verbatim}
 \end{quote}
 \caption*{Account activity for user Jack}
-\caption[Mint Account activity for user Jack]{This table shows the number of declassifies done by Jack's principal in each five-second period since the application launched. The \emph{count} denotes such number. The \emph{username} column denotes the user who's data tag is in question. The \emph{timestamp} column denotes the start of the 5-second period. A table containing similar information for all users would be a precursor to producing the graph in figure \ref{fig:user-activity}, here we only show this data for user Jack for simplicity.}
+\caption[Mint Account activity for user Jack]{This table shows the number of declassifies done by Jack's principal in each five-second period since the application launched. The \emph{count} denotes such number. The \emph{username} column denotes the user who's data tag is in question. The \emph{timestamp} column denotes the start of the 5-second period. A table containing similar information for all users would be a precursor to producing the graph in figure \ref{fig:user-activity}, but here we only show this data for user Jack for simplicity.}
 \label{table:jack-activity}
 \end{table}

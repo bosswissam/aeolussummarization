@@ -4,7 +4,7 @@ This thesis is concerned with providing mechanisms that allow the size of the lo
 
 For example, if we store the number of declassifies a user's principal carries out per user session, we would require many fewer events to be stored in the log table to formulate a pattern of the user's activity, and, eventually detect suspicious behavior patterns. Thus, we could choose to delete events that have been summarized, without loss of the summarized information.
 
-Our system is designed to support this process. We provide an interface that can be used by application code to create summaries and to mark events for deletion or archiving; from this point forward we refer to these as the \emph{marked} events. Summaries are stored in a \emph{SUMMARY} table and therefore queries can be used to perform discovery on them if desired.
+Our system is designed to support this process. We provide an interface that can be used by application code to create \emph{summaries} (also referred to as \emph{summary events}) and to mark events for deletion or archiving; from this point forward we refer to these as the \emph{marked} events. Summaries are stored in a \emph{SUMMARY} table and therefore queries can be used to perform discovery on them if desired.
 
 %The Mint study case highlighted the inherent need for a form of summarization. For example, the query in \ref{query:accesses} depends on the \emph{users} table, which details the system information related to each user. The \emph{users} table in itself can be thought of as a summary, and queries such as the one in \ref{query:accesses} depend on that summary for analysis.
 
@@ -30,7 +30,7 @@ In the following section, we describe the typical use cases that our system aims
 A typical workflow of how an application might use our system to produce a summary is as follows:
 
 \begin{enumerate}
-  \item Possibly run some queries to establish a context for the events to be summarized or marked. For example, identifying Jack's principal ID is necessary to summarize the number of declassifications carried out Jack's principal in a particular session. Such a context could be established by retrieving a \emph{Users Table} as shown in section \ref{audit:mint-example}\footnote{Other necessary information for this summary example is to identify the start and end of Jack's sessions.}.
+  \item Possibly run some queries to establish a context for the events to be summarized or marked. For example, identifying Jack's principal ID is necessary to summarize the number of declassifications carried out by Jack's principal in a particular session. Such a context could be established by retrieving a table detailing each user's information as shown in table \ref{table:users-info}\footnote{Other necessary information for this summary example is to identify the start and end of Jack's sessions.}.
   \item Run a query to identify the events to be summarized or marked, for example, all the declassifications carried out by Jack's principal per session.
   \item Compute the information that goes into the summary, for example, whether or not the number of declassifications caused by Jack's principal for a particular session is too high.
   \item Possibly produce and store the summary.
@@ -45,7 +45,7 @@ The next two sections describe how our system allows applications to query, summ
 Steps 1 and 2 above are used to establish the context and then to identify the events to be summarized or marked. Since these activities are likely to be performed periodically, it is useful to allow the queries to be defined once and then used over and over.
 
 
-For example, the query \ref{code:query-accesses} could be run many times over the lifetime of the application.
+For example, the queries in section \ref{audit:mint-example} could be run many times over the lifetime of the application.
 
 However, an application might need to use a particular query with different parameters - for example, the Mint application might want to run a query to find out the last login time for different users.
 
@@ -53,7 +53,7 @@ A further point is that queries could be run over the LOG or the SUMMARY table, 
 
 The following two sections describe the interface we provide to support these use cases, as well as the \emph{QUERY} table which we use to store query records.
 
-\subsection{The Interface}
+\subsection{\emph{QuerySystem}}
 \label{model:query-system}
 
 An application can use our system by calling \lstinline[language=Java]$QuerySystem.getInstance()$. This will provide the application with an instance of our system, which can then be used to call the following methods for managing and running queries in the QUERY table:
@@ -63,7 +63,12 @@ An application can use our system by calling \lstinline[language=Java]$QuerySyst
     and TEXT as \emph{query\_text}. If a query with that
     name already exists, throws an exception.
   \item[\emph{runQuery(name, vals)}] \ \\
-    Runs the query with the name \emph{name}, 
+    We allow applications to provide incomplete
+    query text (values replaced by placeholders)
+    to allow for reuse of the queries with
+    different parameters.
+
+    This method runs the query with the name \emph{name}, 
     replacing any existing
     parameter placeholders in the query TEXT with
     the values in the \emph{vals} array, and 
@@ -89,7 +94,7 @@ For each record stored in the QUERY table, we store the following attributes:
     could be named ``Mint Sign-ups''.
   \item[\emph{TEXT}] \ \\
     This is the text of the query. This does
-    not have to be a complete query: we allow the
+    not have to be a complete query: again, we allow the
     application to leave query parameters unspecified,
     replaced with placeholders in this field,
     so that a record can be re-used with different
@@ -114,12 +119,12 @@ For example, a summary of the information presented in figure \ref{table:bob-dec
 
 The following two sections describe the interface we provide to support producing summaries and marking events, as well as the SUMMARY table which we use to store summary records.
 
-\subsection{SummaryObjects}
+\subsection{\emph{SummaryObjects}}
 \label{model:summary-objects}
 
 In this section we describe \emph{SummaryObjects}. \emph{SummaryObjects} provide an interface for applications to create and add summaries to the SUMMARY table, as well as mark their events.
 
-The inteface we expose is as follows:
+The interface we expose is as follows:
 \begin{description}
   \item[\emph{SummaryObject(query\_name, query\_params)}] \ \\
     Retrieves the events identified by the query
@@ -147,11 +152,9 @@ The inteface we expose is as follows:
 \end{description}
 
 \noindent
-The reason we allow some events to be identified as not markable is because there are events in the log that Aeolus won't allow to be deleted; in particular all events that record changes to the authority state, e.g., creating a principal, or allowing one principal ot act-for another. It seems likely that the application will also have some events that it does not allow to be deleted. The arguments to the mark method allow these events to be identified.
+The reason we allow some events to be identified as not markable is because there are events in the log that Aeolus won't allow to be deleted; in particular all events that record changes to the authority state, e.g., creating a principal, or allowing one principal to act-for another. It seems likely that the application will also have some events that it does not allow to be deleted. The arguments to the mark method allow these events to be identified.
 
 In our scheme, we depend on being able to identify events underlying a particular summary by their event\_counter. Hence we require all queries used to produce \emph{SummaryObjects} to include an \emph{event\_counter} attribute.
-
-Each use of a \emph{SummaryObject} method is logged to the LOG table; this does not apply to the constructor. We log the name of the function along with the arguments to identify the exact actions of the application.
 
 Finally, The \emph{addSummary} and \emph{mark} methods log the type of the operation, e.g. ``summary-add'' or ``summary-mark'', as well as the name and parameters of the underlying query.
 
@@ -171,10 +174,8 @@ For each record stored in the SUMMARY table, we store the following attributes:
     This field is provided by the application.
     It stores the application's computation of the summary.
     In the example mentioned above, this could be the 
-    list of users accessing Bob's information over the
-    period of time elapsed between the event
-    identified by \emph{START\_COUNTER} and the
-    event identified by \emph{END\_COUNTER}.
+    list of users accessing Bob's information over a 
+    particular period of time.
   \item[\emph{QUERY\_NAME}] \ \\
     This field is provided by the application.
     It identifies the query in the QUERY table
@@ -196,13 +197,13 @@ For each record stored in the SUMMARY table, we store the following attributes:
 
 \section{Marking Events}
 
-Our design allows but does not require the production of a summary event in conjuction with marking. For instance, a \emph{SummaryObject} can be created, then used to mark events, without the application having to call \emph{addSummary}.
+Our system allows but does not require the production of a summary event in conjunction with marking. For instance, a \emph{SummaryObject} can be created, then used to mark events, without the application having to call \emph{addSummary}.
 
 Since our system was not intended to alter the LOG or SUMMARY table, we keep track of marked events in two additional tables: LOG-MARKED and SUMMARY-MARKED. Those tables contain event counters of events that have been marked by the application.
 
-Our system does not show marked events in the results of later queries. Since those events are not deleted, they and could be made visible to the user, although our system does not do this at present.
+Our system does not show marked events in the results of later queries. Since those events are not deleted, and could be made visible to the user, although our system does not do this at present.
 
-However our system only provides a mechanism to identify marked events, and leaves the question of how to archive and delete those events as further work.
+Finally, our system only provides a mechanism to identify marked events, and leaves the question of how to archive and delete those events as further work.
 
 %The following sections describe how our summarization system allows developers to accomplish three things: use a clear interface to query the event log, reason more easily about events in the past, and improve the performance of their system in terms of runtime and storage costs.
 
@@ -212,8 +213,8 @@ However our system only provides a mechanism to identify marked events, and leav
 
 \section{Discussion}
 
-It is possible through our system that an application summarizes pre-existing summaries. For example, the Mint application, after summarizing declassify events for user data tags per user session, could use those summaries to summarize declassifiy events for user data tags per month.
+It is possible that an application uses our system that to summarize pre-existing summaries. For example, the Mint application, after summarizing declassify events for user data tags per user session, could use those summaries to summarize declassifiy events for user data tags per month.
 
-Our system supports this functionality since it does not make any strong assumption about queries in the QUERY table. This allows the application to treat events in the LOG or SUMMARY table the same way.
+Our system supports this functionality since it does not make any strong assumption about queries in the QUERY table. This allows the application to treat events in the LOG or SUMMARY table the same way while summarizing.
 
 Finally, by allowing applications to protect events from being marked, and internally preventing important Aeolus events from being marked, our system provides a way to prevent application errors from deleting important information.

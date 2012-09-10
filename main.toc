@@ -4,48 +4,48 @@
 \contentsline {chapter}{\numberline {2}Aeolus System Overview}{12}{chapter.2}
 \contentsline {section}{\numberline {2.1}System Architecture}{12}{section.2.1}
 \contentsline {section}{\numberline {2.2}Information Flow Model}{13}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Prinicpals, Tags and Labels}{13}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.1}Principals, Tags and Labels}{13}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Information Flow Rules}{13}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Authority}{14}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Compound Tags}{15}{subsection.2.2.4}
 \contentsline {section}{\numberline {2.3}Programming Model}{15}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Threads and Vitual Nodes}{15}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Threads and Virtual Nodes}{15}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Shared State Objects and Boxes}{16}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Authority Closures and Reduced Authority Calls}{16}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Files}{16}{subsection.2.3.4}
 \contentsline {subsection}{\numberline {2.3.5}Log Collection}{17}{subsection.2.3.5}
 \contentsline {subsubsection}{Aeolus Event Attributes}{17}{section*.8}
-\contentsline {chapter}{\numberline {3}Mint}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}Mint Model}{19}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{20}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Files}{22}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{24}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Implementation}{25}{section.3.2}
-\contentsline {section}{\numberline {3.3}System Security}{27}{section.3.3}
-\contentsline {chapter}{\numberline {4}Auditing the Mint Application}{29}{chapter.4}
-\contentsline {section}{\numberline {4.1}Detecting Suspicious User Activity}{32}{section.4.1}
-\contentsline {chapter}{\numberline {5}The Summary System}{35}{chapter.5}
-\contentsline {section}{\numberline {5.1}Summarization Model}{36}{section.5.1}
-\contentsline {section}{\numberline {5.2}Summarization Workflow}{37}{section.5.2}
-\contentsline {section}{\numberline {5.3}The Query System}{37}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}The Interface}{38}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Query Attributes}{39}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Producing Summaries and Marking Events}{39}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}SummaryObjects}{40}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Summary Attributes}{41}{subsection.5.4.2}
-\contentsline {section}{\numberline {5.5}Marking Events}{42}{section.5.5}
-\contentsline {section}{\numberline {5.6}Discussion}{43}{section.5.6}
-\contentsline {chapter}{\numberline {6}Auditing Using Summarization}{44}{chapter.6}
-\contentsline {section}{\numberline {6.1}Summarizing User Sessions}{44}{section.6.1}
-\contentsline {section}{\numberline {6.2}Summarizing File System Events}{49}{section.6.2}
-\contentsline {section}{\numberline {6.3}Summarizing User Trends}{50}{section.6.3}
-\contentsline {section}{\numberline {6.4}Sufficiently Summarized Information}{51}{section.6.4}
-\contentsline {chapter}{\numberline {7}Implementation}{52}{chapter.7}
-\contentsline {section}{\numberline {7.1}The Query System and The Summary Objects}{53}{section.7.1}
-\contentsline {section}{\numberline {7.2}The Database Manager}{53}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Running in \emph {Hide} Mode}{55}{subsection.7.2.1}
-\contentsline {chapter}{\numberline {8}Related Work}{56}{chapter.8}
-\contentsline {chapter}{\numberline {9}Summary of Contributions and Future Work}{58}{chapter.9}
-\contentsline {section}{\numberline {9.1}Contributions}{58}{section.9.1}
-\contentsline {section}{\numberline {9.2}Future Work}{58}{section.9.2}
-\contentsline {chapter}{References}{60}{section*.18}
+\contentsline {chapter}{\numberline {3}Mint}{20}{chapter.3}
+\contentsline {section}{\numberline {3.1}Mint Model}{20}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Authority State Model}{21}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Files}{23}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Shared Memory Objects}{25}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Implementation}{27}{section.3.2}
+\contentsline {section}{\numberline {3.3}System Security}{29}{section.3.3}
+\contentsline {chapter}{\numberline {4}Auditing the Mint Application}{30}{chapter.4}
+\contentsline {section}{\numberline {4.1}Detecting Suspicious User Activity}{33}{section.4.1}
+\contentsline {chapter}{\numberline {5}The Summary System}{36}{chapter.5}
+\contentsline {section}{\numberline {5.1}Summarization Model}{37}{section.5.1}
+\contentsline {section}{\numberline {5.2}Summarization Workflow}{38}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Query System}{38}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}\emph {QuerySystem}}{39}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Query Attributes}{40}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Producing Summaries and Marking Events}{40}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}\emph {SummaryObjects}}{41}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Summary Attributes}{42}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Marking Events}{43}{section.5.5}
+\contentsline {section}{\numberline {5.6}Discussion}{44}{section.5.6}
+\contentsline {chapter}{\numberline {6}Auditing Using Summarization}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Summarizing User Sessions}{45}{section.6.1}
+\contentsline {section}{\numberline {6.2}Summarizing File System Events}{50}{section.6.2}
+\contentsline {section}{\numberline {6.3}Summarizing User Trends}{51}{section.6.3}
+\contentsline {section}{\numberline {6.4}Sufficiently Summarized Information}{52}{section.6.4}
+\contentsline {chapter}{\numberline {7}Implementation}{53}{chapter.7}
+\contentsline {section}{\numberline {7.1}The Query System and The Summary Objects}{54}{section.7.1}
+\contentsline {section}{\numberline {7.2}The Database Manager}{54}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Running in \emph {Hide} Mode}{56}{subsection.7.2.1}
+\contentsline {chapter}{\numberline {8}Related Work}{57}{chapter.8}
+\contentsline {chapter}{\numberline {9}Summary of Contributions and Future Work}{59}{chapter.9}
+\contentsline {section}{\numberline {9.1}Contributions}{59}{section.9.1}
+\contentsline {section}{\numberline {9.2}Future Work}{59}{section.9.2}
+\contentsline {chapter}{References}{61}{section*.18}

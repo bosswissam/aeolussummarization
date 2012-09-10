@@ -1,16 +1,18 @@
 \chapter{Mint}\label{mint}
 
-Prior to the development of the summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these quesitons, I developed an Aeolus application based on the financial management service \emph{mint.com}\footnote{Available from \url{``http://www.mint.com''}.}; from here on we will refer to this application as the ``Mint application''. The \emph{Mint} application served as a case study and guided the development of the summarization system.
+Prior to the development of our summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these questions, I developed an Aeolus application based on the financial management service \emph{mint.com}\cite{mint}; from here on we will refer to this application as the ``Mint application'' or ``our application''. The \emph{Mint} application served as a case study and guided the development of the summarization system.
 
-In this chapter I present the Mint application model as well as some examples to how a summarization system could be used for this application.
+In this chapter I present the Mint application model and implementation, setting the stage for later chapters that discuss logging and summarization for this application.
 
 \section{Mint Model}
 
 Mint.com is an financial management service that provides its users with the ability to monitor their bank accounts across different banks from one place. It also allows users to run transaction analysis tools that will access the information of certain transactions for each bank for the user, and generate a result. In addition, Mint runs aggregate analysis for all user accounts.
 
-For example, Bob could sign up on www.mint.com and add his Bank of America account and his US Bank account for monitoring. This will cause our application to store credentials for both of these banks for Bob. Bob can then request a graph that presents his expenditures on food in the last week. Bob's actions would also affect the general aggregate analysis done over all Mint users.
+For example, Bob could sign up on our application and add his Bank of America account and his US Bank account for monitoring. This will cause our Mint application to store credentials for both of these banks for Bob. Bob can then request a graph that presents his expenditures on food in the last week, based on credit card transactions retrieved from his banks. Bob's usage of our application would also affect the general aggregate analysis done over all Mint users.
 
 This example gives us a starting idea of how should we build our authority structure. For instance, there should be a \emph{BOB-DATA} tag associated with Bob's information (e.g. expenditure statistics, transactions, etc.) that only a principal running on Bob's behalf can declassify. Note that Bob's password should never be revealed to Bob himself, neither should any of Bob's bank credential be revealed as well. Furthermore, there's a natural grouping of user data tags, and hence a super tag, \emph{ALL-USER-DATA}, could be useful to run the aggregate analysis tools for Mint.
+
+We can also see the need to use Aeolus' shared memory objects to store user session information, and use Aeolus' file system library to store persistent information on disk. Other important Aeolus' abstractions will come in handy as well, for example closures for authentication as well as reduced authority calls for processing Bob's history of transactions.
 
 In this section we examine the security model of the application more closely.
 
@@ -43,11 +45,12 @@ An intuitive way to list all necessary\footnote{Neccessary by good design. The a
     necessary to ensure no information leaks.
 \end{description}
 
-Similarly, to separate data in the system according to its purpose, (e.g. user password, credentials to download bank transactions, etc..), the application employs the following tags:
+Similarly, to separate data in the system according to its purpose, (e.g. user password, user bank credentials, etc..), the application employs the following tags:
 \begin{description}
   \item[User data tags] \ \\
     Each of these tags is associated with data 
     carrying a particular user's information.
+    For example, history of a user's transactions.
     Reading (or modifying) user information
     requires declassifying (or endorsing)
     a user data tag.
@@ -56,8 +59,9 @@ Similarly, to separate data in the system according to its purpose, (e.g. user p
     with data carrying a particular bank's information.
     Reading a user's bank credentials
     requires declassifying a bank data tag. This tag is
-    important so that only a Bank's closure is able
-    to access a user's bank password.
+    important so that only a bank's closure (a closure
+    bound to the bank's principal) is able
+    to access a user's bank credentials for authentication.
   \item[All-Users-Data tag] \ \\ 
     This tag is a super tag for all the user 
     tags.
@@ -69,14 +73,12 @@ Similarly, to separate data in the system according to its purpose, (e.g. user p
     this tag.
   \item[Authentication tag] \ \\
     This tag is associated with user's Mint passwords.
-    Authenticating a user's mint credentials
+    Authenticating a user's Mint credentials
     requires declassifying this tag.
     This tag is important to prevent release of
     a user's password to someone who might have
     gained access to their account.
 \end{description}
-
-The following two sections explain how data is stored in the system and which tag operations are carried out in a typical workflow.
 
 \subsection{Files}\label{sec:mint-fs}
 
@@ -84,7 +86,7 @@ The following two sections explain how data is stored in the system and which ta
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-filesystem}
 \caption*{Mint File System Hierarchy}
-\caption[Mint File System Hierarchy]{In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added accounts in both banks to his Mint account, and Dan added a US BANK account to his Mint account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both \emph{USER-DATA} tags.}
+\caption[Mint File System Hierarchy]{In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added credentials for Bank of America and US Bank to his account, and Dan added credentials for US BANK to his account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both user data tags. \emph{t$_{BANK-OF-AMERICA}$} and \emph{t$_{US-BANK}$} are both bank data tags. \emph{t$_{AUTH}$} is the authentication tag, and \emph{t$_{ALL-USERS-DATA}$} tag is a supertag as shown in figure \ref{fig:mint-auth-state-model}.}
 \label{fig:mint-fs}
 \end{figure}
 
@@ -96,9 +98,8 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
     This is the root directory for the Mint 
     application.
     The secrecy label is empty, the integrity 
-    label contains the \emph{ALL-USERS-DATA}, 
-    \emph{ALL-BANKS-DATA} and 
-    \emph{ALL-USERS-AUTH} tags.
+    label contains the \emph{ALL-USERS-DATA} and
+    the \emph{ALL-BANKS-DATA} tags.
   \begin{description}
     \item[\emph{banks-dir}] \ \\
       Contains a \emph{bank-info} file for each 
@@ -151,13 +152,11 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-shared-state}
 \caption*{Mint Shared State Objects}
-\caption[Mint Shared State Objects]{This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username.}
+\caption[Mint Shared State Objects]{This figure illustrates what shared memory objects the Mint application uses. This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username. Meanwhile, Dan's session is still active, his session state object is included in shared memory.}
 \label{fig:mint-ss}
 \end{figure}
 
-The application uses Aeolus shared memory objects for storing session state for users and bank closures.
-
-To allow for quick responsiveness to user requests, the application stores some key information in shared memory. Figure \ref{fig:mint-ss} diagrams the different shared memory object, their relations what information they store.
+To allow for quick responsiveness to user requests, the application stores some key information in shared memory. Figure \ref{fig:mint-ss} diagrams the different shared memory object, their relations and what information they store.
 
 A \emph{Mint Server State} object that has null labels is stored as the Aeolus \emph{root} object and contains the following objects:
 
@@ -169,7 +168,7 @@ A \emph{Mint Server State} object that has null labels is stored as the Aeolus \
     it is working for. A bank closure has null
     labels.
     This object maps each bank name 
-    to a bank closure, and has null labels.
+    to a bank closure, and has null labels itself.
   \item[Session Objects Map] \ \\
     This object maps a username to a session 
     object.
@@ -181,12 +180,15 @@ A \emph{Mint Server State} object that has null labels is stored as the Aeolus \
     (PID). 
     A \emph{session object} has the 
     \emph{USER-DATA} tag in both its labels.
-    A \emph{bank credential} object contains 
-    the user's username and password for that
-    particular bank. It has a \emph{BANK-DATA}
-    tag and a \emph{USER-DATA} tag in its 
-    secrecy label, and a \emph{USER-DATA} tag
-    in its integrity label.
+    \begin{description}
+      \item[Bank Credentials] \ \\ 
+        A \emph{bank credentials} object contains 
+        the user's username and password for that
+        particular bank. It has a \emph{BANK-DATA}
+        tag and a \emph{USER-DATA} tag in its 
+        secrecy label, and a \emph{USER-DATA} tag
+        in its integrity label.
+    \end{description}
   \item[User Tags Map] \ \\
     The application stores the tag for each user 
     that has an active session, this allows the 
@@ -211,7 +213,7 @@ A \emph{Mint Server State} object that has null labels is stored as the Aeolus \
 \section{Implementation}
 \label{mint:impl}
 
-The application server runs on a VN, and receives user requests via RPC. Users can sign up, login, logout, register a bank and retrieve statistics. A typical flow of RPC calls is shown in figure d. 
+The application server runs on a VN, and receives user requests via RPC. Users can sign up, login, logout, register a bank and retrieve expenditure statistics.
 
 At startup, the system registers a number of banks. These are the banks which the users can later add accounts for on their Mint account. The system is now ready to accept users.
 
@@ -253,7 +255,7 @@ Users can then log in to modify their account and retrieve their information usi
     an exception otherwise.
 \end{description}
 
-Once a user logs in, they only have to include their \emph{username} in persuing requests to carry out different actions. In each of the following RPC calls, authentication is carried out by checking if the provided \emph{username} has a session that has not timed out yet (there is a last activity time associated with a session, and thus must not be older than a certain amount of time, e.g. 15 minutes).
+Once a user logs in, they only have to include their \emph{username} in pursuing requests to carry out different actions. In each of the following RPC calls, authentication is carried out by checking if the provided \emph{username} has a session that has not timed out yet (there is a last activity time associated with a session, and thus must not be older than a certain amount of time, e.g. 15 minutes).
 
 \begin{description}
   \item[\emph{addBank(username, bankName, bankUsername, bankPassword)}] \ \\
@@ -316,3 +318,5 @@ The use of a \emph{username} in the implementation of the RPC calls defined abov
 Another problem that comes up is related due to the assumption that the user is connecting from another Aeolus node. If this was not the case, i.e. the requests are coming from outside the Aeolus system, sensitive information would be exposed over the network (e.g. the user's Mint credentials), which wouldn't happen for RPCs within the Aeolus system because those are encrypted\footnote{Requests coming from outside the system could be RPC or HTTP requests.}.
 
 Both issues can be resolved by using standard cryptography mechanisms to encrypt and authenticate external communication. For example, encrypting all requests and replies coming in and out of the system and, in addition, sessions can be identified by unguessable temporary session-ids, and, those session-ids would be used to authenticate future requests in that session.
+
+Finally, the security of application can be improved by introducing more principals to the authority state model to make the information flow control more fine-grained. For example, we could separate the authority to register banks from the authority to authenticate users.

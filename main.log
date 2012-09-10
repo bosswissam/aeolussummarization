@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  7 SEP 2012 13:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  10 SEP 2012 11:17
 entering extended mode
  %&-line parsing enabled.
 **main
@@ -713,12 +713,7 @@ Chapter 1.
 
 
 
-] [10]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
-) [11]
+] [10]) [11]
 \openout2 = `chap2.aux'.
 
  (./chap2.tex
@@ -727,7 +722,7 @@ Chapter 2.
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 10.
 
-<figures/sysarch.pdf, id=190, 293.095pt x 204.765pt>
+<figures/sysarch.pdf, id=188, 293.095pt x 204.765pt>
 File: figures/sysarch.pdf Graphic file (type pdf)
  <use figures/sysarch.pdf>
 [12
@@ -735,26 +730,26 @@ File: figures/sysarch.pdf Graphic file (type pdf)
 
 
  <./figures/sysarch.pdf>] [13] [14] [15]
-<figures/event-logging-overview.pdf, id=254, 574.145pt x 188.705pt>
+<figures/event-logging-overview.pdf, id=252, 574.145pt x 188.705pt>
 File: figures/event-logging-overview.pdf Graphic file (type pdf)
 
 <use figures/event-logging-overview.pdf> [16]
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 112.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 113.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 124.
- [17 <./figures/event-logging-overview.pdf>]) [18]
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 125.
+ [17 <./figures/event-logging-overview.pdf>]) [18] [19]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
 Chapter 3.
-[19
+[20
 
 
 
@@ -762,291 +757,301 @@ Chapter 3.
 
 pdfTeX warning: pdflatex (file ./figures/mint-auth-state-model.pdf): PDF inclus
 ion: found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-auth-state-model.pdf, id=296, 827.09pt x 382.22804pt>
+<figures/mint-auth-state-model.pdf, id=295, 827.09pt x 382.22804pt>
 File: figures/mint-auth-state-model.pdf Graphic file (type pdf)
 
-<use figures/mint-auth-state-model.pdf> [20 <./figures/mint-auth-state-model.pd
-f>] [21]
+<use figures/mint-auth-state-model.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 32.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 32.
+[21] [22 <./figures/mint-auth-state-model.pdf>]
 
 pdfTeX warning: pdflatex (file ./figures/mint-filesystem.pdf): PDF inclusion: f
 ound PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-filesystem.pdf, id=318, 554.07pt x 273.02pt>
+<figures/mint-filesystem.pdf, id=317, 554.07pt x 273.02pt>
 File: figures/mint-filesystem.pdf Graphic file (type pdf)
 
 <use figures/mint-filesystem.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22] [23 <./figures/mint-filesystem.pdf>]
+[23] [24 <./figures/mint-filesystem.pdf>]
 
 pdfTeX warning: pdflatex (file ./figures/mint-shared-state.pdf): PDF inclusion:
  found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-shared-state.pdf, id=349, 1031.855pt x 493.042pt>
+<figures/mint-shared-state.pdf, id=351, 1031.855pt x 493.042pt>
 File: figures/mint-shared-state.pdf Graphic file (type pdf)
 
-<use figures/mint-shared-state.pdf> [24 <./figures/mint-shared-state.pdf>]
-[25] [26] [27]) [28]
+<use figures/mint-shared-state.pdf> [25 <./figures/mint-shared-state.pdf>]
+[26] [27] [28]) [29]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Chapter 4.
-[29
 
-
-
-]
-Overfull \hbox (55.9798pt too wide) in paragraph at lines 17--17
+Overfull \hbox (55.9798pt too wide) in paragraph at lines 13--13
 []\T1/pcr/m/n/12 ---------+-----------+-------+------------+-------------------
 ------[] 
  []
 
 
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 18--18
+Overfull \hbox (48.7798pt too wide) in paragraph at lines 14--14
 [] \T1/pcr/m/n/12 {11}    | {}        | Alex  | DECLASSIFY | 2012-06-13 21:57:0
 6.876[] 
  []
 
 
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 19--19
+Overfull \hbox (48.7798pt too wide) in paragraph at lines 15--15
 [] \T1/pcr/m/n/12 {11}    | {}        | Aline | DECLASSIFY | 2012-06-13 21:57:0
 4.852[] 
  []
 
 
-Overfull \hbox (41.5798pt too wide) in paragraph at lines 20--20
+Overfull \hbox (41.5798pt too wide) in paragraph at lines 16--16
 [] \T1/pcr/m/n/12 {11}    | {}        | Jack  | DECLASSIFY | 2012-06-13 21:56:4
 5.73[] 
  []
 
 
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 21--21
+Overfull \hbox (48.7798pt too wide) in paragraph at lines 17--17
 [] \T1/pcr/m/n/12 {11}    | {}        | Jack  | DECLASSIFY | 2012-06-13 21:56:4
 2.691[] 
  []
 
 
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 22--22
+Overfull \hbox (48.7798pt too wide) in paragraph at lines 18--18
 [] \T1/pcr/m/n/12 {11}    | {}        | Mike  | DECLASSIFY | 2012-06-13 21:56:4
 0.649[] 
  []
 
 
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 23--23
+Overfull \hbox (48.7798pt too wide) in paragraph at lines 19--19
 [] \T1/pcr/m/n/12 {11}    | {}        | Mark  | DECLASSIFY | 2012-06-13 21:56:3
 9.624[] 
  []
 
-<figures/activity.pdf, id=401, 467.24562pt x 644.4075pt>
+[30
+
+
+
+] <figures/activity.pdf, id=402, 467.24562pt x 644.4075pt>
 File: figures/activity.pdf Graphic file (type pdf)
 
 <use figures/activity.pdf>
 
-LaTeX Warning: Float too large for page by 15.63367pt on input line 36.
+LaTeX Warning: Float too large for page by 15.63367pt on input line 33.
 
-[30] [31 <./figures/activity.pdf>]
+[31] [32 <./figures/activity.pdf>]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 46.
 
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 60--60
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 61--61
 [] \T1/pcr/m/n/12 pid | username | substring |        signed_up        | event_
-counter 
+counter[] 
  []
 
 
-Overfull \hbox (70.37979pt too wide) in paragraph at lines 61--61
+Overfull \hbox (70.37979pt too wide) in paragraph at lines 62--62
 []\T1/pcr/m/n/12 -----+----------+-----------+-------------------------+-------
 --------[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 62--62
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 63--63
 []   \T1/pcr/m/n/12 6 | wissam   | 4         | 2012-06-13 21:56:36.207 |       
     131[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 63--63
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 64--64
 []   \T1/pcr/m/n/12 9 | david    | 7         | 2012-06-13 21:56:36.207 |       
     445[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 64--64
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 65--65
 []  \T1/pcr/m/n/12 12 | dan      | 10        | 2012-06-13 21:56:37.338 |       
     793[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 65--65
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 66--66
 []  \T1/pcr/m/n/12 13 | Bob      | 11        | 2012-06-13 21:56:37.338 |       
    1148[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 66--66
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 67--67
 []  \T1/pcr/m/n/12 14 | Charlie  | 12        | 2012-06-13 21:56:37.338 |       
    1211[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 67--67
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 68--68
 []  \T1/pcr/m/n/12 15 | Eve      | 13        | 2012-06-13 21:56:37.338 |       
    1274[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 68--68
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 69--69
 []  \T1/pcr/m/n/12 16 | Ted      | 14        | 2012-06-13 21:56:37.338 |       
    1337[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 69--69
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 70--70
 []  \T1/pcr/m/n/12 17 | Jon      | 15        | 2012-06-13 21:56:37.338 |       
    1400[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 70--70
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 71--71
 []  \T1/pcr/m/n/12 18 | Jack     | 16        | 2012-06-13 21:56:37.338 |       
    1463[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 71--71
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 72--72
 []  \T1/pcr/m/n/12 19 | James    | 17        | 2012-06-13 21:56:37.338 |       
    1526[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 72--72
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 73--73
 []  \T1/pcr/m/n/12 20 | Mike     | 18        | 2012-06-13 21:56:37.338 |       
    1589[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 73--73
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 74--74
 []  \T1/pcr/m/n/12 21 | Mark     | 19        | 2012-06-13 21:56:37.338 |       
    1652[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 74--74
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 75--75
 []  \T1/pcr/m/n/12 22 | Jamie    | 20        | 2012-06-13 21:56:38.578 |       
    1715[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 75--75
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 76--76
 []  \T1/pcr/m/n/12 23 | Dave     | 21        | 2012-06-13 21:56:38.578 |       
    1778[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 76--76
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 77--77
 []  \T1/pcr/m/n/12 24 | Tod      | 22        | 2012-06-13 21:56:38.578 |       
    1841[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 77--77
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 78--78
 []  \T1/pcr/m/n/12 25 | Chris    | 23        | 2012-06-13 21:56:38.578 |       
    1904[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 78--78
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 79--79
 []  \T1/pcr/m/n/12 26 | Ron      | 24        | 2012-06-13 21:56:38.578 |       
    1967[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 79--79
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 80--80
 []  \T1/pcr/m/n/12 27 | Phil     | 25        | 2012-06-13 21:56:38.578 |       
    2030[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 80--80
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 81--81
 []  \T1/pcr/m/n/12 28 | Tracy    | 26        | 2012-06-13 21:56:38.578 |       
    2093[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 81--81
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 82--82
 []  \T1/pcr/m/n/12 29 | Leah     | 27        | 2012-06-13 21:56:38.578 |       
    2156[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 82--82
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 83--83
 []  \T1/pcr/m/n/12 30 | Kevin    | 28        | 2012-06-13 21:56:38.578 |       
    2219[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 83--83
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 84--84
 []  \T1/pcr/m/n/12 31 | Rose     | 29        | 2012-06-13 21:56:38.578 |       
    2282[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 84--84
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 85--85
 []  \T1/pcr/m/n/12 32 | Dina     | 30        | 2012-06-13 21:56:38.578 |       
    2345[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 85--85
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 86--86
 []  \T1/pcr/m/n/12 33 | Abby     | 31        | 2012-06-13 21:56:38.578 |       
    2408[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 86--86
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 87--87
 []  \T1/pcr/m/n/12 34 | Helen    | 32        | 2012-06-13 21:56:38.578 |       
    2471[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 87--87
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 88--88
 []  \T1/pcr/m/n/12 35 | Alex     | 33        | 2012-06-13 21:56:38.578 |       
    2534[] 
  []
 
 
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 88--88
+Overfull \hbox (63.1798pt too wide) in paragraph at lines 89--89
 []  \T1/pcr/m/n/12 36 | Aline    | 34        | 2012-06-13 21:56:38.578 |       
    2597[] 
  []
 
-[32] [33]) [34]
+[33] [34]) [35]
 \openout2 = `chap5.aux'.
 
  (./chap5.tex
 Chapter 5.
-[35
+[36
 
 
 
 ]
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
- [36] [37] [38] [39] [40] [41] [42]) [43]
+ [37] [38]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 56.
+ [39] [40] [41] [42] [43]) [44]
 \openout2 = `chap6.aux'.
 
  (./chap6.tex
 Chapter 6.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 14.
-[44
+[45
 
 
 
-] [45] [46] [47] [48] [49] [50]) [51]
+] [46] [47] [48] [49] [50] [51]) [52]
 \openout2 = `chap7.aux'.
 
  (./chap7.tex
@@ -1055,105 +1060,102 @@ Chapter 7.
 
 pdfTeX warning: pdflatex (file ./figures/impl-sysarch.pdf): PDF inclusion: foun
 d PDF version <1.5>, but at most version <1.4> allowed
-<figures/impl-sysarch.pdf, id=628, 504.57983pt x 442.83426pt>
+<figures/impl-sysarch.pdf, id=630, 504.57983pt x 442.83426pt>
 File: figures/impl-sysarch.pdf Graphic file (type pdf)
 
-<use figures/impl-sysarch.pdf> [52
+<use figures/impl-sysarch.pdf> [53
 
 
 
- <./figures/impl-sysarch.pdf>] [53]
-Underfull \hbox (badness 2261) in paragraph at lines 54--62
+ <./figures/impl-sysarch.pdf>] [54]
+Underfull \hbox (badness 2261) in paragraph at lines 52--60
 []\T1/ppl/m/n/12 Modifies the query to ex-clude any marked events. For ex-am-
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 54--62
+Underfull \hbox (badness 4144) in paragraph at lines 52--60
 \T1/ppl/m/n/12 ple, if the com-bined query text was ``[][][][][][][][][][][]
  []
 
 
-Underfull \hbox (badness 7888) in paragraph at lines 54--62
+Underfull \hbox (badness 7888) in paragraph at lines 52--60
 [][][][][][][][][][][][][][][]\T1/ppl/m/n/12 '' the DBM mod-i-fies it to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--62
+Underfull \hbox (badness 10000) in paragraph at lines 52--60
 \T1/ppl/m/n/12 the fol-low-ing ``[][][][][][][][][][][][][][][][][][][][][][][]
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--62
+Underfull \hbox (badness 10000) in paragraph at lines 52--60
 [][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 
-Underfull \hbox (badness 6625) in paragraph at lines 54--62
+Underfull \hbox (badness 6625) in paragraph at lines 52--60
 [][][][][][][][][][][][][][][][][][][]\T1/ppl/m/n/12 ''. We use a
  []
 
 
-Overfull \hbox (21.74667pt too wide) in paragraph at lines 72--76
+Overfull \hbox (21.74667pt too wide) in paragraph at lines 70--74
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--76
+Underfull \hbox (badness 10000) in paragraph at lines 70--74
 
  []
 
-[54]
-LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 94.
-
-Underfull \hbox (badness 1881) in paragraph at lines 96--97
+[55]
+Underfull \hbox (badness 1881) in paragraph at lines 94--95
 \T1/ppl/m/n/12 This is im-ple-mented by in-tro-duc-ing a two views, LOG-UNMARKE
 D and
  []
 
-) [55]
+) [56]
 \openout2 = `chap8.aux'.
 
  (./chap8.tex
 Chapter 8.
-) [56
+) [57
 
 
 
-] [57]
+] [58]
 \openout2 = `chap9.aux'.
 
  (./chap9.tex
 Chapter 9.
-[58
+[59
 
 
 
-]) [59]
+]) [60]
 \openout2 = `biblio.aux'.
 
  (./biblio.tex (./main.bbl
-Underfull \hbox (badness 1048) in paragraph at lines 24--29
+Underfull \hbox (badness 1048) in paragraph at lines 27--32
 []\T1/ppl/m/n/12 Winnie Cheng, Dan R. K. Ports, David Schultz, Vic-to-ria Popic
 , Aaron
  []
 
-[60
+[61
 
 
 
-])) [61] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux)
+])) [62] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux)
 (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux)
 (./chap7.aux) (./chap8.aux) (./chap9.aux) (./biblio.aux)) ) 
 Here is how much of TeX's memory you used:
- 9636 strings out of 493848
- 140234 string characters out of 1152823
- 283988 words of memory out of 3000000
- 12324 multiletter control sequences out of 15000+50000
- 38928 words of font info for 90 fonts, out of 3000000 for 9000
+ 9635 strings out of 493848
+ 140219 string characters out of 1152823
+ 285988 words of memory out of 3000000
+ 12325 multiletter control sequences out of 15000+50000
+ 38307 words of font info for 88 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,7n,44p,1153b,1733s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,7n,44p,1153b,1725s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-te
 xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/eu
@@ -1164,9 +1166,9 @@ ts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/pala
 tino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb>
 </usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf
 -texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (61 pages, 989023 bytes).
+Output written on main.pdf (62 pages, 989158 bytes).
 PDF statistics:
  971 PDF objects out of 1000 (max. 8388607)
- 263 named destinations out of 1000 (max. 500000)
+ 262 named destinations out of 1000 (max. 500000)
  476 words of extra memory for PDF output out of 10000 (max. 10000000)
 

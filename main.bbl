@@ -2,6 +2,9 @@
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
 \begin{thebibliography}{10}
 
+\bibitem{mint}
+
+
 \bibitem{ids}
 Julia Allen, Alan Christie, William Fithen, John McHugh, Jed Pickel, and
   Ed~Stoner.
@@ -29,8 +32,8 @@ Winnie Cheng, Dan R.~K. Ports, David Schultz, Victoria Popic, Aaron Blankstein,
 
 \bibitem{cheng}
 Winnie Wing-Yee Cheng.
-\newblock {\em Information Flow for Secure Ditributed Applications}.
-\newblock {{Ph.D.}}, MIT, Cambridge, MA, USA, August 2009.
+\newblock {\em Information Flow for Secure Distributed Applications}.
+\newblock {Ph.D.}, MIT, Cambridge, MA, USA, August 2009.
 \newblock Also as Technical Report {MIT-CSAIL-TR-2009-040}.
 
 \bibitem{ai}

@@ -1,6 +1,6 @@
 \chapter{Auditing Using Summarization}
 
-In this chapter give examples of how our system can be used to summarize and access information for the Mint application, as well as mark certain events.
+In this chapter we give examples of how our system can be used to summarize and access information for the Mint application, as well as mark certain events.
 
 \section{Summarizing User Sessions}
 \label{sum:sessions}
@@ -24,21 +24,19 @@ system.addQuery(``user-info'', users_query);
 \end{lstlisting}
 
 \noindent
-This query is based on logging events when users sign up as described in section \ref{audit:mint-example}. The \emph{app\_args} attribute contains three pieces of information; the username, principal ID, and data tag, as a comma-delimited string.
-
-This query produces a tuple with the principal ID in the first column, data tag in the second column and event\_counter of the signup event in the third column for a particular user. It does so by looking for signup events, which have the attribute \emph{app\_op} as ``mint-user-signup'', for a particular username, stored in the first index of the \emph{app\_args} attribute. 
+This query is based on logging events when users sign up as described in section \ref{audit:mint-example}. The \emph{app\_args} attribute contains three pieces of information; the username, principal ID, and data tag, as a comma-delimited string. The query produces a tuple with the principal ID in the first column, data tag in the second column and event\_counter of the signup event in the third column for a particular user. It does so by looking for signup events, which have the attribute \emph{app\_op} as ``mint-user-signup'', for a particular username, stored in the first index of the \emph{app\_args} attribute. 
 
 We now add some queries that will help identify the logins and logouts for a particular user:
 
 \begin{lstlisting}[language=Java]
 
-/**
- * When a user, say Bob,  logs in, we execute the following code:
- * AeolusLib.createEvent(``mint-user-login'', Arrays.asList(new String[]{``Bob''}));
- * and similarly for logouts.
-*/
 
-// The following query produces a tuple that contains the login
+// When a user, say Bob,  logs in, we execute the following code:
+// AeolusLib.createEvent(``mint-user-login'', Arrays.asList(new String[]{``Bob''}));
+// and similarly for logouts.
+
+// The following query produces a tuple that contains 
+// the login
 // times and event_counters for a particular user.
 String user_logins = ``select timestamp as start, event_counter from events where app_op='mint-user-login' and app_arg[0]=?'';
 
@@ -52,7 +50,7 @@ system.addQuery(``logouts'', user_logouts);
 \end{lstlisting}
 
 \noindent
-We assume that there is a one-to-one pairing between user login events and user logout events. Users cannot login if they are already logged in, and they are logged out after a certain period of time. Hence, for events far enough in the past, this is a fair assumption to make. We can now use the information from those queries to identify Bob's sessions:
+Users cannot login if they are already logged in, and they are logged out after a certain period of time. Hence, for events far enough in the past, we can assume that there is a one-to-one pairing between user login events and user logout events. We can now use the information from those queries to identify Bob's sessions:
 
 \begin{lstlisting}[language=Java]
 // A ResultSet is a set of records.
@@ -77,7 +75,7 @@ Timestamp end_time = bob_logouts.getTimestamp(2);
 \noindent
 A ResultSet is a set of records. Calling the \emph{next()} method on the ResultSet objects move their cursor to the first record. We first make sure that Bob logged in to our system once in the past and then logged out. We then retrieve information from the ResultSet using the \lstinline$getLong()$ and \lstinline$getTimestamp()$. These methods retrieve a value at the given column number from the ResultSet and cast those values to their relevant types. Details of the ResultSet class and how its methods work can be found in \cite{jdoc}.
 
-Table \ref{table:user-sessions} shows a possible table that contains a list of user sessions. We are now left with the problem of identifying the different actions that took place within any sessoin (identifiable by a start and end counters).
+Table \ref{table:user-sessions} shows a possible table that contains a list of user sessions. We are now left with the problem of identifying the different actions that took place within any sessoin (identifiable by a start event\_counter and an end event\_counter).
 
 \begin{table}
 \begin{verbatim}
@@ -120,7 +118,7 @@ String user_session_actions_query = ``select app_op from events where app_op lik
 system.addQuery(``user-sessions-actions'', user_sessions_actions_query);
 \end{lstlisting}
 
-Now that we've identified one of Bob's sessions, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session. For each session we produce a summary that contains the username as well as the actions carried out, and the event counters and timestamps that identify the start and end of that session.
+Now that we've identified one of Bob's sessions, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session. For each session we produce a summary that contains the username, the actions carried out, and the event\_counters and timestamps that identify the start and end of that session.
 
 In this example, and the ones that follow, we assume that the method \emph{process(events)} is a user-defined method that  processes a set of events and produces a string summary of those events. In this example, such a summary string would be the comma-delimited list of activites requested by the user in this session. For example, if a user registers Bank of America to their account and downloads all of their transactions in one session, the \emph{process()} method will produce the following summary for that session ``addBank-bankofamerica,downloadTransactions''.
 
@@ -135,11 +133,11 @@ so.addSummary(``user-session-summary'', String.format(``\%s, \%d, \%d, \%s, \%s'
 \end{lstlisting}
 
 \noindent
-Finally, we produced a summary for Bob's actions for his first session. This summary contains the username, start and end timestamps and event counters of the session, as well as all the user actions that took place in that session.
+In this section, we showed how to produce a summary for Bob's actions for his first session. This summary would contain Bob's username, start and end timestamps and event counters of his first session, as well as all Bob's actions in that session.
 
 \section{Summarizing File System Events}
 \label{sum:fs}
-In this example we explore how to summarize information about file system events; we show how to store information about file accesses in the last week\footnote{The \emph{DATE\_SUB} substracts an interval of time from a date, as described in \cite{pgsql-gen}.}.
+In this example we explore how to summarize information about file system events; we show how to store information about file accesses in the last week.
 
 \begin{lstlisting}[language=Java]
 String fs_access = ``select * from events where filename<>'' and DATE_SUB(?, INTERVAL 7 DAY)'';
@@ -155,7 +153,7 @@ so.addSummary(``File accesses'', String.format(``\%d, \%s'', now, summary));
 \end{lstlisting}
 
 \noindent
-This will store a summary of the file system events in the last week. Only file system events use the \emph{filename} attribute in the LOG, hence we use that to retrieve all file system events.
+The above code will store a summary of the file system events in the last week. Only file system events use the \emph{filename} attribute in the LOG, hence we use that to retrieve all file system events\footnote{The \emph{DATE\_SUB} substracts an interval of time from a date, as described in \cite{pgsql-gen}.}.
 
 After producing the summary, we might wish to mark most file system events, except for the ones that change the file system hierarchy (adding or removing directories or files). We could do this as follows:
 
@@ -167,7 +165,7 @@ so.mark(``protect-fs-events'', new Object[]{``CREATE_DIRECTORY'', ``REMOVE_DIREC
 
 \section{Summarizing User Trends}
 
-As a final example, we will show how records in the SUMMARY table itself could be summarized. In this section we will further summarize session summaries. To build on what we encountered in section \ref{sum:sessions}, let's assume that more of Bob's sessions have been summarized. We can now coalesce them to detail Bob's activity per week. The following code shows how to do so for the last week.
+As a final example, we will show how records in the SUMMARY table itself could be summarized, producing \emph{summaries of summaries}. In this section we will further summarize session summaries. To build on what we encountered in section \ref{sum:sessions}, let's assume that more of Bob's sessions have been summarized. We can now coalesce them to detail Bob's activity per week. The following code shows how to do so for the last week.
 
 \begin{lstlisting}[language=Java]
 
