@@ -1,5 +1,14 @@
 % -*- Mode:TeX -*-
 
+%% IMPORTANT: The official thesis specifications are available at:
+%%            http://libraries.mit.edu/archives/thesis-specs/
+%%
+%%            Please verify your thesis' formatting and copyright
+%%            assignment before submission.  If you notice any
+%%            discrepancies between these templates and the 
+%%            MIT Libraries' specs, please let us know
+%%            by e-mailing thesis@mit.edu
+
 %% The documentclass options along with the pagestyle can be used to generate
 %% a technical report, a draft copy, or a regular thesis.  You may need to
 %% re-specify the pagestyle after you \include  cover.tex.  For more
@@ -16,26 +25,8 @@
 %% Page Intentionally Left Blank'', use the ``leftblank'' option, as
 %% above. 
 
-%\documentclass[12pt,twoside]{mitthesis}
-\documentclass[12pt]{mitthesis}
-%\documentclass[12pt,twoside,leftblank]{mitthesis}
-% NOTE! For printing two-sided, include twoside in document class!
+\documentclass[12pt,twoside]{mitthesis}
 \usepackage{lgrind}
-%\usepackage{mathpazo}
-
-%\usepackage[T1]{fontenc}
-%\usepackage[sc]{mathpazo}
-%\linespread{1.05} 
-% Euler for math | Palatino for rm | Helvetica for ss | Courier for tt
-\renewcommand{\rmdefault}{ppl} % rm
-%\linespread{1.05}        % Palatino needs more leading
-\usepackage[scaled]{helvet} % ss
-\usepackage{courier} % tt
-\usepackage{euler} % math
-%\usepackage{eulervm} % a better implementation of the euler package (not in gwTeX)
-\normalfont
-\usepackage[T1]{fontenc}
-\usepackage{subfig}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{listings}
@@ -49,115 +40,49 @@
 \usepackage{pdfpages}
 \usepackage{epstopdf}
 \usepackage{url}
-%\setcounter{topnumber}{2}
-%\setcounter{bottomnumber}{2}
-%\setcounter{totalnumber}{4}
-%\renewcommand{\topfraction}{0.85}
-%\renewcommand{\bottomfraction}{0.85}
-%\renewcommand{\textfraction}{0.15}
-%\renewcommand{\floatpagefraction}{0.7}
+%\usepackage[numbered]{bookmark}
+\usepackage[numbered]{tocbibind}
 
-\newcommand{\opref}[1]{\nohyphens{#1}}
-\newcommand{\fieldref}[1]{\nohyphens{\tt #1}}
-\newcommand{\opfield}[2]{\fieldref{#1} & \opref{#2} \\ \hline}
+\pagestyle{plain}
 
-\newcommand{\inst}[1]{{\em #1}}
-\newcommand{\bnfmeta}[1]{{\Large #1}}
-\newcommand{\bnfterm}[1]{{\sf\bfseries #1}}
+%% This bit allows you to either specify only the files which you wish to
+%% process, or `all' to process all files which you \include.
+%% Krishna Sethuraman (1990).
 
-\newcommand{\tablehead}[1]{{\bf #1}}
 \hypersetup{
     colorlinks=false,
     pdfborder={0 0 0},
 }
 
-\sloppy
 
-\lstset{language=Python}
-\DeclareGraphicsExtensions{.pdf}
-\graphicspath{{./performance/pdf/}{./figures/pdf-perm/}{./figures/dot/}}
-\pagestyle{plain}
+\typein [\files]{Enter file names to process, (chap1,chap2 ...), or `all' to
+process all files:}
+\def\all{all}
+\ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
 
-\newenvironment{pseudo}
-               {\begin{figure}[ht]
-                   \rule{\textwidth}{1pt}
-                   }               
-               {\rule{\textwidth}{1pt} 
-               \end{figure}}
-\newenvironment{wspec}[0]
-               {\begin{center}\begin{minipage}{.9\textwidth}
-               }{\end{minipage}
-                 \end{center}
-               }
 
-\def\sectionautorefname{Section}
-\def\chapterautorefname{Chapter}
-\def\subsectionautorefname{Section}
-\def\subsubsectionautorefname{Section}
-
-\usepackage[numbered]{bookmark}
 %\makeatletter
 %\usepackage{etoolbox}
-%\pretocmd{\abstract}{%
+%\pretocmd{\listoffigures}{%
 %  \if@openright\cleardoublepage\else\clearpage\fi
-%  \pdfbookmark[0]{\abstractname}{abs}%
+%  \pdfbookmark[0]{\listfigurename}{lof}%
 %}{}{}%
 %\makeatother
 
-\makeatletter
-\usepackage{etoolbox}
-\pretocmd{\listoffigures}{%
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \pdfbookmark[0]{\listfigurename}{lof}%
-}{}{}%
-\makeatother
-
-\makeatletter
-\usepackage{etoolbox}
-\pretocmd{\listoftables}{%
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \pdfbookmark[0]{\listtablename}{lot}%
-}{}{}%
-\makeatother
-
-
-\lstset{
-  basicstyle=\ttfamily \small,
-  showstringspaces=false,
-  linewidth=0.9\textwidth,
-  breaklines=true,
-  breakatwhitespace=true,
-}
-
-\lstdefinelanguage{ANTLR}{
-  basicstyle=\ttfamily \footnotesize,
-  keywordstyle=\bf,
-  morekeywords={},
-  stringstyle=\bf,
-  morestring=[b]",
-  morestring=
-}
-
-\lstdefinelanguage{WSL}{
-  basicstyle=\ttfamily\small,
-  keywordstyle=\bf\rmfamily,
-  keywordstyle=[2]\bf\rmfamily,
-  morekeywords={[2]ON, ADD, REMOVE},
-  morekeywords={OR, AND, IN, CONTAINS},
-%  frameround=tttt,
-%  frame=tlrb,
-%  linewidth=0.9\textwidth,
-%  xleftmargin=.5em,
-%  breaklines=true,
-%  breakatwhitespace=true
-}
+%\makeatletter
+%\usepackage{etoolbox}
+%\pretocmd{\listoftables}{%
+%  \if@openright\cleardoublepage\else\clearpage\fi
+%  \pdfbookmark[0]{\listtablename}{lot}%
+%}{}{}%
+%\makeatother
 
 \renewcommand{\bibname}{References}
 
 \begin{document}
 
 \include{cover}
-% Some departments (e.g. 5) require an additional signature page.  See
+\% Some departments (e.g. 5) require an additional signature page.  See
 % signature.tex for more information and uncomment the following line if
 % applicable.
 % \include{signature}
@@ -176,7 +101,7 @@
 %\include{appa}
 %\include{appb}
 \phantomsection
-\addcontentsline{toc}{chapter}{References}
 \include{biblio}
+
 \end{document}
 

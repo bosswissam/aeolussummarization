@@ -1,6 +1,6 @@
 \chapter{Mint}\label{mint}
 
-Prior to the development of our summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these questions, I developed an Aeolus application based on the financial management service \emph{mint.com}\cite{mint}; from here on we will refer to this application as the ``Mint application'' or ``our application''. The \emph{Mint} application served as a case study and guided the development of the summarization system.
+Prior to the development of our summarization system, it was important to develop a sense for what is needed from such a system, and what problems can it solve. To answer these questions, I developed an Aeolus application based on the financial management service \emph{mint.com}; from here on we will refer to this application as the ``Mint application'' or ``our application''. The \emph{Mint} application served as a case study and guided the development of the summarization system.
 
 In this chapter I present the Mint application model and implementation, setting the stage for later chapters that discuss logging and summarization for this application.
 
@@ -21,8 +21,7 @@ In this section we examine the security model of the application more closely.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-auth-state-model}
-\caption*{Mint Authority State Model}
-\caption[Mint Authority State Model]{This diagram illustrates the authority state model of the Mint application in an example where two banks are registered at the application, Bank of America and US Bank. Users Bob and Dan have both signed up. Principals are denoted \emph{P$_{<name>}$} and tags are denoted \emph{t$_{<name>}$}.}
+\caption[Mint Authority State Model]{Mint Authority State Model. This diagram illustrates the authority state model of the Mint application in an example where two banks are registered at the application, Bank of America and US Bank. Users Bob and Dan have both signed up. Principals are denoted \emph{P$_{<name>}$} and tags are denoted \emph{t$_{<name>}$}.}
 \label{fig:mint-auth-state-model}
 \end{figure}
 
@@ -85,8 +84,7 @@ Similarly, to separate data in the system according to its purpose, (e.g. user p
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-filesystem}
-\caption*{Mint File System Hierarchy}
-\caption[Mint File System Hierarchy]{In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added credentials for Bank of America and US Bank to his account, and Dan added credentials for US BANK to his account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both user data tags. \emph{t$_{BANK-OF-AMERICA}$} and \emph{t$_{US-BANK}$} are both bank data tags. \emph{t$_{AUTH}$} is the authentication tag, and \emph{t$_{ALL-USERS-DATA}$} tag is a supertag as shown in figure \ref{fig:mint-auth-state-model}.}
+\caption[Mint File System Hierarchy]{Mint File System Hierarchy. In continuation of the example in figure \ref{fig:mint-auth-state-model}, Bob added credentials for Bank of America and US Bank to his account, and Dan added credentials for US BANK to his account.Tags are shown under the secrecy label and integrity label columns, and are denoted \emph{t$_{<name>}$}. \emph{t$_{BOB}$} and \emph{t$_{DAN}$} are both user data tags. \emph{t$_{BANK-OF-AMERICA}$} and \emph{t$_{US-BANK}$} are both bank data tags. \emph{t$_{AUTH}$} is the authentication tag, and \emph{t$_{ALL-USERS-DATA}$} tag is a supertag as shown in figure \ref{fig:mint-auth-state-model}.}
 \label{fig:mint-fs}
 \end{figure}
 
@@ -151,8 +149,7 @@ The application uses Aeolus files for persistent storage. Figure \ref{fig:mint-f
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/mint-shared-state}
-\caption*{Mint Shared State Objects}
-\caption[Mint Shared State Objects]{This figure illustrates what shared memory objects the Mint application uses. This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username. Meanwhile, Dan's session is still active, his session state object is included in shared memory.}
+\caption[Mint Shared State Objects]{Mint Shared State Objects. This figure illustrates what shared memory objects the Mint application uses. This diagram builds on the example presented in Figure \ref{fig:mint-fs}. Bob's session had timed out, and no session object or last activity time is stored for his username. Meanwhile, Dan's session is still active, his session state object is included in shared memory.}
 \label{fig:mint-ss}
 \end{figure}
 
@@ -275,7 +272,7 @@ Once a user logs in, they only have to include their \emph{username} in pursuing
     The RPC thread uses the closure of the bank to
     connect to the bank and declassify the 
     information returned. The thread then
-    adds a user tag to it's secrecy label, 
+    adds a user tag to its secrecy label, 
     and uses a reduced authority call to 
     the public principal to process the information; 
     this ensures that information

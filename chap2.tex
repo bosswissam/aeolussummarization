@@ -8,12 +8,11 @@ This chapter presents an overview of the Aeolus security platform, on which our 
 \begin{figure}[ht]
 \centering
 \includegraphics[bb= 0 0 292 204, width=.5\textwidth]{figures/sysarch}
-\caption*{Aeolus System Architecture}
-\caption[Aeolus System Architecture]{High level overview of Aeolus system architecture.}
+\caption[Aeolus System Architecture]{Aeolus System Architecture. High level overview of Aeolus system architecture.}
 \label{fig:aeolus-sysarch}
 \end{figure}
 
-The Aeolus architecture is shown in figure \ref{fig:aeolus-sysarch}. The system consists of many nodes, each of which is trusted to enforce Aeolus's information flow rules.
+The Aeolus architecture is shown in figure \ref{fig:aeolus-sysarch}. The system consists of many nodes, each of which is trusted to enforce Aeolus information flow rules.
 
 Aeolus tracks information flow within each system node and between system nodes. Nodes in the system communicate via RPC messages, those messages are encrypted to protect their secrecy and integrity. Nodes outside the system are considered to be untrusted: information can flow outside of the system only if it is uncontaminated, and information arriving from the outside is marked as having no integrity.
 
@@ -37,7 +36,7 @@ Aeolus allows information to flow from a source \emph{S} to a destination \emph{
   INTEGRITY_{S} &\supseteq& INTEGRITY_{D}
 \end{eqnarray*}
 
-Threads in an Aeolus node run with security and integrity labels associated with them; objects such as files also have such labels. In Aeolus, a thread cannot modify labels of objects; however, the labels of threads can change, and hence a thread would have to modify it's own labels in order to read or write data. 
+Threads in an Aeolus node run with security and integrity labels associated with them; objects such as files also have such labels. In Aeolus, a thread cannot modify labels of objects; however, the labels of threads can change, and hence a thread would have to modify its own labels in order to read or write data. 
 
 Certain label manipulations, called \emph{privileged manipulations} are unsafe because they remove constraints on information flow:
 
@@ -99,8 +98,7 @@ Files are yet another way (RPCs, shared memory objects) through which Aeolus all
 \begin{figure}[h]
 \centering
 \includegraphics[height=8em]{figures/event-logging-overview}
-\caption*{Log Collection}
-\caption[Aeolus Log Collection]{Flow of logs to the log collection system.}
+\caption[Aeolus Log Collection]{Aeolus Log Collection. Flow of logs to the log collection system.}
 \label{fig:log-flow}
 \end{figure}
 

@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  10 SEP 2012 11:17
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.23)  12 SEP 2012 17:45
 entering extended mode
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -54,163 +54,13 @@ Package: lgrind 1997/01/30 v3.4 LGrind environment and supporting stuff
 \tb@x=\box30
 \TBw@d=\dimen103
 \@ts=\dimen104
-) (/usr/share/texmf-texlive/tex/latex/psnfss/helvet.sty
-Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+) (/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
-))
-(/usr/share/texmf-texlive/tex/latex/psnfss/courier.sty
-Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-(/usr/share/texmf-texlive/tex/latex/euler/euler.sty
-Package: euler 1995/03/05 v2.5
-
-Package: `euler' v2.5 <1995/03/05> (FJ and FMi)
-LaTeX Font Info:    Redeclaring symbol font `letters' on input line 35.
-LaTeX Font Info:    Encoding `OML' has changed to `U' for symbol font
-(Font)              `letters' in the math version `normal' on input line 35.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> U/eur/m/n on input line 35.
-LaTeX Font Info:    Encoding `OML' has changed to `U' for symbol font
-(Font)              `letters' in the math version `bold' on input line 35.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> U/eur/m/n on input line 35.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  U/eur/m/n --> U/eur/b/n on input line 36.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 49.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 51.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 52.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 53.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 54.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 56.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 57.
-\symEulerFraktur=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `EulerFraktur' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 63.
-LaTeX Info: Redefining \oldstylenums on input line 85.
-\symEulerScript=\mathgroup5
-LaTeX Font Info:    Overwriting symbol font `EulerScript' in version `bold'
-(Font)                  U/eus/m/n --> U/eus/b/n on input line 93.
-LaTeX Font Info:    Redeclaring math symbol \aleph on input line 97.
-LaTeX Font Info:    Redeclaring math symbol \Re on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Im on input line 99.
-LaTeX Font Info:    Redeclaring math delimiter \vert on input line 101.
-LaTeX Font Info:    Redeclaring math delimiter \backslash on input line 103.
-LaTeX Font Info:    Redeclaring math symbol \neg on input line 106.
-LaTeX Font Info:    Redeclaring math symbol \wedge on input line 108.
-LaTeX Font Info:    Redeclaring math symbol \vee on input line 110.
-LaTeX Font Info:    Redeclaring math symbol \setminus on input line 112.
-LaTeX Font Info:    Redeclaring math symbol \sim on input line 113.
-LaTeX Font Info:    Redeclaring math symbol \mid on input line 114.
-LaTeX Font Info:    Redeclaring math delimiter \arrowvert on input line 116.
-LaTeX Font Info:    Redeclaring math symbol \mathsection on input line 117.
-\symEulerExtension=\mathgroup6
-LaTeX Font Info:    Redeclaring math symbol \coprod on input line 125.
-LaTeX Font Info:    Redeclaring math symbol \prod on input line 125.
-LaTeX Font Info:    Redeclaring math symbol \sum on input line 125.
-LaTeX Font Info:    Redeclaring math symbol \intop on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \ointop on input line 131.
-LaTeX Font Info:    Redeclaring math symbol \braceld on input line 132.
-LaTeX Font Info:    Redeclaring math symbol \bracerd on input line 133.
-LaTeX Font Info:    Redeclaring math symbol \bracelu on input line 134.
-LaTeX Font Info:    Redeclaring math symbol \braceru on input line 135.
-LaTeX Font Info:    Redeclaring math symbol \infty on input line 136.
-LaTeX Font Info:    Redeclaring math symbol \nearrow on input line 153.
-LaTeX Font Info:    Redeclaring math symbol \searrow on input line 154.
-LaTeX Font Info:    Redeclaring math symbol \nwarrow on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \swarrow on input line 156.
-LaTeX Font Info:    Redeclaring math symbol \Leftrightarrow on input line 157.
-LaTeX Font Info:    Redeclaring math symbol \Leftarrow on input line 158.
-LaTeX Font Info:    Redeclaring math symbol \Rightarrow on input line 159.
-LaTeX Font Info:    Redeclaring math symbol \leftrightarrow on input line 160.
-LaTeX Font Info:    Redeclaring math symbol \leftarrow on input line 161.
-LaTeX Font Info:    Redeclaring math symbol \rightarrow on input line 163.
-LaTeX Font Info:    Redeclaring math delimiter \uparrow on input line 166.
-LaTeX Font Info:    Redeclaring math delimiter \downarrow on input line 168.
-LaTeX Font Info:    Redeclaring math delimiter \updownarrow on input line 170.
-LaTeX Font Info:    Redeclaring math delimiter \Uparrow on input line 172.
-LaTeX Font Info:    Redeclaring math delimiter \Downarrow on input line 174.
-LaTeX Font Info:    Redeclaring math delimiter \Updownarrow on input line 176.
-LaTeX Font Info:    Redeclaring math symbol \leftharpoonup on input line 177.
-LaTeX Font Info:    Redeclaring math symbol \leftharpoondown on input line 178.
-
-LaTeX Font Info:    Redeclaring math symbol \rightharpoonup on input line 179.
-LaTeX Font Info:    Redeclaring math symbol \rightharpoondown on input line 180
-.
-LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 182.
-LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 184.
-\symcmmigroup=\mathgroup7
-LaTeX Font Info:    Overwriting symbol font `cmmigroup' in version `bold'
-(Font)                  OML/cmm/m/it --> OML/cmm/b/it on input line 200.
-LaTeX Font Info:    Redeclaring math accent \vec on input line 201.
-LaTeX Font Info:    Redeclaring math symbol \triangleleft on input line 202.
-LaTeX Font Info:    Redeclaring math symbol \triangleright on input line 203.
-LaTeX Font Info:    Redeclaring math symbol \star on input line 204.
-LaTeX Font Info:    Redeclaring math symbol \lhook on input line 205.
-LaTeX Font Info:    Redeclaring math symbol \rhook on input line 206.
-LaTeX Font Info:    Redeclaring math symbol \flat on input line 207.
-LaTeX Font Info:    Redeclaring math symbol \natural on input line 208.
-LaTeX Font Info:    Redeclaring math symbol \sharp on input line 209.
-LaTeX Font Info:    Redeclaring math symbol \smile on input line 210.
-LaTeX Font Info:    Redeclaring math symbol \frown on input line 211.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 254.
-)
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 36.
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ppl.fd
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-)
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
-Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
-
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
-File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
-)
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 100.
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/t1ppl.fd
-File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-))
-(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
-Package: caption 2009/10/09 v3.1k Customizing captions (AR)
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
-Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
-\captionmargin=\dimen105
-\captionmargin@=\dimen106
-\captionwidth=\dimen107
-\caption@indent=\dimen108
-\caption@parindent=\dimen109
-\caption@hangindent=\dimen110
-)
-\c@ContinuedFloat=\count93
-)
-\c@KVtest=\count94
-\sf@farskip=\skip45
-\sf@captopadj=\dimen111
-\sf@capskip=\skip46
-\sf@nearskip=\skip47
-\c@subfigure=\count95
-\c@subfigure@save=\count96
-\c@lofdepth=\count97
-\c@subtable=\count98
-\c@subtable@save=\count99
-\c@lotdepth=\count100
-\sf@top=\skip48
-\sf@bottom=\skip49
-)
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
 (/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
@@ -224,10 +74,10 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count101
+\Gread@gobject=\count93
 ))
-\Gin@req@height=\dimen112
-\Gin@req@width=\dimen113
+\Gin@req@height=\dimen105
+\Gin@req@width=\dimen106
 )
 (/usr/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -238,23 +88,23 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 Package color Info: Driver file: pdftex.def on input line 130.
 )
 (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
-\lst@mode=\count102
+\lst@mode=\count94
 \lst@gtempboxa=\box31
 \lst@token=\toks15
-\lst@length=\count103
-\lst@currlwidth=\dimen114
-\lst@column=\count104
-\lst@pos=\count105
-\lst@lostspace=\dimen115
-\lst@width=\dimen116
-\lst@newlines=\count106
-\lst@lineno=\count107
-\lst@maxwidth=\dimen117
+\lst@length=\count95
+\lst@currlwidth=\dimen107
+\lst@column=\count96
+\lst@pos=\count97
+\lst@lostspace=\dimen108
+\lst@width=\dimen109
+\lst@newlines=\count98
+\lst@lineno=\count99
+\lst@maxwidth=\dimen110
 
 (/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count108
-\lst@skipnumbers=\count109
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
 \lst@framebox=\box32
 )
 (/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
@@ -270,20 +120,20 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 )
 (/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip50
-\LTright=\skip51
-\LTpre=\skip52
-\LTpost=\skip53
-\LTchunksize=\count110
-\LTcapwidth=\dimen118
+\LTleft=\skip45
+\LTright=\skip46
+\LTpre=\skip47
+\LTpost=\skip48
+\LTchunksize=\count102
+\LTcapwidth=\dimen111
 \LT@head=\box33
 \LT@firsthead=\box34
 \LT@foot=\box35
 \LT@lastfoot=\box36
-\LT@cols=\count111
-\LT@rows=\count112
-\c@LT@tables=\count113
-\c@LT@chunks=\count114
+\LT@cols=\count103
+\LT@rows=\count104
+\c@LT@tables=\count105
+\c@LT@chunks=\count106
 \LT@p@ftn=\toks18
 )
 (/usr/share/texmf-texlive/tex/latex/hyphenat/hyphenat.sty
@@ -315,9 +165,9 @@ O)
 (/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
-\@linkdim=\dimen119
-\Hy@linkcounter=\count115
-\Hy@pagecounter=\count116
+\@linkdim=\dimen112
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -382,9 +232,9 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count117
-\Field@Width=\dimen120
-\Fld@charsize=\dimen121
+\Fld@menulength=\count109
+\Field@Width=\dimen113
+\Fld@charsize=\dimen114
 \Field@toks=\toks19
 Package hyperref Info: Hyper figures OFF on input line 4377.
 Package hyperref Info: Link nesting OFF on input line 4382.
@@ -397,31 +247,31 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count118
-\c@Item=\count119
-\c@Hfootnote=\count120
+\Hy@abspage=\count110
+\c@Item=\count111
+\c@Hfootnote=\count112
 )
 *hyperref using default driver hpdftex*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count121
+\Fld@listcount=\count113
 )
 (/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
 Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
-\c@tracingmulticols=\count122
+\c@tracingmulticols=\count114
 \mult@box=\box37
-\multicol@leftmargin=\dimen122
-\c@unbalance=\count123
-\c@collectmore=\count124
-\doublecol@number=\count125
-\multicoltolerance=\count126
-\multicolpretolerance=\count127
-\full@width=\dimen123
-\page@free=\dimen124
-\premulticols=\dimen125
-\postmulticols=\dimen126
-\multicolsep=\skip54
-\multicolbaselineskip=\skip55
+\multicol@leftmargin=\dimen115
+\c@unbalance=\count115
+\c@collectmore=\count116
+\doublecol@number=\count117
+\multicoltolerance=\count118
+\multicolpretolerance=\count119
+\full@width=\dimen116
+\page@free=\dimen117
+\premulticols=\dimen118
+\postmulticols=\dimen119
+\multicolsep=\skip49
+\multicolbaselineskip=\skip50
 \partial@page=\box38
 \last@line=\box39
 \mult@rightbox=\box40
@@ -445,16 +295,16 @@ Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
 \@tempa=\box58
 \@tempa=\box59
 \@tempa=\box60
-\c@columnbadness=\count128
-\c@finalcolumnbadness=\count129
-\last@try=\dimen127
-\multicolovershoot=\dimen128
-\multicolundershoot=\dimen129
+\c@columnbadness=\count120
+\c@finalcolumnbadness=\count121
+\last@try=\dimen120
+\multicolovershoot=\dimen121
+\multicolundershoot=\dimen122
 \mult@nat@firstbox=\box61
 \colbreak@box=\box62
 )
 (/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen130
+\bigstrutjot=\dimen123
 )
 (/usr/share/texmf-texlive/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2009/02/07 v0.4g Insert pages of external PDF documents (AM)
@@ -464,16 +314,16 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count130
-\calc@Bcount=\count131
-\calc@Adimen=\dimen131
-\calc@Bdimen=\dimen132
-\calc@Askip=\skip56
-\calc@Bskip=\skip57
+\calc@Acount=\count122
+\calc@Bcount=\count123
+\calc@Adimen=\dimen124
+\calc@Bdimen=\dimen125
+\calc@Askip=\skip51
+\calc@Bskip=\skip52
 LaTeX Info: Redefining \setlength on input line 76.
 LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count132
-\calc@Cskip=\skip58
+\calc@Ccount=\count124
+\calc@Cskip=\skip53
 )
 (/usr/share/texmf-texlive/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2006/07/14 v1.1d eso-pic (RN)
@@ -486,7 +336,7 @@ File: pppdftex.def 2009/02/07 v0.4g Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box63
 \AM@toc@title=\toks20
-\c@AM@survey=\count133
+\c@AM@survey=\count125
 \AM@templatesizebox=\box64
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/epstopdf.sty
@@ -508,667 +358,34 @@ G,.JBIG2,.JB2,.eps]
 (/usr/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2009/10/26 v1.1 Configuration of epstopdf for TeX Live
 )))
-Package hyperref Info: Option `colorlinks' set `false' on input line 72.
+(/usr/share/texmf-texlive/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2009/09/04 v1.5i extra ToC listings
 
-(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-(/usr/share/texmf-texlive/tex/latex/oberdiek/bookmark.sty
-Package: bookmark 2009/08/13 v1.5 PDF bookmarks (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/pdfescape.sty
-Package: pdfescape 2007/11/11 v1.8 Provides hex, PDF name and string conversion
-s (HO)
-)
-(/usr/share/texmf-texlive/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2007/04/06 v1.1 Hooks for auxiliary files (HO)
-)
-(/usr/share/texmf-texlive/tex/latex/oberdiek/bkm-pdftex.def
-File: bkm-pdftex.def 2009/08/13 v1.5 bookmark driver for pdfTeX (HO)
-\BKM@id=\count134
-))
-(/usr/share/texmf-texlive/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2009/08/06 v1.8 e-TeX tools for LaTeX
+Package tocbibind Note: The document has chapter divisions.
 
-(/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
-Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count135
-)) (./main.aux
-(./cover.aux) (./contents.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
-(./chap4.aux) (./chap5.aux) (./chap6.aux) (./chap7.aux) (./chap8.aux)
-(./chap9.aux) (./biblio.aux))
-\openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 157.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/ppl/m/n on input line 157.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/m/n on input line 157.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ppl/m/n --> OT1/ppl/bx/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ppl/bx/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/ppl/m/it on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/ppl/m/it on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/pcr/m/n on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 157.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ppl/m/it --> OT1/ppl/bx/it on input line 157.
-Package caption Info: Begin \AtBeginDocument code.
-Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 157.
-Package caption Info: hyperref package is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: longtable package is loaded.
+! LaTeX Error: Unknown option `numbered' for package `tocbibind'.
 
-(/usr/share/texmf-texlive/tex/latex/caption/ltcaption.sty
-Package: ltcaption 2008/03/28 v1.2 longtable captions (AR)
-)
-Package caption Info: End \AtBeginDocument code.
-
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count136
-\scratchdimen=\dimen133
-\scratchbox=\box65
-\nofMPsegments=\count137
-\nofMParguments=\count138
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count139
-\MPscratchDim=\dimen134
-\MPnumerator=\count140
-\everyMPtoPDFconversion=\toks22
-)
-\c@lstlisting=\count141
-Package hyperref Info: Link coloring OFF on input line 157.
- (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
-Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
-
-(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
-Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
-)
-\c@section@level=\count142
-)
-LaTeX Info: Redefining \ref on input line 157.
-LaTeX Info: Redefining \pageref on input line 157.
-\AtBeginShipoutBox=\box66
-
-ABD: EveryShipout initializing macros
-\openout2 = `cover.aux'.
-
- (./cover.tex
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 93.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 93.
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
- [1
-
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 113.
- (./abstract.tex) [2
-
-
-]) [3
-
-]
-\openout2 = `contents.aux'.
-
- (./contents.tex
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
-
-(./main.toc
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1.
-LaTeX Font Info:    Try loading font information for U+eur on input line 2.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/ueur.fd
-File: ueur.fd 2009/06/22 v3.00 Euler Roman
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
-LaTeX Font Info:    Try loading font information for U+euf on input line 2.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
-)
-LaTeX Font Info:    Try loading font information for U+eus on input line 2.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/ueus.fd
-File: ueus.fd 2009/06/22 v3.00 Euler Script
-)
-LaTeX Font Info:    Try loading font information for U+euex on input line 2.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/ueuex.fd
-File: ueuex.fd 2009/06/22 v3.00 Euler extra symbols
-) [4
-
-
-
-] [5])
-\tf@toc=\write3
-\openout3 = `main.toc'.
-
- [6] (./main.lof)
-\tf@lof=\write4
-\openout4 = `main.lof'.
-
- [7
-
-
-] (./main.lot)
-\tf@lot=\write5
-\openout5 = `main.lot'.
-
-) [8
-
-
-]
-\openout2 = `chap1.aux'.
-
- (./chap1.tex
-Chapter 1.
-[9
-
-
-
-] [10]) [11]
-\openout2 = `chap2.aux'.
-
- (./chap2.tex
-Chapter 2.
-
-Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 10.
-
-<figures/sysarch.pdf, id=188, 293.095pt x 204.765pt>
-File: figures/sysarch.pdf Graphic file (type pdf)
- <use figures/sysarch.pdf>
-[12
-
-
-
- <./figures/sysarch.pdf>] [13] [14] [15]
-<figures/event-logging-overview.pdf, id=252, 574.145pt x 188.705pt>
-File: figures/event-logging-overview.pdf Graphic file (type pdf)
-
-<use figures/event-logging-overview.pdf> [16]
-(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 113.
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 125.
- [17 <./figures/event-logging-overview.pdf>]) [18] [19]
-\openout2 = `chap3.aux'.
-
- (./chap3.tex
-Chapter 3.
-[20
-
-
-
-]
-
-pdfTeX warning: pdflatex (file ./figures/mint-auth-state-model.pdf): PDF inclus
-ion: found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-auth-state-model.pdf, id=295, 827.09pt x 382.22804pt>
-File: figures/mint-auth-state-model.pdf Graphic file (type pdf)
-
-<use figures/mint-auth-state-model.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 32.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 32.
-[21] [22 <./figures/mint-auth-state-model.pdf>]
-
-pdfTeX warning: pdflatex (file ./figures/mint-filesystem.pdf): PDF inclusion: f
-ound PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-filesystem.pdf, id=317, 554.07pt x 273.02pt>
-File: figures/mint-filesystem.pdf Graphic file (type pdf)
-
-<use figures/mint-filesystem.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[23] [24 <./figures/mint-filesystem.pdf>]
-
-pdfTeX warning: pdflatex (file ./figures/mint-shared-state.pdf): PDF inclusion:
- found PDF version <1.5>, but at most version <1.4> allowed
-<figures/mint-shared-state.pdf, id=351, 1031.855pt x 493.042pt>
-File: figures/mint-shared-state.pdf Graphic file (type pdf)
-
-<use figures/mint-shared-state.pdf> [25 <./figures/mint-shared-state.pdf>]
-[26] [27] [28]) [29]
-\openout2 = `chap4.aux'.
-
- (./chap4.tex
-Chapter 4.
-
-Overfull \hbox (55.9798pt too wide) in paragraph at lines 13--13
-[]\T1/pcr/m/n/12 ---------+-----------+-------+------------+-------------------
-------[] 
- []
-
-
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 14--14
-[] \T1/pcr/m/n/12 {11}    | {}        | Alex  | DECLASSIFY | 2012-06-13 21:57:0
-6.876[] 
- []
-
-
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 15--15
-[] \T1/pcr/m/n/12 {11}    | {}        | Aline | DECLASSIFY | 2012-06-13 21:57:0
-4.852[] 
- []
-
-
-Overfull \hbox (41.5798pt too wide) in paragraph at lines 16--16
-[] \T1/pcr/m/n/12 {11}    | {}        | Jack  | DECLASSIFY | 2012-06-13 21:56:4
-5.73[] 
- []
-
-
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 17--17
-[] \T1/pcr/m/n/12 {11}    | {}        | Jack  | DECLASSIFY | 2012-06-13 21:56:4
-2.691[] 
- []
-
-
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 18--18
-[] \T1/pcr/m/n/12 {11}    | {}        | Mike  | DECLASSIFY | 2012-06-13 21:56:4
-0.649[] 
- []
-
-
-Overfull \hbox (48.7798pt too wide) in paragraph at lines 19--19
-[] \T1/pcr/m/n/12 {11}    | {}        | Mark  | DECLASSIFY | 2012-06-13 21:56:3
-9.624[] 
- []
-
-[30
-
-
-
-] <figures/activity.pdf, id=402, 467.24562pt x 644.4075pt>
-File: figures/activity.pdf Graphic file (type pdf)
-
-<use figures/activity.pdf>
-
-LaTeX Warning: Float too large for page by 15.63367pt on input line 33.
-
-[31] [32 <./figures/activity.pdf>]
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 46.
-
-(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 61--61
-[] \T1/pcr/m/n/12 pid | username | substring |        signed_up        | event_
-counter[] 
- []
-
-
-Overfull \hbox (70.37979pt too wide) in paragraph at lines 62--62
-[]\T1/pcr/m/n/12 -----+----------+-----------+-------------------------+-------
---------[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 63--63
-[]   \T1/pcr/m/n/12 6 | wissam   | 4         | 2012-06-13 21:56:36.207 |       
-    131[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 64--64
-[]   \T1/pcr/m/n/12 9 | david    | 7         | 2012-06-13 21:56:36.207 |       
-    445[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 65--65
-[]  \T1/pcr/m/n/12 12 | dan      | 10        | 2012-06-13 21:56:37.338 |       
-    793[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 66--66
-[]  \T1/pcr/m/n/12 13 | Bob      | 11        | 2012-06-13 21:56:37.338 |       
-   1148[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 67--67
-[]  \T1/pcr/m/n/12 14 | Charlie  | 12        | 2012-06-13 21:56:37.338 |       
-   1211[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 68--68
-[]  \T1/pcr/m/n/12 15 | Eve      | 13        | 2012-06-13 21:56:37.338 |       
-   1274[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 69--69
-[]  \T1/pcr/m/n/12 16 | Ted      | 14        | 2012-06-13 21:56:37.338 |       
-   1337[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 70--70
-[]  \T1/pcr/m/n/12 17 | Jon      | 15        | 2012-06-13 21:56:37.338 |       
-   1400[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 71--71
-[]  \T1/pcr/m/n/12 18 | Jack     | 16        | 2012-06-13 21:56:37.338 |       
-   1463[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 72--72
-[]  \T1/pcr/m/n/12 19 | James    | 17        | 2012-06-13 21:56:37.338 |       
-   1526[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 73--73
-[]  \T1/pcr/m/n/12 20 | Mike     | 18        | 2012-06-13 21:56:37.338 |       
-   1589[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 74--74
-[]  \T1/pcr/m/n/12 21 | Mark     | 19        | 2012-06-13 21:56:37.338 |       
-   1652[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 75--75
-[]  \T1/pcr/m/n/12 22 | Jamie    | 20        | 2012-06-13 21:56:38.578 |       
-   1715[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 76--76
-[]  \T1/pcr/m/n/12 23 | Dave     | 21        | 2012-06-13 21:56:38.578 |       
-   1778[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 77--77
-[]  \T1/pcr/m/n/12 24 | Tod      | 22        | 2012-06-13 21:56:38.578 |       
-   1841[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 78--78
-[]  \T1/pcr/m/n/12 25 | Chris    | 23        | 2012-06-13 21:56:38.578 |       
-   1904[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 79--79
-[]  \T1/pcr/m/n/12 26 | Ron      | 24        | 2012-06-13 21:56:38.578 |       
-   1967[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 80--80
-[]  \T1/pcr/m/n/12 27 | Phil     | 25        | 2012-06-13 21:56:38.578 |       
-   2030[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 81--81
-[]  \T1/pcr/m/n/12 28 | Tracy    | 26        | 2012-06-13 21:56:38.578 |       
-   2093[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 82--82
-[]  \T1/pcr/m/n/12 29 | Leah     | 27        | 2012-06-13 21:56:38.578 |       
-   2156[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 83--83
-[]  \T1/pcr/m/n/12 30 | Kevin    | 28        | 2012-06-13 21:56:38.578 |       
-   2219[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 84--84
-[]  \T1/pcr/m/n/12 31 | Rose     | 29        | 2012-06-13 21:56:38.578 |       
-   2282[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 85--85
-[]  \T1/pcr/m/n/12 32 | Dina     | 30        | 2012-06-13 21:56:38.578 |       
-   2345[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 86--86
-[]  \T1/pcr/m/n/12 33 | Abby     | 31        | 2012-06-13 21:56:38.578 |       
-   2408[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 87--87
-[]  \T1/pcr/m/n/12 34 | Helen    | 32        | 2012-06-13 21:56:38.578 |       
-   2471[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 88--88
-[]  \T1/pcr/m/n/12 35 | Alex     | 33        | 2012-06-13 21:56:38.578 |       
-   2534[] 
- []
-
-
-Overfull \hbox (63.1798pt too wide) in paragraph at lines 89--89
-[]  \T1/pcr/m/n/12 36 | Aline    | 34        | 2012-06-13 21:56:38.578 |       
-   2597[] 
- []
-
-[33] [34]) [35]
-\openout2 = `chap5.aux'.
-
- (./chap5.tex
-Chapter 5.
-[36
-
-
-
-]
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
- [37] [38]
-LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 56.
- [39] [40] [41] [42] [43]) [44]
-\openout2 = `chap6.aux'.
-
- (./chap6.tex
-Chapter 6.
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 14.
-[45
-
-
-
-] [46] [47] [48] [49] [50] [51]) [52]
-\openout2 = `chap7.aux'.
-
- (./chap7.tex
-Chapter 7.
-
-
-pdfTeX warning: pdflatex (file ./figures/impl-sysarch.pdf): PDF inclusion: foun
-d PDF version <1.5>, but at most version <1.4> allowed
-<figures/impl-sysarch.pdf, id=630, 504.57983pt x 442.83426pt>
-File: figures/impl-sysarch.pdf Graphic file (type pdf)
-
-<use figures/impl-sysarch.pdf> [53
-
-
-
- <./figures/impl-sysarch.pdf>] [54]
-Underfull \hbox (badness 2261) in paragraph at lines 52--60
-[]\T1/ppl/m/n/12 Modifies the query to ex-clude any marked events. For ex-am-
- []
-
-
-Underfull \hbox (badness 4144) in paragraph at lines 52--60
-\T1/ppl/m/n/12 ple, if the com-bined query text was ``[][][][][][][][][][][]
- []
-
-
-Underfull \hbox (badness 7888) in paragraph at lines 52--60
-[][][][][][][][][][][][][][][]\T1/ppl/m/n/12 '' the DBM mod-i-fies it to
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--60
-\T1/ppl/m/n/12 the fol-low-ing ``[][][][][][][][][][][][][][][][][][][][][][][]
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--60
-[][][][][][][][][][][][][][][][][][][][][][][][][][][]
- []
-
-
-Underfull \hbox (badness 6625) in paragraph at lines 52--60
-[][][][][][][][][][][][][][][][][][][]\T1/ppl/m/n/12 ''. We use a
- []
-
-
-Overfull \hbox (21.74667pt too wide) in paragraph at lines 70--74
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--74
-
- []
-
-[55]
-Underfull \hbox (badness 1881) in paragraph at lines 94--95
-\T1/ppl/m/n/12 This is im-ple-mented by in-tro-duc-ing a two views, LOG-UNMARKE
-D and
- []
-
-) [56]
-\openout2 = `chap8.aux'.
-
- (./chap8.tex
-Chapter 8.
-) [57
-
-
-
-] [58]
-\openout2 = `chap9.aux'.
-
- (./chap9.tex
-Chapter 9.
-[59
-
-
-
-]) [60]
-\openout2 = `biblio.aux'.
-
- (./biblio.tex (./main.bbl
-Underfull \hbox (badness 1048) in paragraph at lines 27--32
-[]\T1/ppl/m/n/12 Winnie Cheng, Dan R. K. Ports, David Schultz, Vic-to-ria Popic
-, Aaron
- []
-
-[61
-
-
-
-])) [62] (./main.aux (./cover.aux) (./contents.aux) (./chap1.aux)
-(./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux)
-(./chap7.aux) (./chap8.aux) (./chap9.aux) (./biblio.aux)) ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 \ProcessOptions\relax
+                          
+? x
+ 
 Here is how much of TeX's memory you used:
- 9635 strings out of 493848
- 140219 string characters out of 1152823
- 285988 words of memory out of 3000000
- 12325 multiletter control sequences out of 15000+50000
- 38307 words of font info for 88 fonts, out of 3000000 for 9000
+ 6171 strings out of 493848
+ 90946 string characters out of 1152823
+ 166727 words of memory out of 3000000
+ 9364 multiletter control sequences out of 15000+50000
+ 3938 words of font info for 15 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,7n,44p,1153b,1725s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-te
-xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/eu
-ler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurm
-10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share
-/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fon
-ts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/pala
-tino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplbi8a.pfb>
-</usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf
--texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (62 pages, 989158 bytes).
+ 38i,0n,32p,270b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.
 PDF statistics:
- 971 PDF objects out of 1000 (max. 8388607)
- 262 named destinations out of 1000 (max. 500000)
- 476 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

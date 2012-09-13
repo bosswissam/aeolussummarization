@@ -2,9 +2,6 @@
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
 \begin{thebibliography}{10}
 
-\bibitem{mint}
-
-
 \bibitem{ids}
 Julia Allen, Alan Christie, William Fithen, John McHugh, Jed Pickel, and
   Ed~Stoner.

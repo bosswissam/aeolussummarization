@@ -3,8 +3,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=.8\textwidth,keepaspectratio]{figures/impl-sysarch}
-\caption*{Summarization System Architecture}
-\caption[Summarization System Architecture]{This diagram illustrates the components involved in the summarization system we provide.}
+\caption[Summarization System Architecture]{Summarization System Architecture. This diagram illustrates the components involved in the summarization system we provide.}
 \label{fig:impl-sysarch}
 \end{figure}
 
@@ -51,9 +50,17 @@ All communications to the relational database go through the DBM. The DBM provid
         the ones provided.
       \item Modifies the query to exclude any marked events.
         For example, if the combined query text was 
-        ``\lstinline[language=SQL]$select * from events where app_opp='mint-user-signup'$'' 
+        \begin{lstlisting}[language=SQL]
+        select * from events where 
+        app_opp='mint-user-signup'
+        \end{lstlisting}
         the DBM modifies it to the following
-        ``\lstinline[language=SQL]$select * from (select * from events where app_op='mint-user-signup') as e where e.event_counter not in (select event_counter from events-marked$''.
+        \begin{lstlisting}[language=SQL]
+        select * from (select * 
+        from events where app_op='mint-user-signup') 
+        as e where e.event_counter not in 
+        (select event_counter from events-marked)
+        \end{lstlisting}
         We use a subquery to carry out the task to avoid
         having to parse the query for a an already-existing
         \lstinline$where$ clause in the query.
@@ -67,7 +74,11 @@ All communications to the relational database go through the DBM. The DBM provid
         set of records.
     \end{enumerate}
     This method is called by the QS and the SO constructor.
-  \item[\emph{addSummary(summary\_name, summary\_args, query\_name, query\_ args, timestamp)}] \ \\
+  \item[\emph{addSummary(s\_name, 
+      s\_args, q\_name, q\_ args, tstamp)}] \ \\
+    \emph{s\_name} is the summary name, \emph{q\_name}
+    is the query name (similarly for \emph{s\_args} and
+    \emph{q\_args}. \emph{tstamp} is the timestamp.
     Executes a SQL INSERT statement to add a record to
     the SUMMARY table, using the arguments and labels
     of the calling thread as as values for the record.

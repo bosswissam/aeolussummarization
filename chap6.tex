@@ -18,7 +18,13 @@ QuerySystem system = QuerySystem.getInstance();
 We then set up a query that retrieves the princpal ID and data tag for a particular user. Note that in our implementation, the name of the LOG table in the database is \emph{events}.
 
 \begin{lstlisting}[language=Java]
-String users_query = ``select to_array(app_args)[1] as pid, to_array(app_args)[2] as tag, event_counter from events where app_op='mint-user-signup' and to_array(app_args)[0] = ?'';
+String users_query = ``select 
+    to_array(app_args)[1] as pid, 
+    to_array(app_args)[2] as tag, 
+    event_counter 
+  from events 
+  where app_op='mint-user-signup' 
+    and to_array(app_args)[0] = ?'';
 
 system.addQuery(``user-info'', users_query);
 \end{lstlisting}
@@ -31,18 +37,34 @@ We now add some queries that will help identify the logins and logouts for a par
 \begin{lstlisting}[language=Java]
 
 
-// When a user, say Bob,  logs in, we execute the following code:
-// AeolusLib.createEvent(``mint-user-login'', Arrays.asList(new String[]{``Bob''}));
+// When a user, say Bob,  logs in, we execute the 
+// following code:
+/*
+AeolusLib.createEvent(
+ ``mint-user-login'', Arrays.asList(
+ new String[]{``Bob''}));
+*/
 // and similarly for logouts.
 
 // The following query produces a tuple that contains 
 // the login
 // times and event_counters for a particular user.
-String user_logins = ``select timestamp as start, event_counter from events where app_op='mint-user-login' and app_arg[0]=?'';
+String user_logins = ``select 
+    timestamp as start, 
+    event_counter 
+  from events 
+  where app_op='mint-user-login' 
+    and app_arg[0]=?'';
 
-// The following query produces a tuple that contains the logout
+// The following query produces a tuple that 
+// contains the logout
 // times and event_counters for a particular user.
-String user_logouts = ``select timestamp as start, event_counter from events where app_op='mint-user-logout' and to_array(app_args)[0]=?'';
+String user_logouts = ``select 
+    timestamp as start, 
+    event_counter 
+  from events 
+  where app_op='mint-user-logout' 
+    and to_array(app_args)[0]=?'';
 
 // add the queries to the QUERY table
 system.addQuery(``logins'', user_logins);
@@ -54,11 +76,13 @@ Users cannot login if they are already logged in, and they are logged out after 
 
 \begin{lstlisting}[language=Java]
 // A ResultSet is a set of records.
-ResultSet bob_logins = system.runQuery(``logins'', new Object[]{``Bob''});
-ResultSet bob_logouts = system.runQuery(``logouts'', new Object[]{``Bob''});
+ResultSet bob_logins = 
+  system.runQuery(``logins'', new Object[]{``Bob''});
+ResultSet bob_logouts = 
+  system.runQuery(``logouts'', new Object[]{``Bob''});
 
-// The first login and logout for Bob will define the endpoints of the
-// first session.
+// The first login and logout for Bob will 
+// define the endpoints of the first session.
 
 if((!bob_logins.next()) || (!bob_logouts.next())){
   return;
@@ -107,15 +131,21 @@ Table \ref{table:user-sessions} shows a possible table that contains a list of u
  Kevin    |          4891 |       17865
  Tod      |          5931 |       17714
 \end{verbatim}
-\caption*{User Sessions Table}
-\caption[User Sessions]{This table shows start and end event counters for different user sessions. Start and end times are omitted for simplicity.}
+\caption[User Sessions]{User Sessions. This table shows start and end event counters for different user sessions. Start and end times are omitted for simplicity.}
 \label{table:user-sessions}
 \end{table}
 
 \begin{lstlisting}[language=Java]
-String user_session_actions_query = ``select app_op from events where app_op like 'mint-user-\%' and to_array(app_args)[0] = ? and event_counter > ? and event_counter < ?'';
+String user_session_actions_query = ``select 
+    app_op 
+  from events 
+  where app_op like 'mint-user-\%' 
+    and to_array(app_args)[0] = ? 
+    and event_counter > ? 
+    and event_counter < ?'';
 
-system.addQuery(``user-sessions-actions'', user_sessions_actions_query);
+system.addQuery(``user-sessions-actions'', 
+user_sessions_actions_query);
 \end{lstlisting}
 
 Now that we've identified one of Bob's sessions, i.e. the first one, and have a query to find out his actions during that session, we can go ahead and summarize Bob's actions during his first session. For each session we produce a summary that contains the username, the actions carried out, and the event\_counters and timestamps that identify the start and end of that session.
@@ -124,11 +154,17 @@ In this example, and the ones that follow, we assume that the method \emph{proce
 
 \begin{lstlisting}[language=Java]
 
-Object[] vals = new Object[] {username, start_counter, end_counter, start_time, end_time};
-SummaryObject so = new SummaryObject(``user-session-actions'', vals);
+Object[] vals = new Object[] {username, 
+  start_counter, end_counter, 
+  start_time, end_time};
+SummaryObject so = new SummaryObject(
+  ``user-session-actions'', vals);
 
 String summary = process(so.getEvents());
-so.addSummary(``user-session-summary'', String.format(``\%s, \%d, \%d, \%s, \%s'', username, start_counter, end_counter, start_time, end_time, summary));
+so.addSummary(``user-session-summary'', 
+String.format(``\%s, \%d, \%d, \%s, \%s'', 
+  username, start_counter, end_counter, start_time, 
+  end_time, summary));
 
 \end{lstlisting}
 
@@ -140,27 +176,35 @@ In this section, we showed how to produce a summary for Bob's actions for his fi
 In this example we explore how to summarize information about file system events; we show how to store information about file accesses in the last week.
 
 \begin{lstlisting}[language=Java]
-String fs_access = ``select * from events where filename<>'' and DATE_SUB(?, INTERVAL 7 DAY)'';
+String fs_access = ``select * 
+  from events 
+  where filename<>'' 
+    and roundweekdown(timestamp)'';
 
 system.addQuery(``fs_week_access'', fs_access);
 
 long now = System.currentTimeMillis();
 Object[] vals = Object[]{new java.sql.Timestamp(now)};
-SummaryObject so = new SummaryObject(``fs_week_access'', vals);
+SummaryObject so = new SummaryObject(``fs_week_access'', 
+vals);
 
 String summary = process(so.getEvents());
-so.addSummary(``File accesses'', String.format(``\%d, \%s'', now, summary));
+so.addSummary(``File accesses'', 
+String.format(``\%d, \%s'', now, summary));
 \end{lstlisting}
 
 \noindent
-The above code will store a summary of the file system events in the last week. Only file system events use the \emph{filename} attribute in the LOG, hence we use that to retrieve all file system events\footnote{The \emph{DATE\_SUB} substracts an interval of time from a date, as described in \cite{pgsql-gen}.}.
+The above code will store a summary of the file system events in the last week\footnote{\emph{roundweekdown} is a function that rounds down the timestamp to the start of the last week. It does the same as the query in section \ref{audit:mint-example} which groups timestamps to 5-second periods (except this one is a one week period).}. Only file system events use the \emph{filename} attribute in the LOG, hence we use that to retrieve all file system events\footnote{The \emph{DATE\_SUB} substracts an interval of time from a date, as described in \cite{pgsql-gen}.}.
 
 After producing the summary, we might wish to mark most file system events, except for the ones that change the file system hierarchy (adding or removing directories or files). We could do this as follows:
 
 \begin{lstlisting}[language=Java]
-String fs_protect = ``select * from events where op_name = ? or op_name = ?''
+String fs_protect = ``select * from events 
+where op_name = ? or op_name = ?''
 system.addQuery(``protect-fs-events'', fs_protect);
-so.mark(``protect-fs-events'', new Object[]{``CREATE_DIRECTORY'', ``REMOVE_DIRECTORY'', ``CREATE_FILE, ``REMOVE_FILE''});
+so.mark(``protect-fs-events'', 
+  new Object[]{``CREATE_DIRECTORY'', 
+    ``REMOVE_DIRECTORY'', ``CREATE_FILE, ``REMOVE_FILE''});
 \end{lstlisting}
 
 \section{Summarizing User Trends}
@@ -169,12 +213,20 @@ As a final example, we will show how records in the SUMMARY table itself could b
 
 \begin{lstlisting}[language=Java]
 
-String session_summary_query = ``select * from SUMMARY where name=user-session-summary and to_array(args)[0]=? to_array(args)[3]::timestamp > DATE_SUB(?, INTERVAL 7 DAY) and to_array(args)[3]::timestamp < DATE_SUB(?, INTERVAL 14 DAY)';
+String session_summary_query = ``select * 
+  from SUMMARY 
+  where name=user-session-summary 
+    and to_array(args)[0]=? 
+    and to_array(args)[3]::timestamp > DATE_SUB(?, 
+      INTERVAL 7 DAY) 
+    and to_array(args)[3]::timestamp < DATE_SUB(?, 
+      INTERVAL 14 DAY)'';
 
 system.addQuery(``session-summary'', session_summary_query);
 Timestamp now = new Timestamp(System.currentTimeMillis());
 Object[] vals = new Object[]{``Bob'', now};
-SummaryObject so = new SummaryObject(``session-summary'', vals);
+SummaryObject so = new SummaryObject(``session-summary'', 
+  vals);
 
 // Create a summary based on the sessions in the last week
 String summary = process(so.getEvents());
