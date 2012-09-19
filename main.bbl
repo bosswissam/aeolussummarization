@@ -33,6 +33,12 @@ Winnie Wing-Yee Cheng.
 \newblock {Ph.D.}, MIT, Cambridge, MA, USA, August 2009.
 \newblock Also as Technical Report {MIT-CSAIL-TR-2009-040}.
 
+\bibitem{at-red}
+Gene~Spafford et~al.
+\newblock Audit trail reduction.
+\newblock Online,
+  \url{http://www.cs.purdue.edu/coast/projects/audit-trails-reduce.html}, 1999.
+
 \bibitem{ai}
 Jeremy Frank.
 \newblock Artificial intelligence and intrusion detection: Current and future
@@ -73,11 +79,5 @@ Victoria Popic.
 David Schultz.
 \newblock {\em Decentralized Information Flow Control for Databases}.
 \newblock {Ph.D.}, MIT, July 2012.
-
-\bibitem{at-red}
-Spafford and Gene et~al.
-\newblock Audit trail reduction.
-\newblock Online,
-  \url{http://www.cs.purdue.edu/coast/projects/audit-trails-reduce.html}, 1999.
 
 \end{thebibliography}

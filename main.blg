@@ -17,34 +17,34 @@ Database file #1: main.bib
 Warning--empty journal in ai
 You've used 14 entries,
             2118 wiz_defined-function locations,
-            595 strings with 6378 characters,
-and the built_in function-call counts, 3548 in all, are:
-= -- 348
-> -- 171
+            595 strings with 6374 characters,
+and the built_in function-call counts, 3512 in all, are:
+= -- 345
+> -- 165
 < -- 1
-+ -- 73
-- -- 56
-* -- 225
-:= -- 657
++ -- 71
+- -- 54
+* -- 221
+:= -- 651
 add.period$ -- 43
 call.type$ -- 14
-change.case$ -- 68
+change.case$ -- 67
 chr.to.int$ -- 0
 cite$ -- 15
 duplicate$ -- 133
 empty$ -- 261
-format.name$ -- 56
-if$ -- 705
+format.name$ -- 54
+if$ -- 698
 int.to.chr$ -- 0
 int.to.str$ -- 14
 missing$ -- 6
 newline$ -- 75
 num.names$ -- 26
-pop$ -- 69
+pop$ -- 68
 preamble$ -- 2
-purify$ -- 57
+purify$ -- 56
 quote$ -- 0
-skip$ -- 82
+skip$ -- 81
 stack$ -- 0
 substring$ -- 120
 swap$ -- 11

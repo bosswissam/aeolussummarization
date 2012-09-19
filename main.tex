@@ -34,14 +34,25 @@
 \usepackage{longtable}
 \usepackage{hyphenat}
 \usepackage[section]{placeins}
-\usepackage{hyperref}
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{pdfpages}
 \usepackage{epstopdf}
 \usepackage{url}
-%\usepackage[numbered]{bookmark}
-\usepackage[numbered]{tocbibind}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[numbered]{bookmark}
+
+
+%This macro makes the bookmarks point a little higher on the page
+%so they don't skip the title of abs, acks, lof and lot
+\makeatletter
+\renewcommand*{\pdfbookmark}[3][0]{%
+  \bookmark[level=#1,dest={#3.1}]{#2}% originally dest={#3.#1}
+  \hyper@anchorstart{#3.1}\hyper@anchorend% originally #3.#1
+}
+\makeatother
+
+%\usepackage[nottoc, notlof, notlot]{tocbibind}
 
 \pagestyle{plain}
 
@@ -55,38 +66,41 @@
 }
 
 
+
 \typein [\files]{Enter file names to process, (chap1,chap2 ...), or `all' to
 process all files:}
 \def\all{all}
 \ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
 
 
-%\makeatletter
-%\usepackage{etoolbox}
-%\pretocmd{\listoffigures}{%
-%  \if@openright\cleardoublepage\else\clearpage\fi
-%  \pdfbookmark[0]{\listfigurename}{lof}%
-%}{}{}%
-%\makeatother
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\listoffigures}{%
+  \cleardoublepage
+  \pdfbookmark[0]{\listfigurename}{lof}%
+}{}{}%
+\makeatother
 
-%\makeatletter
-%\usepackage{etoolbox}
-%\pretocmd{\listoftables}{%
-%  \if@openright\cleardoublepage\else\clearpage\fi
-%  \pdfbookmark[0]{\listtablename}{lot}%
-%}{}{}%
-%\makeatother
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\listoftables}{%
+  \cleardoublepage
+  \pdfbookmark[0]{\listtablename}{lot}%
+}{}{}%
+\makeatother
 
 \renewcommand{\bibname}{References}
 
 \begin{document}
 
 \include{cover}
-\% Some departments (e.g. 5) require an additional signature page.  See
+% Some departments (e.g. 5) require an additional signature page.  See
 % signature.tex for more information and uncomment the following line if
 % applicable.
 % \include{signature}
 \pagestyle{plain}
+\cleardoublepage
+\pdfbookmark[0]{\contentsname}{toc}
 \include{contents}
 \include{chap1}
 \include{chap2}
@@ -100,7 +114,8 @@ process all files:}
 \appendix
 %\include{appa}
 %\include{appb}
-\phantomsection
+\phantomsection % Ensures that a PDF bookmark is set here
+\addcontentsline{toc}{chapter}{References}
 \include{biblio}
 
 \end{document}
